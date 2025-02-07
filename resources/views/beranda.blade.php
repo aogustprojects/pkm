@@ -4,4 +4,5 @@
   <p>NETTTT</p>
   kaeaadawdawdad
   <h1>nanwananwnwa</h1>
+  <h2>dddd</h2>
 </x-layout>
