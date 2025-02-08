@@ -10,7 +10,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <title>Document</title>
 </head>
-<body class="h-full">
+<body class="h-full overflow-y-scroll">
 <div class="min-h-full">
     <x-navbar></x-navbar>
     <x-header>{{ $title }}</x-header>
