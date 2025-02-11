@@ -5,7 +5,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
-
+use function Pest\Laravel\get;
 
 Route::get('/', function () {
     return view('beranda', [
@@ -20,9 +20,11 @@ Route::get('/profil', function () {
 });
 
 Route::get('/postingan', function () {
+    // $postingan = Post::with(['author', 'category'])->latest()->get();
+    $postingan = Post::latest()->get();
     return view('postingan', [
         'title' => 'Halaman Postingan',
-        'postingan' => Post::all()
+        'postingan' => $postingan
     ]);
 });
 
@@ -33,12 +35,12 @@ Route::get('/postingan/{post:slug}', function(Post $post){
 });
 
 Route::get('/author/{user:username}', function(User $user){
-        
+    // $postingan = $user->postingan->load('category', 'author');
     return view('postingan', ['title' => count($user->postingan) . ' Postingan Oleh ' . $user->name, 'postingan' => $user->postingan]);
 });
 
 Route::get('/categories/{category:slug}', function(Category $category){
-        
+    // $postingan = $category->postingan->load('category', 'author');
     return view('postingan', ['title' => 'Postingan di kategori ' . $category->name, 'postingan' => $category->postingan]);
 });
 
