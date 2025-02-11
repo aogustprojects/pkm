@@ -15,12 +15,14 @@ class CategorySeeder extends Seeder
     {
         Category::create([
             'name' => 'Puskesmas Pasirjati',
-            'slug' => 'pkm-psj'
+            'slug' => 'pkm-psj',
+            'color' => 'blue'
         ]);
 
         Category::create([
             'name' => 'Dinas Kesehatan Kota Bandung',
-            'slug' => 'dinkes'
+            'slug' => 'dinkes',
+            'color' => 'red'
         ]);
         
         // Category::factory(3)->create();
