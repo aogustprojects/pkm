@@ -9,13 +9,14 @@ use function Pest\Laravel\get;
 
 Route::get('/', function () {
     return view('beranda', [
-        'title' => 'Halaman Beranda'
+        'title' => 'Beranda'
     ]);
 });
 
 Route::get('/profil', function () {
     return view('profil', [
-        'title' => 'Halaman Profil'
+        'title' => 'Profil',
+        'name' => 'UPTD PUSKESMAS PASIR JATI'
     ]);
 });
 
@@ -23,7 +24,7 @@ Route::get('/postingan', function () {
     // $postingan = Post::with(['author', 'category'])->latest()->get();
     $postingan = Post::latest()->get();
     return view('postingan', [
-        'title' => 'Halaman Postingan',
+        'title' => 'Postingan',
         'postingan' => $postingan
     ]);
 });
@@ -46,6 +47,6 @@ Route::get('/categories/{category:slug}', function(Category $category){
 
 Route::get('/kontak', function () {
     return view('kontak', [
-        'title' => 'Halaman Kontak'
+        'title' => 'Kontak'
     ]);
 });

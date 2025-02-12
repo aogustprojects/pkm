@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     {{-- Alpine JS --}}
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    {{-- CDN Font Awesome --}}
+    <script src="https://kit.fontawesome.com/7b03306244.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body class="h-full overflow-y-scroll">
@@ -20,6 +22,7 @@
         {{ $slot }}
       </div>
     </main>
+    <x-footer></x-footer>
   </div>  
 </body>
 </html>
