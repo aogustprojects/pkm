@@ -41,7 +41,7 @@
 </div>
 
 <div class="flex flex-col lg:flex-row justify-center items-center gap-2 lg:gap-5 px-4 py-3 lg:py-3">
-    <a class="my-2 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 min-h-[250px] min-w-[400px]">
+    <a class="my-2 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 min-h-[250px] min-w-[393px]">
       <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">Waktu Pelayanan</h5>
       <hr class="mb-3">
       <div class="font-normal text-gray-700 dark:text-gray-400 ">
@@ -52,7 +52,7 @@
         <p>Nb : Waktu Pendaftaran Pelayanan di Tutup 30 Menit Sebelum Tutup Waktu Pelayanan</p>
       </div>
     </a>
-    <a class="my-2 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 min-h-[250px] min-w-[400px]">
+    <a class="my-2 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 min-h-[250px] min-w-[393px]">
       <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">Syarat Pelayanan</h5>
       <hr class="mb-3">
       <div class="font-normal text-gray-700 dark:text-gray-400 ">
@@ -64,7 +64,7 @@
         <p>Membawa KTP/KK</p>
       </div>
     </a>
-    <a class="my-2 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 min-h-[250px] min-w-[400px]">
+    <a class="my-2 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 min-h-[250px] min-w-[393px]">
       <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">Jadwal Pelayanan</h5>
       <hr class="mb-3">
       <div class="font-normal text-gray-700 dark:text-gray-400 ">
@@ -84,77 +84,77 @@
           <h2 class="mb-4 text-4xl text-center tracking-tight font-extrabold text-gray-900 dark:text-white">Jenis Layanan Puskesmas Pasir Jati</h2>
       </div>
       <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0 place-items-center">
-          <div class="grid place-items-center">
+          <div class="w-full h-full p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center">
             <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
               <i class="fa-solid fa-stethoscope"></i>
             </div>
             <h3 class="mb-2 text-xl font-bold dark:text-white">Pemeriksaan Umum</h3>
             <p class="text-gray-500 dark:text-gray-400 text-center">Pemeriksaan umum adalah proses evaluasi kesehatan dasar yang dilakukan oleh tenaga medis (seperti dokter atau perawat) untuk menilai kondisi kesehatan seseorang secara menyeluruh.</p>
           </div>
-          <div class="grid place-items-center">
-              <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+          <div class="w-full h-full p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center">
+            <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
                 <i class="fa-solid fa-blind"></i>
               </div>
               <h3 class="mb-2 text-xl font-bold dark:text-white">Pemeriksaan Lansia</h3>
               <p class="text-gray-500 dark:text-gray-400 text-center">Pemeriksaan lansia di Puskesmas adalah layanan kesehatan yang ditujukan khusus untuk orang lanjut usia (lansia) dengan tujuan memantau dan menjaga kesehatan mereka.</p>
           </div>
-          <div class="grid place-items-center">
-              <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+          <div class="w-full h-full p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center">
+            <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
                 <i class="fa-solid fa-tooth"></i>                
               </div>
               <h3 class="mb-2 text-xl font-bold dark:text-white">Pemeriksaan Gigi & Mulut</h3>
               <p class="text-gray-500 dark:text-gray-400 text-center">Pemeriksaan gigi dan mulut di Puskesmas (Pusat Kesehatan Masyarakat) adalah layanan kesehatan yang disediakan untuk memeriksa, mendiagnosis, dan memberikan perawatan dasar terkait kesehatan gigi dan mulut.</p>
           </div>
-          <div class="grid place-items-center">
-              <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+          <div class="w-full h-full p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center">
+            <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
                 <i class="fa-solid fa-baby"></i>
               </div>
               <h3 class="mb-2 text-xl font-bold dark:text-white">Pemeriksaan KIA & KB</h3>
               <p class="text-gray-500 dark:text-gray-400 text-center">Pemeriksaan KIA (Kesehatan Ibu dan Anak) dan KB (Keluarga Berencana) adalah layanan kesehatan yang ditujukan untuk menjaga dan meningkatkan kesehatan ibu, anak, serta merencanakan kehamilan dan pengaturan jarak kelahiran.</p>
           </div>
-          <div class="grid place-items-center">
-              <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+          <div class="w-full h-full p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center">
+            <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
                 <i class="fa-solid fa-child"></i>
               </div>
               <h3 class="mb-2 text-xl font-bold dark:text-white">Pemeriksaan MTBS & MTBM</h3>
               <p class="text-gray-500 dark:text-gray-400 text-center">Pemeriksaan MTBS (Manajemen Terpadu Balita Sakit) dan MTBM (Manajemen Terpadu Bayi Muda) adalah pendekatan terintegrasi yang dirancang oleh Organisasi Kesehatan Dunia (WHO) untuk menangani masalah kesehatan pada balita (anak di bawah 5 tahun) dan bayi muda (bayi di bawah 2 bulan).</p>
           </div>
-          <div class="grid place-items-center">
-              <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+          <div class="w-full h-full p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center">
+            <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
                 <i class="fa-solid fa-lungs-virus"></i>
               </div>
               <h3 class="mb-2 text-xl font-bold dark:text-white">Pemeriksaan TB</h3>
               <p class="text-gray-500 dark:text-gray-400 text-center">Pemeriksaan TB (Tuberkulosis) adalah serangkaian prosedur diagnostik yang dilakukan untuk mendeteksi dan memastikan adanya infeksi bakteri Mycobacterium tuberculosis, penyebab penyakit tuberkulosis.</p>
           </div>
-          <div class="grid place-items-center">
+          <div class="w-full h-full p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center">
             <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
               <i class="fa-brands fa-nutritionix"></i>
             </div>
             <h3 class="mb-2 text-xl font-bold dark:text-white">Konseling Gizi</h3>
             <p class="text-gray-500 dark:text-gray-400 text-center">Konseling Gizi adalah proses interaktif antara seorang ahli gizi (nutritionist atau dietisien) dengan individu atau kelompok untuk memberikan panduan, edukasi, dan dukungan terkait pola makan dan gizi.</p>
           </div>
-          <div class="grid place-items-center">
+          <div class="w-full h-full p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center">
             <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
               <i class="fa-solid fa-hand-holding-droplet"></i>
             </div>
             <h3 class="mb-2 text-xl font-bold dark:text-white">Konseling Sanitasi</h3>
             <p class="text-gray-500 dark:text-gray-400 text-center">Konseling Sanitasi adalah proses edukasi dan bimbingan yang diberikan kepada individu, keluarga, atau masyarakat tentang pentingnya menjaga kebersihan dan sanitasi lingkungan untuk mencegah penyakit dan meningkatkan kualitas hidup.</p>
           </div>
-          <div class="grid place-items-center">
+          <div class="w-full h-full p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center">
             <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
               <i class="fa-solid fa-hands-holding"></i>
             </div>
             <h3 class="mb-2 text-xl font-bold dark:text-white">Promosi Kesehatan</h3>
             <p class="text-gray-500 dark:text-gray-400 text-center">Promosi Kesehatan adalah upaya yang dilakukan untuk meningkatkan kesadaran, pengetahuan, dan kemampuan masyarakat dalam mengendalikan faktor-faktor yang memengaruhi kesehatan, sehingga mereka dapat hidup lebih sehat.</p>
           </div>
-          <div class="grid place-items-center">
+          <div class="w-full h-full p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center">
             <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
               <i class="fa-solid fa-microscope"></i>
             </div>
             <h3 class="mb-2 text-xl font-bold dark:text-white">Laboratorium</h3>
             <p class="text-gray-500 dark:text-gray-400 text-center">Laboratorium adalah unit atau fasilitas yang menyediakan layanan pemeriksaan medis untuk mendukung diagnosis, pengobatan, dan pencegahan penyakit. Laboratorium ini dilengkapi dengan peralatan dan tenaga ahli (seperti analis kesehatan atau teknisi laboratorium) yang bertugas melakukan berbagai tes dan analisis terhadap sampel biologis, seperti darah, urine, feses, atau jaringan tubuh.</p>
           </div>
-          <div class="grid place-items-center">
+          <div class="w-full h-full p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center">
             <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
               <i class="fa-solid fa-prescription-bottle-medical"></i>
             </div>

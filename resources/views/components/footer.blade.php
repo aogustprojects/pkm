@@ -3,7 +3,7 @@
     <div class="mx-auto w-full max-w-screen-xl">
       <div class="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-3">
         <div>
-            <h2 class="mb-6 text-md font-semibold text-gray-900 uppercase dark:text-white">Menu</h2>
+            <h2 class="mb-6 text-md font-semibold text-gray-900 dark:text-white">Menu</h2>
             <ul class="text-gray-500 dark:text-gray-400 font-medium text-sm">
                 <li class="mb-4">
                     <a href="/" class=" hover:underline">Beranda</a>
@@ -20,19 +20,19 @@
             </ul>
         </div>
         <div>
-            <h2 class="mb-6 text-md font-semibold text-gray-900 uppercase dark:text-white">Alamat & Kontak Hotline</h2>
+            <h2 class="mb-6 text-md font-semibold text-gray-900 dark:text-white">Alamat & Kontak Hotline</h2>
             <ul class="text-gray-500 dark:text-gray-400 font-medium text-sm">
                 <li class="mb-4">
                     <p>Jl Nagrog III RT.03 RW.08, Kelurahan Pasirjati, Kecamatan Ujungberung, Kota Bandung, 40616</p>
                 </li>
                 <li class="mb-4">
                     <i class="fa-brands fa-whatsapp"></i>
-                    <a href="#" class="hover:underline">Whasapp : 0811-222-753</a>
+                    <a href="https://wa.me/+62811222753" target="_blank" class="hover:underline">Whasapp : 0811-222-753</a>
                 </li>
             </ul>
         </div>
         <div>
-            <h2 class="mb-6 text-md font-semibold text-gray-900 uppercase dark:text-white">Lokasi Map</h2>
+            <h2 class="mb-6 text-md font-semibold text-gray-900 dark:text-white">Lokasi Map</h2>
             <ul class="text-gray-500 dark:text-gray-400 font-medium">
                 <div id="map" style="position: relative; overflow: hidden; padding-top: 56.25%;">
                     <iframe
