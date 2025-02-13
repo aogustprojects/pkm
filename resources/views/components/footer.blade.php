@@ -20,7 +20,7 @@
             </ul>
         </div>
         <div>
-            <h2 class="mb-6 text-md font-semibold text-gray-900 uppercase dark:text-white">Alamat & Hotline</h2>
+            <h2 class="mb-6 text-md font-semibold text-gray-900 uppercase dark:text-white">Alamat & Kontak Hotline</h2>
             <ul class="text-gray-500 dark:text-gray-400 font-medium text-sm">
                 <li class="mb-4">
                     <p>Jl Nagrog III RT.03 RW.08, Kelurahan Pasirjati, Kecamatan Ujungberung, Kota Bandung, 40616</p>
@@ -47,14 +47,14 @@
         </div>
     </div>
     <div class="px-4 py-6 rounded-3xl  bg-gray-100 dark:bg-gray-700 md:flex md:items-center md:justify-between">
-        <span class="text-sm text-gray-500 dark:text-gray-300 sm:text-center">© 2025 <a href="https://flowbite.com/">UPTD Puskesmas Pasir Jati</a>. All Rights Reserved.
+        <span class="text-sm text-gray-500 dark:text-gray-300 sm:text-center">© 2025 <a>UPTD Puskesmas Pasir Jati</a>. All Rights Reserved.
         </span>
-        <div class="flex mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">
+        {{-- <div class="flex mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">
             <a href="#" class="text-gray-400 hover:text-gray-900 dark:hover:text-white">
                   <i class="fa fa-instagram" aria-hidden="true"></i>
                   <span class="sr-only">Instagram</span>
               </a>
-        </div>
+        </div> --}}
     </div>
 </div>
 </footer>

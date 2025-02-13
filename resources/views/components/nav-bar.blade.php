@@ -1,9 +1,9 @@
-<nav x-data="{ isOpen: false }" class="bg-gray-800">
+<nav x-data="{ isOpen: false }" class="bg-white shadow-lg sticky top-0 z-50">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="flex h-16 items-center justify-between">
         <div class="flex items-center">
           <div class="shrink-0">
-            <img class="size-8 rounded-full" src="{{ asset('img/logo pkm.png') }}" alt="Your Company">
+            <img class="w-auto h-16 rounded-sm" src="{{ asset('img/logo pkm h.png') }}" alt="Your Company">
           </div>
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
@@ -86,5 +86,7 @@
           <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Sign out</a>
         </div>
       </div> --}}
+
+      
     </div>
   </nav>

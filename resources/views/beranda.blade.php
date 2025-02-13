@@ -5,15 +5,15 @@
   <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
        <!-- Item 1 -->
       <div class="hidden duration-700 ease-in-out" data-carousel-item>
-          <img src="img/akre1.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+          <img src="img/akre3.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
       </div>
       <!-- Item 2 -->
       <div class="hidden duration-700 ease-in-out" data-carousel-item>
-          <img src="img/akre2.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+          <img src="img/akre1.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
       </div>
       <!-- Item 3 -->
       <div class="hidden duration-700 ease-in-out" data-carousel-item>
-          <img src="img/akre3.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+          <img src="img/akre2.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
       </div>
   <!-- Slider indicators -->
   <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
@@ -62,6 +62,18 @@
         <li>BPJS : </li>
         <p>Membawa kartu BPJS</p>
         <p>Membawa KTP/KK</p>
+      </div>
+    </a>
+    <a class="my-2 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 min-h-[250px] min-w-[400px]">
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">Jadwal Pelayanan</h5>
+      <hr class="mb-3">
+      <div class="font-normal text-gray-700 dark:text-gray-400 ">
+        <li>Pelayanan Umum : Senin s/d Sabtu</li>
+        <li>Pelayanan Imunisasi : Senin & Kamis</li>
+        <li>Pelayanan KB : Rabu & Jumat</li>
+        <li>Pelayanan Ibu Hamil : Selasa & Sabtu</li>
+        <li>Pelayanan Gigi & Mulut : Senin s/d Sabtu</li>
+        <li>Pelayanan Gizi : Jumat</li>
       </div>
     </a>
 </div>
@@ -152,5 +164,7 @@
       </div>
   </div>
 </section>
+
+
 
 </x-layout>
