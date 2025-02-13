@@ -12,7 +12,7 @@
     <script src="https://kit.fontawesome.com/7b03306244.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
-<body class="h-full overflow-y-scroll">
+<body class="h-full overflow-y-scroll overflow-x-hidden">
 <div class="min-h-full">
     <x-header>{{ $title }}</x-header>
     <x-navbar></x-navbar>
