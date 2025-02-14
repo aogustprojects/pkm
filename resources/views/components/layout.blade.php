@@ -10,7 +10,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     {{-- CDN Font Awesome --}}
     <script src="https://kit.fontawesome.com/7b03306244.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <title>Puskesmas Pasirjati</title>
 </head>
 <body class="h-full overflow-y-scroll overflow-x-hidden">
 <div class="min-h-full">

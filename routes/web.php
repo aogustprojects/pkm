@@ -1,11 +1,16 @@
 <?php
 
-use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
-use Illuminate\Support\Facades\Route;
-
+use App\Models\Category;
+use App\Mail\welcomeEmail;
 use function Pest\Laravel\get;
+use Illuminate\Support\Facades\Log;
+
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KontakController;
+use App\Http\Controllers\SendEmailController;
 
 Route::get('/', function () {
     return view('beranda', [
@@ -50,3 +55,6 @@ Route::get('/kontak', function () {
         'title' => 'Kontak Puskesmas'
     ]);
 });
+
+
+Route::post('/send-email', [SendEmailController::class, 'sendWelcomeEmail'])->name('send.email');
