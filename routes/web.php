@@ -1,15 +1,13 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
-use App\Mail\welcomeEmail;
-use function Pest\Laravel\get;
-use Illuminate\Support\Facades\Log;
-
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\KontakController;
+use Illuminate\Auth\Events\Registered;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SendEmailController;
 
 Route::get('/', function () {
@@ -26,11 +24,9 @@ Route::get('/profil', function () {
 });
 
 Route::get('/postingan', function () {
-    // $postingan = Post::with(['author', 'category'])->latest()->get();
-    $postingan = Post::latest()->get();
     return view('postingan', [
-        'title' => 'Postingan Puskesmas',
-        'postingan' => $postingan
+        'title' => 'Postingan Puskesmas', 
+        'postingan' => Post::filter(request(['search', 'category' , 'auhtor']))->latest()->paginate(3)->withQueryString()
     ]);
 });
 
@@ -56,5 +52,14 @@ Route::get('/kontak', function () {
     ]);
 });
 
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+
+Route::post('/login', [LoginController::class, 'authenticate']);
+
+Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::post('/send-email', [SendEmailController::class, 'sendWelcomeEmail'])->name('send.email');
+
+Route::get('/dashboard', function(){
+    return view('dashboard.index', ['title' => 'Dashboard']);
+})->middleware('auth');
