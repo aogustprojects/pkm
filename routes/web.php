@@ -33,7 +33,7 @@ Route::get('/postingan', function () {
 
 Route::get('/postingan/{post:slug}', function(Post $post){
         
-        return view('post', ['title' => 'Single Post', 'post' => $post]);
+    return view('post', ['title' => 'Single Post', 'post' => $post]);
         
 });
 
@@ -65,4 +65,5 @@ Route::get('/dashboard', function(){
     return view('dashboard.index', ['title' => 'Dashboard']);
 })->middleware('auth');
 
-Route::middleware('auth')->get('/dashboard/postingan', [DashboardPostController::class, 'index']);
+Route::get('/dashboard/postingan', [DashboardPostController::class, 'index'])->middleware('auth');
+Route::get('/dashboard/postingan/{post:slug}', [DashboardPostController::class, 'show'])->middleware('auth');
