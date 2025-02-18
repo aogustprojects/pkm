@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardPostController;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
@@ -26,7 +27,7 @@ Route::get('/profil', function () {
 Route::get('/postingan', function () {
     return view('postingan', [
         'title' => 'Postingan Puskesmas', 
-        'postingan' => Post::filter(request(['search', 'category' , 'auhtor']))->latest()->paginate(3)->withQueryString()
+        'postingan' => Post::filter(request(['search', 'category' , 'author']))->latest()->paginate(3)->withQueryString()
     ]);
 });
 
@@ -63,3 +64,5 @@ Route::post('/send-email', [SendEmailController::class, 'sendWelcomeEmail'])->na
 Route::get('/dashboard', function(){
     return view('dashboard.index', ['title' => 'Dashboard']);
 })->middleware('auth');
+
+Route::middleware('auth')->get('/dashboard/postingan', [DashboardPostController::class, 'index']);
