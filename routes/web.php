@@ -1,14 +1,11 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardPostController;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Auth\Events\Registered;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SendEmailController;
 
 Route::get('/', function () {
@@ -64,6 +61,3 @@ Route::post('/send-email', [SendEmailController::class, 'sendWelcomeEmail'])->na
 Route::get('/dashboard', function(){
     return view('dashboard.index', ['title' => 'Dashboard']);
 })->middleware('auth');
-
-Route::get('/dashboard/postingan', [DashboardPostController::class, 'index'])->middleware('auth');
-Route::get('/dashboard/postingan/{post:slug}', [DashboardPostController::class, 'show'])->middleware('auth');
