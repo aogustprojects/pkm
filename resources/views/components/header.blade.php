@@ -11,6 +11,7 @@
           <a href="/kontak" class="bg-header hover:bg-blue-500 rounded-md px-2 py-1 flex items-center justify-center sm:justify-start">
               <i class="fa-regular fa-envelope mr-1"></i>Kontak
           </a>
+          
       </div>
   </div>
 </header>

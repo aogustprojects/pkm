@@ -21,6 +21,9 @@
                 @else
                 <x-nav-link href="/login" :active="request()->is('login')">Login</x-nav-link>
               @endauth
+              @auth
+                  <x-nav-link href="/dashboard" :active="request()->is('dashboard')">Dashboard</x-nav-link>
+              @endauth
               
             </div>
           </div>
@@ -52,7 +55,15 @@
             <x-nav-link href="/profil" :active="request()->is('profil')">Profil</x-nav-link>
             <x-nav-link href="/postingan" :active="request()->is('postingan')">Postingan</x-nav-link>
             <x-nav-link href="/kontak" :active="request()->is('kontak')">Kontak</x-nav-link>
-            <x-nav-link href="/login" :active="request()->is('login')">Login</x-nav-link>
+            @auth
+                <form action="submit" method="POST">
+                  @csrf
+                  <x-nav-link href="/logout" :active="request()->is('login')">Logout</x-nav-link>
+                </form>
+                
+                @else
+                <x-nav-link href="/login" :active="request()->is('login')">Login</x-nav-link>
+            @endauth
       </div>
       {{-- <div class="border-t border-gray-700 pb-3 pt-4">
         <div class="flex items-center px-5">

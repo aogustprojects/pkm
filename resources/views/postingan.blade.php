@@ -44,7 +44,8 @@
                   <a href="/postingan/{{ $post->slug }}" class="hover:underline">
                   <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $post->title }}</h2>
                   </a>
-                  <p class="mb-5 font-light text-gray-500 dark:text-gray-400">{{ Str::limit($post->body, 100) }}</p>
+                  <p class="mb-5 font-light text-gray-500 dark:text-gray-400">{!! Str::limit($post->body, 100) !!}</p>
+
                   <div class="flex justify-between items-center">
                     <a href="/postingan?author={{ $post->author->username }}">
                       <div class="flex items-center space-x-4">

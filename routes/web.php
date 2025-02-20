@@ -58,6 +58,9 @@ Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::post('/send-email', [SendEmailController::class, 'sendWelcomeEmail'])->name('send.email');
 
-Route::get('/dashboard', function(){
-    return view('dashboard.index', ['title' => 'Dashboard']);
-})->middleware('auth');
+Route::get('/dashboard', function(){ return view('dashboard.index', ['title' => 'Dashboard']);})->middleware('auth');
+
+Route::get('/dashboard/postingan/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
+
+Route::resource('/dashboard/postingan', DashboardPostController::class)->middleware('auth');
+
