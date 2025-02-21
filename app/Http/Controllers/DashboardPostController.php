@@ -7,8 +7,9 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Contracts\Support\ValidatedData;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class DashboardPostController extends Controller
 {
@@ -41,8 +42,13 @@ class DashboardPostController extends Controller
             'title' => 'required|max:255',
             'slug' => 'required|unique:postingan',
             'category_id' => 'required',
+            'image' => 'image|file|max:5120',
             'body' => 'required'
         ]);
+
+        if($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('post-images');
+        }
 
         $validatedData['author_id'] = Auth::id();
 
@@ -80,14 +86,23 @@ class DashboardPostController extends Controller
         $rules = [
             'title' => 'required|max:255',
             'category_id' => 'required',
+            'image' => 'image|file|max:5120',
             'body' => 'required'
         ];
+
 
         if($request->slug != $postingan->slug) {
             $rules['slug'] = 'required|unique:postingan';
         }
 
         $validatedData = $request->validate($rules);
+
+        if($request->file('image')) {
+            if($request->oldImage){
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('post-images');
+        }
 
         $validatedData['author_id'] = Auth::id();
 
@@ -102,6 +117,10 @@ class DashboardPostController extends Controller
      */
     public function destroy(Post $postingan)
     {
+        if($postingan->image){
+            Storage::delete($postingan->image);
+        }
+
         $postingan->delete();
 
         return redirect('/dashboard/postingan')->with('success', 'Postingan Berhasil Dihapus!');

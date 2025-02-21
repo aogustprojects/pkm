@@ -11,6 +11,9 @@
     {{-- CDN Font Awesome --}}
     <script src="https://kit.fontawesome.com/7b03306244.js" crossorigin="anonymous"></script>
     <title>Puskesmas Pasirjati</title>
+    {{-- tw ele --}}
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+
 </head>
 <body class="h-full overflow-y-scroll overflow-x-hidden">
 <div class="min-h-full">

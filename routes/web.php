@@ -24,7 +24,7 @@ Route::get('/profil', function () {
 Route::get('/postingan', function () {
     return view('postingan', [
         'title' => 'Postingan Puskesmas', 
-        'postingan' => Post::filter(request(['search', 'category' , 'author']))->latest()->paginate(3)->withQueryString()
+        'postingan' => Post::filter(request(['search', 'category' , 'author']))->latest()->paginate(6)->withQueryString()
     ]);
 });
 

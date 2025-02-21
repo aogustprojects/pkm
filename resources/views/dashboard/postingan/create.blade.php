@@ -4,7 +4,7 @@
         <h1 for="title" class="block mb-2 text-4xl font-bold text-gray-900 dark:text-white">Tambah Post</h1>
     </div>
     <hr>
-    <form class="w-full mt-5" method="POST" action="/dashboard/postingan">
+    <form class="w-full mt-5" enctype="multipart/form-data" method="POST" action="/dashboard/postingan">
         @csrf
     <div class="mb-5">
         <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Judul</label>
@@ -27,11 +27,46 @@
           </select>
     </div>
     <div class="mb-5">
+        <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Upload Gambar
+        </label>
+        <div class="flex items-center space-x-2">
+            <button type="button" onclick="document.getElementById('image').click()" class="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg cursor-pointer hover:bg-blue-700">
+                Choose File
+            </button>
+            <span id="file_name" class="text-gray-500">No file chosen</span>
+        </div>
+        <img class="img-preview img-fluid my-3 max-h-64">
+        <input type="file" id="image" name="image" class="hidden" required onchange="updateFileName(); previewImage();">
+        
+        <script>
+            function updateFileName() {
+                const input = document.getElementById('image');
+                const fileName = input.files.length > 0 ? input.files[0].name : 'No file chosen';
+                document.getElementById('file_name').textContent = fileName;
+            }
+
+            function previewImage() {
+            const image = document.querySelector('#image');
+            const imgPreview = document.querySelector('.img-preview')
+
+            imgPreview.style.display = 'block';
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload = function(oFReader) {
+                imgPreview.src = oFReader.target.result;
+            }
+            }
+        </script>
+    </div>
+    <div class="mb-5">
         <label for="body" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Body</label>
         <input type="hidden" id="body" name="body" value="{{ old('body') }}">
         <trix-editor input="body"></trix-editor>
     </div>
-    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Tambah Post</button>
+    <button type="submit" class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Tambah Post</button>
     </form>
 
     <script>

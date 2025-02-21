@@ -2,19 +2,19 @@
   <x-slot:title>{{ $title }}</x-slot:title>
 <div id="default-carousel" class="relative w-full" data-carousel="slide">
   <!-- Carousel wrapper -->
-  <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-       <!-- Item 1 -->
-      <div class="hidden duration-700 ease-in-out" data-carousel-item>
-          <img src="img/akre3.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-      </div>
-      <!-- Item 2 -->
-      <div class="hidden duration-700 ease-in-out" data-carousel-item>
-          <img src="img/akre1.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-      </div>
-      <!-- Item 3 -->
-      <div class="hidden duration-700 ease-in-out" data-carousel-item>
-          <img src="img/akre2.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-      </div>
+  <div class="relative h-56 md:h-96 overflow-hidden rounded-2xl shadow-md">
+    <!-- Item 1 -->
+    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+        <img src="img/akre3.png" class="absolute block w-full h-full object-cover top-0 left-0" alt="...">
+    </div>
+    <!-- Item 2 -->
+    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+        <img src="img/akre1.jpg" class="absolute block w-full h-full object-cover top-0 left-0" alt="...">
+    </div>
+    <!-- Item 3 -->
+    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+        <img src="img/akre2.jpeg" class="absolute block w-full h-full object-cover top-0 left-0" alt="...">
+    </div>
   <!-- Slider indicators -->
   <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
       <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
@@ -41,10 +41,10 @@
 </div>
 
 <div class="flex flex-col lg:flex-row justify-center items-center gap-2 lg:gap-5 px-4 py-3 lg:py-3">
-    <a class="my-2 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 min-h-[250px] min-w-[393px]">
-      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">Waktu Pelayanan</h5>
+    <a class="my-2 block max-w-sm p-6 bg-blue-400 rounded-2xl shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 min-h-[250px] min-w-[393px]">
+      <h5 class="mb-2 text-2xl font-bold drop-shadow-lg tracking-tight text-gray-900 dark:text-white text-center">Waktu Pelayanan</h5>
       <hr class="mb-3">
-      <div class="font-normal text-gray-700 dark:text-gray-400 ">
+      <div class="font-normal drop-shadow-lg text-gray-900 dark:text-gray-400 ">
         <li>Senin s/d Jumat : </li>
         <p>07.30 s/d 12.00</p>
         <li>Sabtu : </li>
@@ -52,10 +52,10 @@
         <p>Nb : Waktu Pendaftaran Pelayanan di Tutup 30 Menit Sebelum Tutup Waktu Pelayanan</p>
       </div>
     </a>
-    <a class="my-2 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 min-h-[250px] min-w-[393px]">
-      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">Syarat Pelayanan</h5>
+    <a class="my-2 block max-w-sm p-6 bg-blue-400 rounded-2xl shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 min-h-[250px] min-w-[393px]">
+      <h5 class="mb-2 text-2xl font-bold drop-shadow-lg tracking-tight text-gray-900 dark:text-white text-center">Syarat Pelayanan</h5>
       <hr class="mb-3">
-      <div class="font-normal text-gray-700 dark:text-gray-400 ">
+      <div class="font-normal drop-shadow-lg text-gray-900 dark:text-gray-400 ">
         <li>Umum : </li>
         <p>Membayar biaya Pelayanan Rp. 15.000</p>
         <p>Membawa KTP/KK</p>
@@ -64,10 +64,10 @@
         <p>Membawa KTP/KK</p>
       </div>
     </a>
-    <a class="my-2 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 min-h-[250px] min-w-[393px]">
-      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">Jadwal Pelayanan</h5>
+    <a class="my-2 block max-w-sm p-6 bg-blue-400 rounded-2xl shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 min-h-[250px] min-w-[393px]">
+      <h5 class="mb-2 text-2xl font-bold drop-shadow-lg tracking-tight text-gray-900 dark:text-white text-center">Jadwal Pelayanan</h5>
       <hr class="mb-3">
-      <div class="font-normal text-gray-700 dark:text-gray-400 ">
+      <div class="font-normal drop-shadow-lg text-gray-900 dark:text-gray-400 ">
         <li>Pelayanan Umum : Senin s/d Sabtu</li>
         <li>Pelayanan Imunisasi : Senin & Kamis</li>
         <li>Pelayanan KB : Rabu & Jumat</li>
@@ -78,7 +78,7 @@
     </a>
 </div>
   
-<section class="bg-white rounded-2xl dark:bg-gray-900">
+<section class="bg-gradient-to-b from-blue-500 rounded-2xl dark:bg-gray-900">
   <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
       <div class="mb-8 lg:mb-16">
           <h2 class="mb-4 text-4xl text-center tracking-tight font-extrabold text-gray-900 dark:text-white">Jenis Layanan Puskesmas Pasir Jati</h2>
