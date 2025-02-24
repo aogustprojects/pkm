@@ -3,7 +3,7 @@
 
     <section class="flex flex-col md:flex-row">
         <!-- Contact Form Section -->
-        <section class="bg-gradient-to-b from-green-500 to-green-200 dark:bg-gray-900 rounded-3xl md:flex-[0.7] w-full md:w-auto mb-8 md:mb-0">
+        <section class="bg-white dark:bg-gray-900 rounded-3xl md:flex-[0.7] w-full md:w-auto mb-8 md:mb-0">
           <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
               <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Hubungi Kami</h2>
               <hr>
@@ -38,7 +38,7 @@
         </section>
     
         <!-- Contact Info Section -->
-        <section class="bg-gradient-to-b from-green-500 to-green-200 dark:bg-gray-900 rounded-3xl md:flex-[0.3] w-full md:w-auto md:ml-8">
+        <section class="bg-white dark:bg-gray-900 rounded-3xl md:flex-[0.3] w-full md:w-auto md:ml-8">
             <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
               <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Kontak Kami</h2>
                 <hr>

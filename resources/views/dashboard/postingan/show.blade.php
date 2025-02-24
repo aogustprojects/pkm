@@ -21,7 +21,7 @@
           </address>
           @if ($post->image)
           <a href="#">
-            <img class="w-full max-h-96 overflow-hidden mb-5 object-cover rounded-lg" src="{{ asset('storage/' . $post->image) }}" alt="" />
+            <img class="mb-5 object-cover rounded-lg" src="{{ asset('storage/' . $post->image) }}" alt="" />
           </a>
           @endif
           

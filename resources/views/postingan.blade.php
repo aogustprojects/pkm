@@ -32,14 +32,14 @@
       <div class="py-4 px-4 mx-auto max-w-screen-xl lg:py-8 lg:px-0">
           <div class="grid gap-8 lg:grid-cols-3 md:grid-cols-2">       
             @forelse ($postingan as $post)
-              <article class="p-6 bg-gradient-to-b from-blue-500 rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+              <article class="p-6 bg-gradient-to-b from-blue-300 rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 flex flex-col h-full">
                 @if ($post->image)
-                  <img class="w-full h-48 object-cover rounded-lg" src="{{ asset('storage/' . $post->image) }}" alt="" />
+                  <img class="w-full h-64 object-cover rounded-lg" src="{{ asset('storage/' . $post->image) }}" alt="" />
                 @else
-                  <img class="w-full h-48 object-cover rounded-lg" src="{{ asset('img/logo pkm h.png') }}" alt="" />
+                  <img class="w-full h-64 object-cover rounded-lg" src="{{ asset('img/logo pkm h.png') }}" alt="" />
                 @endif
                  
-                <div class="flex justify-between items-center py-5  text-gray-500">
+                <div class="flex justify-between items-center py-5  text-gray-8 00">
                     <a href="/postingan?category={{ $post->category->slug }}">
                       <span class="bg-{{ $post->category->color }}-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
                         {{ $post->category->name }}
@@ -52,7 +52,7 @@
                   </a>
                   <p class="mb-5 font-light text-gray-500 dark:text-gray-400">{!! Str::limit($post->body, 100) !!}</p>
 
-                  <div class="flex justify-between items-center">
+                  <div class="mt-auto flex justify-between items-center">
                     <a href="/postingan?author={{ $post->author->username }}">
                       <div class="flex items-center space-x-4">
                           <img class="w-7 h-7 rounded-full" src="{{ asset('img/logo pkm.png') }}" alt="{{ $post->author->name }}" />

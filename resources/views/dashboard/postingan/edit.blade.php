@@ -43,7 +43,7 @@
             <img class="img-preview img-fluid my-3 max-h-64">
         @endif
         
-        <input type="file" id="image" name="image" class="hidden" required onchange="updateFileName(); previewImage();">
+        <input type="file" id="image" name="image" class="hidden" onchange="updateFileName(); previewImage();">
         
         <script>
             function updateFileName() {

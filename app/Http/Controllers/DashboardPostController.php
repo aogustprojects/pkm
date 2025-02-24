@@ -19,7 +19,7 @@ class DashboardPostController extends Controller
     public function index()
     {
         return view('dashboard.postingan.index', [
-            'postingan' => Post::where('author_id', Auth::id())->get()
+            'postingan' => Post::where('author_id', Auth::id())->paginate(5)
         ]);
     }
 
@@ -83,34 +83,43 @@ class DashboardPostController extends Controller
      */
     public function update(Request $request, Post $postingan)
     {
+        // Define validation rules
         $rules = [
             'title' => 'required|max:255',
             'category_id' => 'required',
-            'image' => 'image|file|max:5120',
             'body' => 'required'
         ];
 
-
-        if($request->slug != $postingan->slug) {
+        // Only validate slug if it's changed
+        if ($request->slug != $postingan->slug) {
             $rules['slug'] = 'required|unique:postingan';
         }
 
+        // Validate user input (excluding image for now)
         $validatedData = $request->validate($rules);
 
-        if($request->file('image')) {
-            if($request->oldImage){
-                Storage::delete($request->oldImage);
+        // Handle image upload if a new file is provided
+        if ($request->hasFile('image')) {
+            // Delete old image if it exists
+            if ($postingan->image) {
+                Storage::delete($postingan->image);
             }
+            // Store the new image
             $validatedData['image'] = $request->file('image')->store('post-images');
+        } else {
+            // Keep the existing image
+            $validatedData['image'] = $postingan->image;
         }
 
+        // Set the author ID
         $validatedData['author_id'] = Auth::id();
 
-        Post::where('id', $postingan->id)
-            ->update($validatedData);
+        // Update the post
+        $postingan->update($validatedData);
 
         return redirect('/dashboard/postingan')->with('success', 'Postingan Berhasil Diedit!');
     }
+
 
     /**
      * Remove the specified resource from storage.

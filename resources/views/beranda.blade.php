@@ -78,7 +78,7 @@
     </a>
 </div>
   
-<section class="bg-gradient-to-b from-blue-500 rounded-2xl dark:bg-gray-900">
+<section class="bg-white rounded-2xl dark:bg-gray-900">
   <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
       <div class="mb-8 lg:mb-16">
           <h2 class="mb-4 text-4xl text-center tracking-tight font-extrabold text-gray-900 dark:text-white">Jenis Layanan Puskesmas Pasir Jati</h2>

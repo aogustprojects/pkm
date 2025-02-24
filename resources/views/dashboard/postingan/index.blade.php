@@ -41,7 +41,7 @@
                       <td class="px-6 py-4">
                         {{ $post->category->name ?? 'Kategori tidak ada' }}
                       </td>
-                      <td class="px-6 py-4 text-center">
+                      <td class="px-6 py-4 text-center flex items-center space-x-2">
                         <a href="/dashboard/postingan/{{ $post->slug }}">
                           <span>
                             <i class="fa-solid bg-gray-100 hover:bg-gray-700 px-2 py-2 rounded-lg border-2 fa-eye text-lg text-blue-400 hover:text-blue-100"></i>
@@ -52,12 +52,12 @@
                             <i class="fa-solid bg-gray-100 hover:bg-gray-700 fa-pen px-2 py-2 rounded-lg border-2 fa-eye text-lg text-yellow-400 hover:text-yellow-100"></i>
                           </span>
                         </a>
-                        <form action="{{ route('postingan.destroy', $post->slug) }}" method="POST" class="inline">
+                        <form action="{{ route('postingan.destroy', $post->slug) }}" method="POST" class="inline-flex items-center">
                           @csrf
                           @method('DELETE')
-                          <button type="submit" class="bg-transparent border-0" onclick="return confirm('Apakah kamu yakin?')">
+                          <button type="submit" class="inline-flex items-center bg-transparent border-0" onclick="return confirm('Apakah kamu yakin?')">
                             <span>
-                              <i class="fa-solid fa-trash bg-gray-100 hover:bg-gray-700 fa-pen px-2 py-2 rounded-lg border-2 fa-eye text-lg text-red-400 hover:text-red-100"></i>
+                              <i class="fa-solid fa-trash bg-gray-100 hover:bg-gray-700 px-2 py-2 rounded-lg border-2 text-lg text-red-400 hover:text-red-100"></i>
                             </span>
                           </button>
                         </form>
@@ -68,6 +68,7 @@
                     </tr>
                     @endforelse
                   </tbody>
+                  {{ $postingan->links() }}
                 </table>
               </div>
             </div>

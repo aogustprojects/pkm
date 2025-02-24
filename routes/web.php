@@ -64,3 +64,8 @@ Route::get('/dashboard/postingan/checkSlug', [DashboardPostController::class, 'c
 
 Route::resource('/dashboard/postingan', DashboardPostController::class)->middleware('auth');
 
+Route::get('/poli-gigi', function () {
+    return view('poligigi/poli-gigi', [
+        'title' => 'Poli Gigi'
+    ]);
+});

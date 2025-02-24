@@ -13,6 +13,9 @@
               <x-nav-link href="/postingan" :active="request()->is('postingan')">Postingan</x-nav-link>
               <x-nav-link href="/kontak" :active="request()->is('kontak')">Kontak</x-nav-link>
               @auth
+                  <x-nav-link href="/dashboard" :active="request()->is('dashboard')">Dashboard</x-nav-link>
+              @endauth
+              @auth
                 <form action="submit" method="POST">
                   @csrf
                   <x-nav-link href="/logout" :active="request()->is('login')">Logout</x-nav-link>
@@ -21,10 +24,6 @@
                 @else
                 <x-nav-link href="/login" :active="request()->is('login')">Login</x-nav-link>
               @endauth
-              @auth
-                  <x-nav-link href="/dashboard" :active="request()->is('dashboard')">Dashboard</x-nav-link>
-              @endauth
-              
             </div>
           </div>
         </div>
@@ -51,18 +50,21 @@
     <div  x-show="isOpen" class="md:hidden" id="mobile-menu">
       <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <x-nav-link href="/" :active="request()->is('/')">Beranda</x-nav-link>
-            <x-nav-link href="/profil" :active="request()->is('profil')">Profil</x-nav-link>
-            <x-nav-link href="/postingan" :active="request()->is('postingan')">Postingan</x-nav-link>
-            <x-nav-link href="/kontak" :active="request()->is('kontak')">Kontak</x-nav-link>
+            <x-nav-link href="/" :active="request()->is('/')" class="block w-full px-3 py-2 rounded-md text-sm font-medium text-gray-800 hover:bg-gray-500 hover:text-white">Beranda</x-nav-link>
+            <x-nav-link href="/profil" :active="request()->is('profil')" class="block w-full px-3 py-2 rounded-md text-sm font-medium text-gray-800 hover:bg-gray-500 hover:text-white">Profil</x-nav-link>
+            <x-nav-link href="/postingan" :active="request()->is('postingan')" class="block w-full px-3 py-2 rounded-md text-sm font-medium text-gray-800 hover:bg-gray-500 hover:text-white">Postingan</x-nav-link>
+            <x-nav-link href="/kontak" :active="request()->is('kontak')" class="block w-full px-3 py-2 rounded-md text-sm font-medium text-gray-800 hover:bg-gray-500 hover:text-white">Kontak</x-nav-link>
+            @auth
+                  <x-nav-link href="/dashboard" :active="request()->is('dashboard')" class="block w-full px-3 py-2 rounded-md text-sm font-medium text-gray-800 hover:bg-gray-500 hover:text-white">Dashboard</x-nav-link>
+            @endauth
             @auth
                 <form action="submit" method="POST">
                   @csrf
-                  <x-nav-link href="/logout" :active="request()->is('login')">Logout</x-nav-link>
+                  <x-nav-link href="/logout" :active="request()->is('login')" class="block w-full px-3 py-2 rounded-md text-sm font-medium text-gray-800 hover:bg-gray-500 hover:text-white">Logout</x-nav-link>
                 </form>
                 
                 @else
-                <x-nav-link href="/login" :active="request()->is('login')">Login</x-nav-link>
+                <x-nav-link href="/login" :active="request()->is('login')" class="block w-full px-3 py-2 rounded-md text-sm font-medium text-gray-800 hover:bg-gray-500 hover:text-white">Login</x-nav-link>
             @endauth
       </div>
       {{-- <div class="border-t border-gray-700 pb-3 pt-4">
