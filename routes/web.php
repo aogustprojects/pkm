@@ -1,12 +1,16 @@
 <?php
 
-use App\Http\Controllers\DashboardPostController;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PoliGigiController;
 use App\Http\Controllers\SendEmailController;
+use App\Http\Controllers\DashboardPostController;
+use App\Models\PoliGigi;
+use App\Http\Controllers\DashboardPoliGigiController;
+
 
 Route::get('/', function () {
     return view('beranda', [
@@ -64,8 +68,6 @@ Route::get('/dashboard/postingan/checkSlug', [DashboardPostController::class, 'c
 
 Route::resource('/dashboard/postingan', DashboardPostController::class)->middleware('auth');
 
-Route::get('/poli-gigi', function () {
-    return view('poligigi/poli-gigi', [
-        'title' => 'Poli Gigi'
-    ]);
-});
+Route::resource('/poli-gigi', PoliGigiController::class);
+
+Route::resource('/dashboard/poli-gigi', DashboardPoliGigiController::class)->middleware('auth');

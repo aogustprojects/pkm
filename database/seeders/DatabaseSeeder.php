@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Category;
+use App\Models\PoliGigi;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -27,7 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call([CategorySeeder::class, UserSeeder::class, PostSeeder::class]);
         Category::all();
         User::all();
-        Post::all();    
+        Post::all();
 
         // Post::factory(10)->recycle([
         // ])->create();
