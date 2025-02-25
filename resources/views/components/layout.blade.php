@@ -18,7 +18,7 @@
 <body class="h-full overflow-y-scroll overflow-x-hidden">
 <div class="min-h-full">
     <x-header>{{ $title }}</x-header>
-    <x-navbar></x-navbar>
+    <x-nav-bar></x-nav-bar>
     <main>
       <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <!-- Your content -->
