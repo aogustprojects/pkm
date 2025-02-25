@@ -33,7 +33,7 @@
     $now = Carbon::now('Asia/Jakarta');
     $allowedDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     $startTime = $now->copy()->setTime(6, 15);
-    $endTime = $now->copy()->setTime(10, 0);
+    $endTime = $now->copy()->setTime(16, 0);
     
     $today = $now->format('Y-m-d');
     $maxRegistrationsPerDay = 8;
@@ -61,12 +61,15 @@
           </div>
       @elseif ($currentRegistrations >= $maxRegistrationsPerDay)
           <div class="mt-4 p-4 bg-red-500 text-white rounded-lg">
-              <strong>Pendaftaran penuh!</strong> Kuota pendaftaran untuk hari ini sudah mencapai batas maksimum (8 pasien). Silakan daftar kembali besok.
+              <strong>Pendaftaran ditutup!</strong> Formulir pendaftaran hanya tersedia Senin - Sabtu dari pukul 06:15 - 10:00.Silakan daftar kembali besok.
           </div>
       @else
+      @auth
       <div class="mt-4 p-4 bg-blue-500 text-white rounded-lg">
         <strong>Slot tersisa:</strong> {{ $remainingSlots }} pasien
-    </div>
+      </div>
+      @endauth
+      
       <form action="/poli-gigi" method="POST">
         @csrf
         <div class="space-y-12">

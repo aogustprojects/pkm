@@ -12,7 +12,7 @@ class DashboardPoliGigiController extends Controller
      */
     public function index()
     {
-        $poligigi = PoliGigi::orderBy('created_at', 'desc')->paginate(10); // Show 10 records per page
+        $poligigi = PoliGigi::orderBy('created_at', 'asc')->paginate(10); // Show 10 records per page
         return view('dashboard.poligigi.index', compact('poligigi'));
     }
 

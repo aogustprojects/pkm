@@ -16,6 +16,7 @@
 
 </head>
 <body class="h-full overflow-y-scroll overflow-x-hidden">
+<div class="w-full max-w-full overflow-hidden">
 <div class="min-h-full">
     <x-header>{{ $title }}</x-header>
     <x-nav-bar></x-nav-bar>
@@ -27,6 +28,7 @@
     </main>
     <x-footer></x-footer>
     <x-backtotop></x-backtotop>
-  </div>  
+  </div>
+</div>  
 </body>
 </html>

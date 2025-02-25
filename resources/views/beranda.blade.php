@@ -104,6 +104,7 @@
               </div>
               <h3 class="mb-2 text-xl font-bold dark:text-white">Pemeriksaan Gigi & Mulut</h3>
               <p class="text-gray-500 dark:text-gray-400 text-center">Pemeriksaan gigi dan mulut di Puskesmas (Pusat Kesehatan Masyarakat) adalah layanan kesehatan yang disediakan untuk memeriksa, mendiagnosis, dan memberikan perawatan dasar terkait kesehatan gigi dan mulut.</p>
+              <a href="/poli-gigi" class="hover:text-blue-700 hover:underline mt-3 bg-primary-100 py-2 px-2 rounded-md text-black text-sm hover:">Link Daftar Poli Gigi</a>
           </div>
           <div class="w-full h-full p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center">
             <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
