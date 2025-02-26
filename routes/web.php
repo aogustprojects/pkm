@@ -10,7 +10,7 @@ use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\DashboardPostController;
 use App\Models\PoliGigi;
 use App\Http\Controllers\DashboardPoliGigiController;
-
+use Illuminate\Support\Facades\Artisan;
 
 Route::get('/', function () {
     return view('beranda', [
@@ -71,3 +71,38 @@ Route::resource('/dashboard/postingan', DashboardPostController::class)->middlew
 Route::resource('/poli-gigi', PoliGigiController::class);
 
 Route::resource('/dashboard/poli-gigi', DashboardPoliGigiController::class)->middleware('auth');
+
+Route::get('/storage-link', function() {
+    Artisan::call('storage:link');
+    return 'storage:link berhasil dijalankan';
+});
+
+Route::get('/config-cache', function() {
+    Artisan::call('config:cache');
+    return 'config:cache berhasil dijalankan';
+});
+
+Route::get('/config-clear', function() {
+    Artisan::call('config:clear');
+    return 'config:clear berhasil dijalankan';
+});
+
+Route::get('/view-clear', function() {
+    Artisan::call('view:clear');
+    return 'view:clear berhasil dijalankan';
+});
+
+Route::get('/view-cache', function() {
+    Artisan::call('view:cache');
+    return 'view:cache berhasil dijalankan';
+});
+
+Route::get('/route-clear', function() {
+    Artisan::call('route:clear');
+    return 'route:clear berhasil dijalankan';
+});
+
+Route::get('/route-cache', function() {
+    Artisan::call('route:cache');
+    return 'route:cache berhasil dijalankan';
+});
