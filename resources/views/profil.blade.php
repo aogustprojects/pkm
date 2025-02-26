@@ -50,8 +50,8 @@
           <hr>
           <!-- Image with Lightbox -->
           <div class="d-flex justify-content-center align-items-center">
-            <a href="{{ asset('img/struktur.jpg') }}" data-lightbox="image-1" data-title="Struktur" id="lightboxLink">
-                <img src="{{ asset('img/struktur.jpg') }}" alt="struktur" class="rounded-2xl py-2">
+            <a href="{{ asset('img/struktur1.png') }}" data-lightbox="image-1" data-title="Struktur" id="lightboxLink">
+                <img src="{{ asset('img/struktur1.png') }}" alt="struktur" class="rounded-2xl py-2">
             </a>
           </div>
         </div>

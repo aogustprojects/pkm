@@ -33,7 +33,7 @@
     $now = Carbon::now('Asia/Jakarta');
     $allowedDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     $startTime = $now->copy()->setTime(6, 15);
-    $endTime = $now->copy()->setTime(16, 0);
+    $endTime = $now->copy()->setTime(10, 0);
     
     $today = $now->format('Y-m-d');
     $maxRegistrationsPerDay = 8;

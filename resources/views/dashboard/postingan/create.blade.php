@@ -1,5 +1,5 @@
 <x-main-dashboard></x-main-dashboard>
-<div class="p-4 sm:ml-64 mt-16">
+<div class="px-20">
     <div class="mb-5">
         <h1 for="title" class="block mb-2 text-4xl font-bold text-gray-900 dark:text-white">Tambah Post</h1>
     </div>

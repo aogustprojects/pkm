@@ -40,43 +40,44 @@
   </button>
 </div>
 
-<div class="flex flex-col lg:flex-row justify-center items-center gap-2 lg:gap-5 px-4 py-3 lg:py-3">
-    <a class="my-2 block max-w-sm p-6 bg-blue-400 rounded-2xl shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 min-h-[250px] min-w-[393px]">
-      <h5 class="mb-2 text-2xl font-bold drop-shadow-lg tracking-tight text-gray-900 dark:text-white text-center">Waktu Pelayanan</h5>
-      <hr class="mb-3">
-      <div class="font-normal drop-shadow-lg text-gray-900 dark:text-gray-400 ">
-        <li>Senin s/d Jumat : </li>
-        <p>07.30 s/d 12.00</p>
-        <li>Sabtu : </li>
-        <p>07.30 s/d 10.30</p>
-        <p>Nb : Waktu Pendaftaran Pelayanan di Tutup 30 Menit Sebelum Tutup Waktu Pelayanan</p>
-      </div>
-    </a>
-    <a class="my-2 block max-w-sm p-6 bg-blue-400 rounded-2xl shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 min-h-[250px] min-w-[393px]">
-      <h5 class="mb-2 text-2xl font-bold drop-shadow-lg tracking-tight text-gray-900 dark:text-white text-center">Syarat Pelayanan</h5>
-      <hr class="mb-3">
-      <div class="font-normal drop-shadow-lg text-gray-900 dark:text-gray-400 ">
-        <li>Umum : </li>
-        <p>Membayar biaya Pelayanan Rp. 15.000</p>
-        <p>Membawa KTP/KK</p>
-        <li>BPJS : </li>
-        <p>Membawa kartu BPJS</p>
-        <p>Membawa KTP/KK</p>
-      </div>
-    </a>
-    <a class="my-2 block max-w-sm p-6 bg-blue-400 rounded-2xl shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 min-h-[250px] min-w-[393px]">
-      <h5 class="mb-2 text-2xl font-bold drop-shadow-lg tracking-tight text-gray-900 dark:text-white text-center">Jadwal Pelayanan</h5>
-      <hr class="mb-3">
-      <div class="font-normal drop-shadow-lg text-gray-900 dark:text-gray-400 ">
-        <li>Pelayanan Umum : Senin s/d Sabtu</li>
-        <li>Pelayanan Imunisasi : Senin & Kamis</li>
-        <li>Pelayanan KB : Rabu & Jumat</li>
-        <li>Pelayanan Ibu Hamil : Selasa & Sabtu</li>
-        <li>Pelayanan Gigi & Mulut : Senin s/d Sabtu</li>
-        <li>Pelayanan Gizi : Jumat</li>
-      </div>
-    </a>
+<div class="flex flex-col lg:flex-row justify-center items-center gap-2 lg:gap-5 px-0 py-3 lg:py-3">
+  <a class="w-full lg:min-w-[393px] my-2 block p-6 bg-blue-400 rounded-2xl shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 min-h-[250px]">
+    <h5 class="mb-2 text-2xl font-bold drop-shadow-lg tracking-tight text-gray-900 dark:text-white text-center">Waktu Pelayanan</h5>
+    <hr class="mb-3">
+    <div class="font-normal drop-shadow-lg text-gray-900 dark:text-gray-400 ">
+      <li>Senin s/d Jumat : </li>
+      <p>07.30 s/d 12.00</p>
+      <li>Sabtu : </li>
+      <p>07.30 s/d 10.30</p>
+      <p>Nb : Waktu Pendaftaran Pelayanan di Tutup 30 Menit Sebelum Tutup Waktu Pelayanan</p>
+    </div>
+  </a>
+  <a class="w-full lg:min-w-[393px] my-2 block p-6 bg-blue-400 rounded-2xl shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 min-h-[250px]">
+    <h5 class="mb-2 text-2xl font-bold drop-shadow-lg tracking-tight text-gray-900 dark:text-white text-center">Syarat Pelayanan</h5>
+    <hr class="mb-3">
+    <div class="font-normal drop-shadow-lg text-gray-900 dark:text-gray-400 ">
+      <li>Umum : </li>
+      <p>Membayar biaya Pelayanan Rp. 15.000</p>
+      <p>Membawa KTP/KK</p>
+      <li>BPJS : </li>
+      <p>Membawa kartu BPJS</p>
+      <p>Membawa KTP/KK</p>
+    </div>
+  </a>
+  <a class="w-full lg:min-w-[393px] my-2 block p-6 bg-blue-400 rounded-2xl shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 min-h-[250px]">
+    <h5 class="mb-2 text-2xl font-bold drop-shadow-lg tracking-tight text-gray-900 dark:text-white text-center">Jadwal Pelayanan</h5>
+    <hr class="mb-3">
+    <div class="font-normal drop-shadow-lg text-gray-900 dark:text-gray-400 ">
+      <li>Pelayanan Umum : Senin s/d Sabtu</li>
+      <li>Pelayanan Imunisasi : Senin & Kamis</li>
+      <li>Pelayanan KB : Rabu & Jumat</li>
+      <li>Pelayanan Ibu Hamil : Selasa & Sabtu</li>
+      <li>Pelayanan Gigi & Mulut : Senin s/d Sabtu</li>
+      <li>Pelayanan Gizi : Jumat</li>
+    </div>
+  </a>
 </div>
+
   
 <section class="bg-white rounded-2xl dark:bg-gray-900">
   <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">

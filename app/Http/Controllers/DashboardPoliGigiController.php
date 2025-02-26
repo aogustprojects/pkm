@@ -10,10 +10,17 @@ class DashboardPoliGigiController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $poligigi = PoliGigi::orderBy('created_at', 'asc')->paginate(10); // Show 10 records per page
-        return view('dashboard.poligigi.index', compact('poligigi'));
+        // Get selected date from request or use today's date as default
+        $selectedDate = $request->query('date', now()->toDateString());
+    
+        // Fetch records for the exact selected date (not older)
+        $poligigi = PoliGigi::whereDate('created_at', $selectedDate)
+                    ->orderBy('created_at', 'asc')
+                    ->paginate(15);
+    
+        return view('dashboard.poligigi.index', compact('poligigi', 'selectedDate'));
     }
 
 

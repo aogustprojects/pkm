@@ -1,5 +1,5 @@
 <x-main-dashboard></x-main-dashboard>
-      <div class="p-4 sm:ml-64">
+      <div class="px-20">
          <div class="bg-gradient-to-r from-orange-400 via-orange-100 to-orange-400 rounded-3xl py-10 mt-16">
             <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
               <p class="mx-auto max-w-lg text-center text-3xl font-semibold tracking-tight text-balance text-gray-950 lg:text-5xl">Selamat Datang Kembali, {{ auth()->user()->name }}</p>

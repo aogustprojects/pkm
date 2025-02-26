@@ -1,6 +1,5 @@
 <x-main-dashboard></x-main-dashboard>
-<div class="p-4 sm:ml-64">
-
+<div class="px-20">
   <div class="bg-gray-100 rounded-3xl pb-8">
     <div class="mx-auto px-6 lg:max-w-7xl lg:px-8">
       <div class="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-1 lg:grid-rows-2">
