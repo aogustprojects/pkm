@@ -1,7 +1,8 @@
 <x-main-dashboard></x-main-dashboard>
 <div class="px-20">
-    <div class="mb-5">
+    <div class="mb-5 mt-5 flex justify-between">
         <h1 for="title" class="block mb-2 text-4xl font-bold text-gray-900 dark:text-white">Tambah Post</h1>
+        <a href="/dashboard/postingan" class="bg-blue-700 rounded-lg px-2 py-3 text-center text-sm text-white hover:bg-blue-900 hover:text-white"><i class="fa-solid fa-x px-2 text-2xl"></i></a>
     </div>
     <hr>
     <form class="w-full mt-5" enctype="multipart/form-data" method="POST" action="/dashboard/postingan">
@@ -66,7 +67,7 @@
         <input type="hidden" id="body" name="body" value="{{ old('body') }}">
         <trix-editor input="body"></trix-editor>
     </div>
-    <button type="submit" class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Tambah Post</button>
+    <button type="submit" class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mb-10">Tambah Post</button>
     </form>
 
     <script>

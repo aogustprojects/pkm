@@ -1,12 +1,10 @@
 <x-main-dashboard></x-main-dashboard>
-<div class="px-20">
-  <div class="bg-gray-100 rounded-3xl pb-8">
-    <div class="mx-auto px-6 lg:max-w-7xl lg:px-8">
-      <div class="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-1 lg:grid-rows-2">
-        <div class="relative lg:row-span-2"></div>
-        <div class="relative max-lg:row-start-1">
-          <div class="absolute inset-px rounded-lg bg-white flex flex-col md:flex-row"></div>
-          <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)]">
+<div class="px-2 py-2">
+      <div class="grid lg:grid-cols-1 py-5 px-5 lg:grid-rows-2">
+        <div class="relative lg:row-span-2">
+          <div class="relative max-lg:row-start-1">
+            <div class="absolute inset-px rounded-lg shadow-lg border flex flex-col md:flex-row"></div>
+            <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)]">
             <div class="px-8 py-8 sm:px-10 sm:pt-10">
               
               @if (session('success'))
