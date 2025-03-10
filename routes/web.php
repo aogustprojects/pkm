@@ -3,14 +3,15 @@
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\PoliGigi;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PoliGigiController;
 use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\DashboardPostController;
-use App\Models\PoliGigi;
+use App\Http\Controllers\PoliGigiRujukanController;
 use App\Http\Controllers\DashboardPoliGigiController;
-use Illuminate\Support\Facades\Artisan;
 
 Route::get('/', function () {
     return view('beranda', [
@@ -54,6 +55,8 @@ Route::get('/kontak', function () {
     ]);
 });
 
+
+
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 
 Route::post('/login', [LoginController::class, 'authenticate']);
@@ -71,6 +74,9 @@ Route::resource('/dashboard/postingan', DashboardPostController::class)->middlew
 Route::resource('/poli-gigi', PoliGigiController::class);
 
 Route::resource('/dashboard/poli-gigi', DashboardPoliGigiController::class)->middleware('auth');
+
+Route::resource('poli-gigi-rujukan', PoliGigiRujukanController::class);
+
 
 Route::get('/storage-link', function() {
     Artisan::call('storage:link');

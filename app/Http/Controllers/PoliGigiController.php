@@ -34,6 +34,15 @@ class PoliGigiController extends Controller
     $maxRegistrationsPerDay = 8;  
     $today = Carbon::now('Asia/Jakarta')->format('Y-m-d'); 
 
+    // Check if NIK already registered today
+    $existingEntry = PoliGigi::where('nik', $request->nik)
+                            ->whereDate('created_at', $today)
+                            ->exists();
+
+    if ($existingEntry) {
+        return redirect()->back()->with('error', 'NIK ini sudah terdaftar hari ini. Silakan daftar ulang jam 08.00 di Puskesmas Pasir Jati.');
+    }
+
     // Count how many registrations have been made today
     $currentRegistrations = PoliGigi::whereDate('created_at', $today)->count();
 
