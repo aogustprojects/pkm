@@ -36,7 +36,7 @@
     $endTime = $now->copy()->setTime(10, 0);
     
     $today = $now->format('Y-m-d');
-    $maxRegistrationsPerDay = 8;
+    $maxRegistrationsPerDay = getSetting(); // ✅ Use the helper function
     $currentRegistrations = PoliGigi::whereDate('created_at', $today)->count();
     $remainingSlots = max(0, $maxRegistrationsPerDay - $currentRegistrations);
 @endphp
@@ -44,7 +44,13 @@
 
   <main>
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-      @if (session('success'))
+      
+      <div class="border p-2 rounded-lg">
+        @auth
+        <p class="text-center text-sm bg-white p-2 rounded-lg text-red-500 shadow-lg">Field Ini Hanya Bisa Terlihat Jika User Login</p>
+        @endauth
+
+        @if (session('success'))
         <div class="mb-4 p-4 bg-green-500 text-white rounded-lg">
             <strong>Sukses!</strong> {{ session('success') }}
         </div>
@@ -69,6 +75,19 @@
         <strong>Slot tersisa:</strong> {{ $remainingSlots }} pasien
       </div>
       @endauth
+
+      @auth
+      <form action="{{ route('update-setting') }}" method="POST" class="mb-4">
+        @csrf
+        <label for="max_registrations" class="block text-sm font-medium text-gray-900">Max Registrations per Day:</label>
+        <input type="number" name="max_registrations" id="max_registrations" value="{{ getSetting() }}" 
+            class="mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300">
+        <button type="submit" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md">Update</button>
+      </form>
+      @endauth
+      </div>
+      
+
       
       <form action="/poli-gigi" method="POST">
         @csrf

@@ -8,7 +8,9 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\PoliGigi;
 use Illuminate\Support\Str;
+use App\Models\ArsipSuratMasuk;
 use Illuminate\Database\Seeder;
+use App\Models\ArsipSuratKeluar;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -28,6 +30,8 @@ class DatabaseSeeder extends Seeder
         $this->call([CategorySeeder::class, UserSeeder::class, PostSeeder::class]);
         Category::all();
         User::all();
+        ArsipSuratMasuk::factory()->count(10)->create();
+        ArsipSuratKeluar::factory()->count(10)->create();
         // Post::all();
 
         // Post::factory(10)->recycle([

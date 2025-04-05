@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
     
-    <section class="bg-gradient-to-b from-green-500 rounded-2xl mt-5 dark:bg-gray-900 max-w-4xl mx-auto">
+    <section class="bg-gradient-to-b from-green-500  rounded-2xl mt-5 dark:bg-gray-900 max-w-4xl mx-auto">
       <div class="max-w-screen-xl px-4 py-3 mx-auto text-center lg:py-8 lg:px-3">
           <figure class="max-w-screen-md mx-auto">
             <h3 class="mb-4 text-2xl text-center tracking-tight font-bold text-gray-900 dark:text-white">Visi & Misi</h3>

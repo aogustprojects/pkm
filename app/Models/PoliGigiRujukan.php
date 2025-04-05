@@ -2,18 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class PoliGigiRujukan extends Model
 {
+    /** @use HasFactory<\Database\Factories\PoliGigiRujukanFactory> */
     use HasFactory;
 
-    // Specify the table name
-    protected $table = 'rujukan';
-
-    // If you don't want timestamps (created_at, updated_at), set this to false
-    public $timestamps = true;
+    protected $table = 'poli_gigi_rujukan';
 
     protected $guarded = ['id'];
 }

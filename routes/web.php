@@ -4,14 +4,20 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\PoliGigi;
+use Illuminate\Http\Request;
+use App\Models\PoliGigiRujukan;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PoliGigiController;
 use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\DashboardPostController;
+use App\Http\Controllers\ArsipSuratMasukController;
 use App\Http\Controllers\PoliGigiRujukanController;
+use App\Http\Controllers\ArsipSuratKeluarController;
 use App\Http\Controllers\DashboardPoliGigiController;
+use App\Http\Controllers\DashboardPoliGigiRujukanController;
 
 Route::get('/', function () {
     return view('beranda', [
@@ -55,8 +61,6 @@ Route::get('/kontak', function () {
     ]);
 });
 
-
-
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 
 Route::post('/login', [LoginController::class, 'authenticate']);
@@ -75,7 +79,30 @@ Route::resource('/poli-gigi', PoliGigiController::class);
 
 Route::resource('/dashboard/poli-gigi', DashboardPoliGigiController::class)->middleware('auth');
 
-Route::resource('poli-gigi-rujukan', PoliGigiRujukanController::class);
+Route::resource('/dashboard/arsip_surat_masuk', ArsipSuratMasukController::class)->middleware('auth');
+
+Route::resource('/dashboard/arsip_surat_keluar', ArsipSuratKeluarController::class)->middleware('auth');
+
+Route::post('/update-setting', function (Request $request) {
+    setSetting($request->input('max_registrations'));
+    return back()->with('success', 'Max registrations updated!');
+})->name('update-setting')->middleware('auth');
+
+Route::resource('/poli-gigi-rujukan', PoliGigiRujukanController::class)->middleware('auth');
+
+Route::resource('/dashboard/poli-gigi-rujukan', DashboardPoliGigiRujukanController::class)->middleware('auth');
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Route::get('/storage-link', function() {

@@ -15,10 +15,8 @@
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
     {{-- Signature pad --}}
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
-
 </head>
 <body class="h-full overflow-y-scroll overflow-x-hidden">
-
 <div class="min-h-full">
 <main>
 
@@ -30,33 +28,58 @@
 </header>
 
 <div class="flex justify-center mt-4 min-h-screen">
-    <div class="bg-white w-3/4 border rounded-md">
+    <div class="bg-white w-3/4 mb-5 border rounded-md">
         <h1 class="font-bold text-center mt-4">INFORMED CONSENT</h1>
+        
+        <div class="px-4">
+            @if (session('success'))
+            <div class="bg-green-100 text-sm text-green-800 p-2 rounded-md mb-4">
+                {{ session('success') }}
+            </div>
+            @endif
+            
+            @if (session('fail'))
+                <div class="bg-red-100 text-sm text-red-800 p-2 rounded-md mb-4">
+                    {{ session('fail') }}
+                </div>
+            @endif
+        </div>
 
+        
         <form class="px-4 mx-auto mt-4 space-y-2" id="rujukan-form" method="POST" action="/poli-gigi-rujukan">
             @csrf
             <!-- Section 1: Patient Information -->
             <div class="flex w-full gap-2">
                 <div class="flex w-full">
                     <p class="w-28 shrink-0 inline-flex items-center py-2.5 px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-gray-300 rounded-s-md dark:bg-gray-700 dark:text-white dark:border-gray-600">Nama</p>
-                    <input type="text" id="name" name="name" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" />
+                    <input type="text" id="name" name="name" value="{{ old('name') }}" 
+                    oninput="syncInput('name', 'name_copy')" 
+                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" required />
                 </div>
         
                 <div class="flex w-full">
                     <p class="w-28 shrink-0 inline-flex items-center py-2.5 px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-gray-300 rounded-s-md dark:bg-gray-700 dark:text-white dark:border-gray-600">No. RM</p>
-                    <input type="text" id="no_rm" name="no_rm" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" />
+                    <input type="text" id="no_rm" name="no_rm" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" required />
                 </div>
             </div>
         
             <div class="flex w-full gap-2">
-                <div class="flex w-full">
-                    <p class="w-28 shrink-0 inline-flex items-center py-2.5 px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-gray-300 rounded-s-md dark:bg-gray-700 dark:text-white dark:border-gray-600">TTL / Umur</p>
-                    <input type="text" id="ttl_umur" name="ttl_umur" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" />
-                </div>
+
+                    <!-- Tempat Lahir -->
+                    <div class="flex w-full">
+                        <p class="w-28 shrink-0 inline-flex items-center py-2.5 px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-gray-300 rounded-s-md dark:bg-gray-700 dark:text-white dark:border-gray-600">
+                            TTL/Umur
+                        </p>
+                        <input type="text" id="tempat_lahir" name="tempat_lahir" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" required />
+                    <!-- Tanggal Lahir -->
+                        <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" required />
+                    <!-- Umur -->
+                        <input type="text" id="umur" name="umur" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" readonly />
+                    </div>
         
                 <div class="flex w-full">
                     <p class="w-28 shrink-0 inline-flex items-center py-2.5 px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-gray-300 rounded-s-md dark:bg-gray-700 dark:text-white dark:border-gray-600">Alamat</p>
-                    <input type="text" id="alamat" name="alamat" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" />
+                    <input type="text" id="alamat" name="alamat" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" required />
                 </div>
             </div>
 
@@ -66,21 +89,21 @@
             <div class="flex w-full">
                 <div class="flex w-full">
                     <p class="w-44 shrink-0 inline-flex items-center py-2.5 px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-gray-300 rounded-s-md dark:bg-gray-700 dark:text-white dark:border-gray-600">Petugas Pelaksana</p>
-                    <input type="text" id="petugas_pel" name="p_pelaksana" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" />
+                    <input type="text" id="petugas_pel" name="petugas_pel" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" required />
                 </div>
             </div>
         
             <div class="flex w-full">
                 <div class="flex w-full">
                     <p class="w-44 shrink-0 inline-flex items-center py-2.5 px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-gray-300 rounded-s-md dark:bg-gray-700 dark:text-white dark:border-gray-600">Pemberi Informasi</p>
-                    <input type="text" id="pemberi_info" name="pemberi_info" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" />
+                    <input type="text" id="pemberi_info" name="pemberi_info" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" required />
                 </div>
             </div>
                     
             <div class="flex w-full">
                 <div class="flex w-full">
                     <p class="w-44 shrink-0 inline-flex items-center py-2.5 px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-gray-300 rounded-s-md dark:bg-gray-700 dark:text-white dark:border-gray-600">Penerima Informasi</p>
-                    <input type="text" id="penerima_info" name="penerima_info" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" />
+                    <input type="text" id="penerima_info" name="penerima_info" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" required />
                 </div>
             </div>
 
@@ -251,7 +274,7 @@
                     </p>
                     <div class="flex flex-col items-center border border-gray-300 dark:border-gray-600 rounded-e-md overflow-hidden">
                         <canvas id="signature-pad-1" class="bg-white dark:bg-gray-800 w-48 h-24"></canvas>
-                        <input type="hidden" name="signature1" id="signature-pad-1">
+                        <input type="hidden" name="signature1" id="signature-pad-1-input">
                         <button class="clear-signature mt-2 px-4 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600" data-target="signature-pad-1">Clear</button>
                     </div>
                 </div>
@@ -265,7 +288,7 @@
                     </p>
                     <div class="flex flex-col items-center border border-gray-300 dark:border-gray-600 rounded-e-md overflow-hidden">
                         <canvas id="signature-pad-2" class="bg-white dark:bg-gray-800 w-48 h-24"></canvas>
-                        <input type="hidden" name="signature2" id="signature-pad-2">
+                        <input type="hidden" name="signature2" id="signature-pad-2-input">
                         <button class="clear-signature mt-2 px-4 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600" data-target="signature-pad-2">Clear</button>
                     </div>
                 </div>
@@ -292,13 +315,13 @@
             <div class="flex w-full gap-2">
                 <div class="flex w-full">
                     <p class="w-44 shrink-0 inline-flex items-center py-2.5 px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-gray-300 rounded-s-md dark:bg-gray-700 dark:text-white dark:border-gray-600">Nama</p>
-                    <input type="text" id="name" name="name" value="{{ old('name') }}" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" />
+                    <input type="text" id="name_copy" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-md border border-gray-300" readonly />
                 </div>
             </div>
             <div class="flex w-full gap-2">
                 <div class="flex w-full">
                     <p class="w-44 shrink-0 inline-flex items-center py-2.5 px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-gray-300 rounded-s-md dark:bg-gray-700 dark:text-white dark:border-gray-600">Umur</p>
-                    <input type="number" id="umur" name="umur" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" />
+                    <input type="text" id="umur_copy" name="umur_copy" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" />
                 </div>
             </div>
             <div class="flex w-full gap-2">
@@ -314,7 +337,7 @@
             <div class="flex w-full gap-2">
                 <div class="flex w-full">
                     <p class="w-44 shrink-0 inline-flex items-center py-2.5 px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-gray-300 rounded-s-md dark:bg-gray-700 dark:text-white dark:border-gray-600">Alamat</p>
-                    <input type="text" id="alamat" name="alamat" value="{{ old('alamat') }}" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" />
+                    <input type="text" id="alamat_copy" name="alamat_copy" value="{{ old('alamat') }}" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" />
                 </div>
             </div>
             <div class="flex flex-col w-full gap-2">
@@ -364,7 +387,6 @@
                 </div>
             </div>
             
-
             <!-- Bagian Teks + Signature Pads 3, 4, 5 -->
             <div class="flex w-full gap-2 mt-2">
                 <div class="flex w-full">
@@ -374,7 +396,7 @@
                         </p>
                         <div class="border border-gray-300 dark:border-gray-600 rounded-md overflow-hidden">
                             <canvas id="signature-pad-3" class="bg-white dark:bg-gray-800 w-48 h-24"></canvas>
-                            <input type="hidden" name="signature3" id="signature-pad-3">
+                            <input type="hidden" name="signature3" id="signature-pad-3-input">
                             <button type="button" class="clear-signature mt-2 px-4 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600" data-target="signature-pad-3">Clear</button>
                         </div>
                     </div>
@@ -385,7 +407,7 @@
                         </p>
                         <div class="border border-gray-300 dark:border-gray-600 rounded-md overflow-hidden">
                             <canvas id="signature-pad-4" class="bg-white dark:bg-gray-800 w-48 h-24"></canvas>
-                            <input type="hidden" name="signature4" id="signature-pad-4">
+                            <input type="hidden" name="signature4" id="signature-pad-4-input">
                             <button type="button" class="clear-signature mt-2 px-4 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600" data-target="signature-pad-4">Clear</button>
                         </div>
                     </div>
@@ -396,16 +418,19 @@
                         </p>
                         <div class="border border-gray-300 dark:border-gray-600 rounded-md overflow-hidden">
                             <canvas id="signature-pad-5" class="bg-white dark:bg-gray-800 w-48 h-24"></canvas>
-                            <input type="hidden" name="signature5" id="signature-pad-5">
+                            <input type="hidden" name="signature5" id="signature-pad-5-input">
                             <button type="button" class="clear-signature mt-2 px-4 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600" data-target="signature-pad-5">Clear</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-                Submit
-            </button>
+            <div class="pb-4 pt-2">
+                <button type="submit" class="px-4 py-2 w-full  bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                    SUBMIT
+                </button>
+            </div>
+            
 
 
         </form>
@@ -414,55 +439,117 @@
 </main>
 </div>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const signaturePads = {};
+    window.signaturePads = {}; // Simpan di window agar bisa diakses global
 
-    // Initialize all signature pads dynamically
-    document.querySelectorAll("canvas[id^='signature-pad']").forEach(canvas => {
-        const id = canvas.id;
-        signaturePads[id] = new SignaturePad(canvas);
-        console.log(`Initialized SignaturePad for: ${id}`); // Debugging
-    });
+    function resizeCanvas(canvas) {
+        const ratio = Math.max(window.devicePixelRatio || 1, 1);
+        canvas.width = canvas.offsetWidth * ratio;
+        canvas.height = canvas.offsetHeight * ratio;
+        canvas.getContext("2d").scale(ratio, ratio);
+    }
 
-    console.log("Initialized SignaturePads:", signaturePads); // Debugging
+    window.onload = function () {
+        const ids = [
+            'signature-pad-1',
+            'signature-pad-2',
+            'signature-pad-3',
+            'signature-pad-4',
+            'signature-pad-5'
+        ];
 
-    // Save signature before submitting the form
-    document.getElementById("rujukan-form").addEventListener("submit", function (event) {
-        Object.keys(signaturePads).forEach((id) => {
-            const signaturePad = signaturePads[id];
-            const inputField = document.getElementById(id + "-input");
-
-            if (signaturePad.isEmpty()) {
-                inputField.value = "";
+        ids.forEach(id => {
+            const canvas = document.getElementById(id);
+            if (canvas) {
+                resizeCanvas(canvas); // Penting: agar canvas bisa digunakan
+                window.signaturePads[id] = new SignaturePad(canvas);
+                console.log(`Initialized SignaturePad for: ${id}`);
             } else {
-                inputField.value = signaturePad.toDataURL(); // Convert canvas to Base64
+                console.error("Canvas not found:", id);
             }
         });
-    });
 
-    // Clear signature event listener
-    document.querySelectorAll(".clear-signature").forEach(button => {
-        button.addEventListener("click", function (event) {
-            event.preventDefault(); // Prevent reload
+        // Saat form disubmit, ambil semua signature
+        const form = document.getElementById("rujukan-form");
+        if (form) {
+            form.addEventListener("submit", function (event) {
+                ids.forEach(id => {
+                    const signaturePad = window.signaturePads[id];
+                    const inputField = document.getElementById(id + "-input");
 
-            const targetId = this.getAttribute("data-target");
-            const canvas = document.getElementById(targetId);
-            const inputField = document.getElementById(targetId + "-input");
+                    if (!inputField) {
+                        console.error("Missing input field for:", id);
+                        return;
+                    }
 
-            console.log("Clearing:", targetId, canvas, inputField); // Debugging
+                    if (signaturePad && !signaturePad.isEmpty()) {
+                        inputField.value = signaturePad.toDataURL();
+                    } else {
+                        inputField.value = "";
+                    }
+                });
+            });
+        }
 
-            if (signaturePads[targetId]) {
-                signaturePads[targetId].clear(); // Clear canvas
-                if (inputField) inputField.value = ""; // Reset hidden input
-            } else {
-                console.error("SignaturePad not found for:", targetId);
-            }
+        // Clear signature
+        document.querySelectorAll(".clear-signature").forEach(button => {
+            button.addEventListener("click", function (event) {
+                event.preventDefault();
+                const targetId = this.getAttribute("data-target");
+                const canvas = document.getElementById(targetId);
+                const inputField = document.getElementById(targetId + "-input");
+
+                if (window.signaturePads[targetId]) {
+                    window.signaturePads[targetId].clear();
+                    if (inputField) inputField.value = "";
+                } else {
+                    console.error("SignaturePad not found for:", targetId);
+                }
+            });
         });
-    });
-});
+    };
 </script>
 
+    
+    
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let tanggalLahirInput = document.getElementById("tanggal_lahir");
+        let umurInput = document.getElementById("umur");
+        let umurCopy = document.getElementById("umur_copy");
+
+        let nameInput = document.getElementById("name");
+        let nameCopy = document.getElementById("name_copy");
+
+        let alamatInput = document.getElementById("alamat");
+        let alamatCopy = document.getElementById("alamat_copy");
+
+        // 🔹 Step 2.1: Hitung Umur saat pilih Tanggal Lahir
+        tanggalLahirInput.addEventListener("change", function () {
+            let birthDate = new Date(this.value);
+            let today = new Date();
+            let age = today.getFullYear() - birthDate.getFullYear();
+            let monthDiff = today.getMonth() - birthDate.getMonth();
+
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+
+            umurInput.value = age + " tahun";
+            umurCopy.value = age + " tahun"; // Salin umur ke field duplikat
+        });
+
+        // 🔹 Step 2.2: Sinkronisasi Nama dan Alamat
+        function syncValue(source, target) {
+            source.addEventListener("input", function () {
+                target.value = this.value;
+            });
+        }
+
+        syncValue(nameInput, nameCopy);
+        syncValue(alamatInput, alamatCopy);
+    });
+</script>
 
 
 <script>
@@ -499,6 +586,31 @@
                 inputContainer.style.display = "none"; // Sembunyikan input setelah save
             } else {
                 alert("Harap pilih tanggal dan jam terlebih dahulu!");
+            }
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Get all checkbox elements
+        const checkboxes = document.querySelectorAll("input[type='checkbox']");
+
+        checkboxes.forEach(checkbox => {
+            const inputFieldId = checkbox.id.replace("_check", ""); // Match checkbox ID to input field ID
+            const inputField = document.getElementById(inputFieldId);
+
+            if (inputField) {
+                inputField.readOnly = true; // Set default state to readonly
+
+                checkbox.addEventListener("change", function () {
+                    if (this.checked) {
+                        inputField.readOnly = false;
+                    } else {
+                        inputField.readOnly = true;
+                        inputField.value = ""; // Optionally clear input when unchecked
+                    }
+                });
             }
         });
     });
