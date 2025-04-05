@@ -12,9 +12,13 @@
                 <strong>Sukses!</strong> {{ session('success') }}
               </div>
               @endif
+              
 
               <div class="flex justify-between mb-5">
                 <p class="mt-2 mb-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">List Rujukan Poli Gigi</p>
+                <a href="/poli-gigi-rujukan" target="_blank" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
+                  Tambah Rujukan
+                </a>
               </div>
 
 
@@ -56,7 +60,7 @@
                             <i class="fa-solid bg-gray-100 hover:bg-gray-700 fa-pen px-2 py-2 rounded-lg border-2 fa-eye text-lg text-yellow-400 hover:text-yellow-100"></i>
                           </span>
                         </a>
-                        <form action="{{ route('postingan.destroy', $gigi->id) }}" method="POST" class="inline-flex items-center">
+                        <form action="{{ route('poli-gigi-rujukan.destroy', $gigi->id) }}" method="POST" class="inline-flex items-center">
                           @csrf
                           @method('DELETE')
                           <button type="submit" class="inline-flex items-center bg-transparent border-0" onclick="return confirm('Apakah kamu yakin?')">
