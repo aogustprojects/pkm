@@ -338,6 +338,7 @@
                         Dengan ini menyatakan bahwa saya telah menerangkan hal-hal diatas secara benar dan jujur dan memberikan kesempatan untuk bertanya dan/ atau berdiskusi
                     </p>
                     <div class="flex flex-col items-center border border-gray-300 dark:border-gray-600 rounded-e-md overflow-hidden">
+                        <span class="text-xs text-gray-500 dark:text-gray-300 mb-1">TTD Petugas</span>
                         <canvas id="signature-pad-1" class="bg-white dark:bg-gray-800 w-48 h-24"></canvas>
                         <input type="hidden" name="signature1" value="{{ $poliGigiRujukan->signature1 }}" id="signature-pad-1-input">
                         <button class="clear-signature mt-2 px-4 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600" data-target="signature-pad-1">Clear</button>
@@ -352,6 +353,7 @@
                         Dengan ini menyatakan bahwa saya telah menerima informasi sebagaimana diatas yang beri saya tanda / paraf di kolom kanannya dan saya telah memahaminya
                     </p>
                     <div class="flex flex-col items-center border border-gray-300 dark:border-gray-600 rounded-e-md overflow-hidden">
+                        <span class="text-xs text-gray-500 dark:text-gray-300 mb-1">TTD Pasien/Keluarga/Wali</span>
                         <canvas id="signature-pad-2" class="bg-white dark:bg-gray-800 w-48 h-24"></canvas>
                         <input type="hidden" name="signature2" value="{{ $poliGigiRujukan->signature2 }}" id="signature-pad-2-input">
                         <button class="clear-signature mt-2 px-4 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600" data-target="signature-pad-2">Clear</button>
@@ -445,7 +447,7 @@
             </div>
             <div class="flex w-full gap-2">
                 <div class="flex w-full items-center">
-                    <p id="output-text" class="flex-1 py-2.5 px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-white dark:border-gray-600 text-right">
+                    <p id="output-text" class="flex-1  px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-white dark:border-gray-600 text-right">
                         Bandung, <span id="selected-date">{{ \Carbon\Carbon::parse($poliGigiRujukan->tanggal)->format('d F Y') }}</span>, Jam <span id="selected-time">{{ $poliGigiRujukan->jam }}</span>
                     </p>
                 </div>
@@ -480,7 +482,7 @@
             <div class="flex w-full gap-2 mt-2">
                 <div class="flex w-full">
                     <div class="flex-1 text-center">
-                        <p class="py-2.5 px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-white dark:border-gray-600">
+                        <p class=" px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-white dark:border-gray-600">
                             Yang menyatakan
                         </p>
                         <div class="border border-gray-300 dark:border-gray-600 rounded-md overflow-hidden">
@@ -491,7 +493,7 @@
                     </div>
                     
                     <div class="flex-1 text-center">
-                        <p class="py-2.5 px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-white dark:border-gray-600">
+                        <p class=" px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-white dark:border-gray-600">
                             Saksi 1
                         </p>
                         <div class="border border-gray-300 dark:border-gray-600 rounded-md overflow-hidden">
@@ -502,7 +504,7 @@
                     </div>
 
                     <div class="flex-1 text-center">
-                        <p class="py-2.5 px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-white dark:border-gray-600">
+                        <p class=" px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-white dark:border-gray-600">
                             Saksi 2
                         </p>
                         <div class="border border-gray-300 dark:border-gray-600 rounded-md overflow-hidden">
