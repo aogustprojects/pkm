@@ -226,7 +226,7 @@
                             </td>
                             <td class="p-2 text-center">
                                 <div class="flex justify-center items-center">
-                                    <input id="indikasi_tindakan" name="indikasi_tindakan" type="checkbox"
+                                    <input id="indikasi_tindakan_check" name="indikasi_tindakan_check" type="checkbox"
                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                     {{ $poliGigiRujukan->indikasi_tindakan ? 'checked' : '' }} >
                                 </div>
