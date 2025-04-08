@@ -29,7 +29,6 @@
                       <th scope="col" class="px-3 py-3">No</th>
                       <th scope="col" class="px-3 py-3">Nama Pasien</th>
                       <th scope="col" class="px-3 py-3">No.RM</th>
-                      <th scope="col" class="px-3 py-3">Jenis Kelamin</th>
                       <th scope="col" class="px-3 py-3">Alamat</th>
                       <th scope="col" class="px-3 py-3">Tanggal</th>
                       <th scope="col" class="px-3 py-3">Aksi</th>
@@ -44,7 +43,6 @@
                       </th>
                       <td class="px-3 text-center py-3">{{ $gigi->name }}</td>
                       <td class="px-3 text-center py-3">{{ $gigi->no_rm }}</td>
-                      <td class="px-3 text-center py-3">{{ $gigi->jenis_kelamin }}</td>
                       <td class="px-3 text-center py-3">{{ $gigi->alamat }}</td>
                       <td class="px-3 text-center py-3">
                         {{ \Carbon\Carbon::parse($gigi->tanggal)->format('d M Y') }}

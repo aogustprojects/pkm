@@ -32,7 +32,10 @@ return new class extends Migration
             $table->string('biaya_tindakan')->nullable();
             $table->text('signature1')->nullable();
             $table->text('signature2')->nullable();
+            $table->string('nama_sign');
+            $table->integer('umur_sign');
             $table->string('jenis_kelamin');
+            $table->string('alamat_sign');
             $table->date('tanggal');
             $table->time('jam');
             $table->string('persetujuan_tindakan');

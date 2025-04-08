@@ -1,31 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" class="h-full bg-gray-100">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite(['resources/css/app.css','resources/js/app.js'])
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-    {{-- Alpine JS --}}
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    {{-- CDN Font Awesome --}}
-    <script src="https://kit.fontawesome.com/7b03306244.js" crossorigin="anonymous"></script>
-    <title>Puskesmas Pasirjati</title>
-    {{-- tw ele --}}
-    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
-    {{-- Signature pad --}}
-    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
-</head>
-<body class="h-full overflow-y-scroll overflow-x-hidden">
-<div class="min-h-full">
-<main>
-
-<header class="relative bg-cover h-20 bg-center shadow-lg" style="background-image: url('/img/poli-gigi.jpg');">
-  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
-  <div class="relative mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-    <h1 class="sm:text-3xl text-xl font-bold tracking-tight text-white drop-shadow-md">RUJUKAN POLI GIGI</h1>
-  </div>
-</header>
+<x-header-poligigi-rujukan> </x-header-poligigi-rujukan>
 
 <div class="flex justify-center mt-4 min-h-screen">
     <div class="bg-white w-3/4 mb-5 border rounded-md">
@@ -317,13 +290,13 @@
             <div class="flex w-full gap-2">
                 <div class="flex w-full">
                     <p class="w-44 shrink-0 inline-flex items-center py-2.5 px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-gray-300 rounded-s-md dark:bg-gray-700 dark:text-white dark:border-gray-600">Nama</p>
-                    <input type="text" id="name_copy" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-md border border-gray-300" readonly />
+                    <input type="text" name="nama_sign" value="{{ old('nama_sign') }}" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500" />
                 </div>
             </div>
             <div class="flex w-full gap-2">
                 <div class="flex w-full">
                     <p class="w-44 shrink-0 inline-flex items-center py-2.5 px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-gray-300 rounded-s-md dark:bg-gray-700 dark:text-white dark:border-gray-600">Umur</p>
-                    <input type="text" id="umur_copy" name="umur_copy" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" />
+                    <input type="text" name="umur_sign" value="{{ old('umur_sign') }}" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500" />
                 </div>
             </div>
             <div class="flex w-full gap-2">
@@ -339,7 +312,7 @@
             <div class="flex w-full gap-2">
                 <div class="flex w-full">
                     <p class="w-44 shrink-0 inline-flex items-center py-2.5 px-4 text-sm font-medium text-gray-900 bg-gray-100 border border-gray-300 rounded-s-md dark:bg-gray-700 dark:text-white dark:border-gray-600">Alamat</p>
-                    <input type="text" id="alamat_copy" name="alamat_copy" value="{{ old('alamat') }}" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" />
+                    <input type="text" name="alamat_sign" value="{{ old('alamat_sign') }}" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-e-md border border-gray-300 focus:ring-blue-500 focus:border-blue-500" />
                 </div>
             </div>
             <div class="flex flex-col w-full gap-2">
@@ -511,47 +484,45 @@
     };
 </script>
 
-    
-    
-
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        let tanggalLahirInput = document.getElementById("tanggal_lahir");
-        let umurInput = document.getElementById("umur");
-        let umurCopy = document.getElementById("umur_copy");
+    document.addEventListener('DOMContentLoaded', function () {
+        const tanggalLahirInput = document.getElementById('tanggal_lahir');
+        const umurInput = document.getElementById('umur');
 
-        let nameInput = document.getElementById("name");
-        let nameCopy = document.getElementById("name_copy");
-
-        let alamatInput = document.getElementById("alamat");
-        let alamatCopy = document.getElementById("alamat_copy");
-
-        // 🔹 Step 2.1: Hitung Umur saat pilih Tanggal Lahir
-        tanggalLahirInput.addEventListener("change", function () {
-            let birthDate = new Date(this.value);
-            let today = new Date();
+        tanggalLahirInput.addEventListener('change', function () {
+            const today = new Date();
+            const birthDate = new Date(this.value);
             let age = today.getFullYear() - birthDate.getFullYear();
-            let monthDiff = today.getMonth() - birthDate.getMonth();
+            const m = today.getMonth() - birthDate.getMonth();
 
-            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            // Adjust if birthday hasn't occurred yet this year
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
                 age--;
             }
 
-            umurInput.value = age + " tahun";
-            umurCopy.value = age + " tahun"; // Salin umur ke field duplikat
+            umurInput.value = isNaN(age) ? '' : age + ' tahun';
         });
-
-        // 🔹 Step 2.2: Sinkronisasi Nama dan Alamat
-        function syncValue(source, target) {
-            source.addEventListener("input", function () {
-                target.value = this.value;
-            });
-        }
-
-        syncValue(nameInput, nameCopy);
-        syncValue(alamatInput, alamatCopy);
     });
 </script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const umurSignInput = document.querySelector('input[name="umur_sign"]');
+
+        umurSignInput.addEventListener('blur', function () {
+            const value = this.value.trim();
+
+            // If only number is typed and doesn't already have "tahun", add it
+            if (value && /^\d+$/.test(value)) {
+                this.value = value + ' tahun';
+            }
+        });
+    });
+</script>
+
+
+
 
 
 <script>

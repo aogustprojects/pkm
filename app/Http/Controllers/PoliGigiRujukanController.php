@@ -33,6 +33,11 @@ class PoliGigiRujukanController extends Controller
      */
     public function store(Request $request)
     {
+            // Ubah umur_sign dari "30 tahun" → 30
+        $request->merge([
+            'umur_sign' => (int) filter_var($request->umur_sign, FILTER_SANITIZE_NUMBER_INT)
+        ]);
+
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'no_rm' => 'required|string|max:255',
@@ -52,7 +57,10 @@ class PoliGigiRujukanController extends Controller
             'biaya_tindakan' => 'nullable|string|max:255',
             'signature1' => 'nullable|string',
             'signature2' => 'nullable|string',
+            'nama_sign' => 'required|string|max:255',
+            'umur_sign' => 'required|integer', // ← Validasi umur_sign sebagai integer
             'jenis_kelamin' => 'required|string|in:Laki-laki,Perempuan',
+            'alamat_sign' => 'required|string|max:255',
             'tanggal' => 'required|date',
             'jam' => 'required|date_format:H:i',
             'persetujuan_tindakan' => 'required|in:menyetujui,menolak',
@@ -70,7 +78,7 @@ class PoliGigiRujukanController extends Controller
             'no_rm' => $validated['no_rm'],
             'tempat_lahir' => $validated['tempat_lahir'],
             'tanggal_lahir' => $validated['tanggal_lahir'],
-            'umur' => $umur, // Simpan umur sebagai integer
+            'umur' => $umur, // umur dihitung otomatis
             'alamat' => $validated['alamat'],
             'petugas_pel' => $validated['petugas_pel'],
             'pemberi_info' => $validated['pemberi_info'],
@@ -85,14 +93,16 @@ class PoliGigiRujukanController extends Controller
             'biaya_tindakan' => $validated['biaya_tindakan'] ?? null,
             'signature1' => $validated['signature1'] ?? null,
             'signature2' => $validated['signature2'] ?? null,
+            'nama_sign' => $validated['nama_sign'],
+            'umur_sign' => $validated['umur_sign'], // umur_sign disimpan sebagai integer
             'jenis_kelamin' => $validated['jenis_kelamin'],
+            'alamat_sign' => $validated['alamat_sign'],
             'tanggal' => $validated['tanggal'],
             'jam' => $validated['jam'],
             'persetujuan_tindakan' => $validated['persetujuan_tindakan'],
             'signature3' => $validated['signature3'] ?? null,
             'signature4' => $validated['signature4'] ?? null,
             'signature5' => $validated['signature5'] ?? null,
-
         ]);
 
         if ($rujukan) {
