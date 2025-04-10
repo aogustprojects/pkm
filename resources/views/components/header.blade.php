@@ -1,4 +1,4 @@
-<header class="bg-header">
+<header class="sticky top-0 z-50 bg-header">
   <div class="mx-auto w-full ml-3 py-2 lg:ml-11 lg:px-8 flex justify-between items-center">
       <h1 class="font-medium text-sm tracking-tight text-white flex items-center">
           <i class="fa-solid fa-house-medical mr-1 text-xs"></i>{{ $slot }} <!-- Ensure text is block on mobile, inline on larger screens -->

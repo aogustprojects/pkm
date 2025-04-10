@@ -16,8 +16,8 @@
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 
 </head>
-<body class="h-full overflow-y-scroll overflow-x-hidden">
-<div class="w-full max-w-full overflow-hidden">
+<body class="h-full overflow-x-hidden">
+<div class="w-full max-w-full">
 <div class="min-h-full">
     <x-header>{{ $title }}</x-header>
     <x-nav-bar></x-nav-bar>
