@@ -17,7 +17,7 @@
 
 </head>
 <body class="h-full overflow-x-hidden">
-<div class="w-full max-w-full">
+<div class="w-full max-w-full overflow-hidden">
 <div class="min-h-full">
     <x-header>{{ $title }}</x-header>
     <x-nav-bar></x-nav-bar>

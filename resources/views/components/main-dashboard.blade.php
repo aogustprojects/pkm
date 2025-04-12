@@ -51,6 +51,14 @@
             </a>
         </li>
         <li>
+            <a href="/dashboard/pelayanan" class="flex items-center space-x-3 p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-700 dark:hover:bg-gray-700 group {{ request()->is('dashboard/realisasi_kegiatan*') ? 'bg-gray-900 dark:bg-gray-700' : '' }}">
+                <span class="flex h-5 w-5 items-center">
+                    <i class="fa-solid fa-chart-line text-white"></i>
+                </span>
+                <span class="text-sm leading-none text-white">Realisasi Kegiatan</span>
+            </a>
+        </li>
+        <li>
             <a id="dropdownPoliGigiButton" data-dropdown-toggle="dropdownPoliGigi"  class="flex items-center space-x-3 p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-700 dark:hover:bg-gray-700 group {{ request()->is('dashboard/poli-gigi*') ? 'bg-gray-900 dark:bg-gray-700' : '' }}">
                 <span class="flex h-5 w-5 items-center">
                     <i class="fa-solid fa-tooth text-sm text-white"></i>

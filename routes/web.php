@@ -6,17 +6,21 @@ use App\Models\Category;
 use App\Models\PoliGigi;
 use Illuminate\Http\Request;
 use App\Models\PoliGigiRujukan;
+use App\Models\RealisasiKegiatan;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PoliGigiController;
+use App\Http\Controllers\PelayananController;
 use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\ArsipSuratMasukController;
 use App\Http\Controllers\PoliGigiRujukanController;
 use App\Http\Controllers\ArsipSuratKeluarController;
+use App\Http\Controllers\PelayananBulananController;
 use App\Http\Controllers\DashboardPoliGigiController;
+use App\Http\Controllers\RealisasiKegiatanController;
 use App\Http\Controllers\DashboardPoliGigiRujukanController;
 
 Route::get('/', function () {
@@ -91,6 +95,7 @@ Route::post('/update-setting', function (Request $request) {
 Route::resource('/poli-gigi-rujukan', PoliGigiRujukanController::class)->middleware('auth');
 
 Route::resource('/dashboard/poli-gigi-rujukan', DashboardPoliGigiRujukanController::class)->middleware('auth');
+
 
 
 
