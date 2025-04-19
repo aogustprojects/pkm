@@ -51,7 +51,7 @@
             </a>
         </li>
         <li>
-            <a href="/dashboard/pelayanan" class="flex items-center space-x-3 p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-700 dark:hover:bg-gray-700 group {{ request()->is('dashboard/realisasi_kegiatan*') ? 'bg-gray-900 dark:bg-gray-700' : '' }}">
+            <a href="/dashboard/kegiatan" class="flex items-center space-x-3 p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-700 dark:hover:bg-gray-700 group {{ request()->is('dashboard/realisasi-kegiatan*') ? 'bg-gray-900 dark:bg-gray-700' : '' }}">
                 <span class="flex h-5 w-5 items-center">
                     <i class="fa-solid fa-chart-line text-white"></i>
                 </span>

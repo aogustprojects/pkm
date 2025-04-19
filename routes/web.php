@@ -19,9 +19,11 @@ use App\Http\Controllers\ArsipSuratMasukController;
 use App\Http\Controllers\PoliGigiRujukanController;
 use App\Http\Controllers\ArsipSuratKeluarController;
 use App\Http\Controllers\PelayananBulananController;
+use App\Http\Controllers\DashboardKegiatanController;
 use App\Http\Controllers\DashboardPoliGigiController;
 use App\Http\Controllers\RealisasiKegiatanController;
 use App\Http\Controllers\DashboardPoliGigiRujukanController;
+use App\Http\Controllers\DashboardRealisasiKegiatanController;
 
 Route::get('/', function () {
     return view('beranda', [
@@ -73,7 +75,11 @@ Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::post('/send-email', [SendEmailController::class, 'sendWelcomeEmail'])->name('send.email');
 
-Route::get('/dashboard', function(){ return view('dashboard.index', ['title' => 'Dashboard']);})->middleware('auth');
+Route::get('/dashboard', function() {
+    return view('dashboard.index', [
+        'title' => 'Dashboard'
+    ]);
+})->middleware('auth');
 
 Route::get('/dashboard/postingan/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
 
@@ -88,59 +94,27 @@ Route::resource('/dashboard/arsip_surat_masuk', ArsipSuratMasukController::class
 Route::resource('/dashboard/arsip_surat_keluar', ArsipSuratKeluarController::class)->middleware('auth');
 
 Route::post('/update-setting', function (Request $request) {
+    $request->validate([
+        'max_registrations' => 'required|integer|min:1',
+    ]);
     setSetting($request->input('max_registrations'));
     return back()->with('success', 'Max registrations updated!');
 })->name('update-setting')->middleware('auth');
+
+Route::post('/toggle-form-status', function (Request $request) {
+    $request->validate([
+        'is_form_open' => 'required|boolean',
+    ]);
+    setSetting(null, $request->input('is_form_open'));
+    return back()->with('success', 'Form status updated!');
+})->name('toggle-form-status')->middleware('auth');
 
 Route::resource('/poli-gigi-rujukan', PoliGigiRujukanController::class)->middleware('auth');
 
 Route::resource('/dashboard/poli-gigi-rujukan', DashboardPoliGigiRujukanController::class)->middleware('auth');
 
+Route::resource('dashboard/kegiatan', DashboardKegiatanController::class)->names('dashboard.kegiatan');
 
+Route::get('/dashboard/realisasi-kegiatan/kegiatan/{id}', [DashboardRealisasiKegiatanController::class, 'showByKegiatan'])->name('dashboard.realisasi-kegiatan.byKegiatan');
 
-
-
-
-
-
-
-
-
-
-
-
-
-Route::get('/storage-link', function() {
-    Artisan::call('storage:link');
-    return 'storage:link berhasil dijalankan';
-});
-
-Route::get('/config-cache', function() {
-    Artisan::call('config:cache');
-    return 'config:cache berhasil dijalankan';
-});
-
-Route::get('/config-clear', function() {
-    Artisan::call('config:clear');
-    return 'config:clear berhasil dijalankan';
-});
-
-Route::get('/view-clear', function() {
-    Artisan::call('view:clear');
-    return 'view:clear berhasil dijalankan';
-});
-
-Route::get('/view-cache', function() {
-    Artisan::call('view:cache');
-    return 'view:cache berhasil dijalankan';
-});
-
-Route::get('/route-clear', function() {
-    Artisan::call('route:clear');
-    return 'route:clear berhasil dijalankan';
-});
-
-Route::get('/route-cache', function() {
-    Artisan::call('route:cache');
-    return 'route:cache berhasil dijalankan';
-});
+Route::resource('dashboard/realisasi-kegiatan', DashboardRealisasiKegiatanController::class)->names('dashboard.realisasi-kegiatan');
