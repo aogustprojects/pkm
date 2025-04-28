@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('realisasi_kegiatans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('kegiatan_id')->constrained('kegiatans')->onDelete('cascade');
-            $table->unsignedTinyInteger('bulan')->nullable(); // 1-12
             $table->year('tahun')->nullable();
             $table->integer('target')->default(0)->nullable();
             $table->integer('realisasi')->default(0)->nullable();
             $table->decimal('persentase', 5, 2)->default(0.00)->nullable();
+            $table->json('goals')->nullable();
+            $table->json('target_bulanan')->nullable();
             $table->timestamps();
         });
     }

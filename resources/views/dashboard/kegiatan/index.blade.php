@@ -9,16 +9,15 @@
           <div class="px-8 py-8 sm:px-10 sm:pt-10">
 
             @if (session('success'))
-              <div class="mb-4 p-4 bg-green-500 text-white rounded-lg">
-                <strong>Sukses!</strong> {{ session('success') }}
-              </div>
+            <script>
+              alert("Sukses! {{ addslashes(session('success')) }}");
+            </script>
             @endif
 
             <div class="flex flex-col lg:flex-row justify-between items-center mb-5 gap-4">
               <p class="text-lg font-medium tracking-tight text-gray-950">List Realisasi Kegiatan Bulanan</p>
-            
-              <form action="{{ route('dashboard.realisasi-kegiatan.index') }}" method="GET" class="flex items-center w-full max-w-xl gap-2">
-                {{-- Search Input --}}
+
+              <form action="{{ route('dashboard.kegiatan.index') }}" method="GET" class="flex items-center w-full max-w-xl gap-2">
                 <div class="relative w-full">
                   <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                     <i class="fa-solid fa-magnifying-glass text-gray-500"></i>
@@ -27,66 +26,323 @@
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5"
                     placeholder="Cari Kegiatan..." value="{{ request('search') }}" />
                 </div>
-            
-                {{-- Submit Button --}}
+                <div class="relative w-32">
+                  <select name="year" id="year-filter"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    onchange="this.form.submit()">
+                    @foreach ($years as $year)
+                      <option value="{{ $year }}" {{ $selectedYear == $year ? 'selected' : '' }}>
+                        {{ $year }}
+                      </option>
+                    @endforeach
+                  </select>
+                </div>
                 <button type="submit"
                   class="p-2.5 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
                   <i class="fa fa-search"></i>
                   <span class="sr-only">Search</span>
                 </button>
               </form>
-            
-              <a href="{{ route('dashboard.kegiatan.create') }}"
-                class="bg-blue-700 rounded-lg px-4 py-2 text-sm text-white hover:bg-blue-900">
-                Tambah Realisasi
-              </a>
+
+              <div class="flex items-center space-x-2">
+                <!-- Save and Edit Buttons -->
+                <button type="button" id="edit-btn" onclick="toggleEditMode(true)"
+                  class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 text-sm">
+                  Edit
+                </button>
+                <button type="submit" form="goals-form" id="save-btn"
+                  class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 text-sm hidden">
+                  Save
+                </button>
+                <a href="{{ route('dashboard.kegiatan.create') }}"
+                  class="bg-blue-700 rounded-lg px-4 py-2 text-sm text-white hover:bg-blue-900">
+                  Tambah Realisasi
+                </a>
+              </div>
             </div>
 
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-              <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                  <tr>
-                    <th class="px-6 py-3 text-center">No</th>
-                    <th class="px-6 py-3">Nama Kegiatan</th>
-                    <th class="px-6 py-3 text-center">PJ Program</th>
-                    <th class="px-6 py-3 text-center">Aksi</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @forelse ($data as $item)
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                      <td class="px-6 py-4 text-center">{{ $loop->iteration }}</td>
-                      <td class="px-6 py-4">{{ $item->kegiatan->nama_kegiatan ?? '-' }}</td>
-                      <td class="px-6 py-4 text-center">{{ $item->kegiatan->pj_kegiatan ?? '-' }}</td>
-                      <td class="px-6 py-4 text-center">
-                        <div class="flex justify-center items-center space-x-2">
-                          <a href="{{ route('dashboard.realisasi-kegiatan.byKegiatan', $item->id) }}">
-                            <i class="fa-solid fa-eye text-blue-400 hover:text-blue-100 bg-gray-100 hover:bg-gray-700 px-2 py-2 rounded-lg border-2 text-lg"></i>
-                          </a>
-                          {{-- Uncomment if you want to enable delete functionality
-                          <form action="{{ route('dashboard.realisasi-kegiatan.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin ingin hapus?')">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit">
-                              <i class="fa-solid fa-trash text-red-400 hover:text-red-100 bg-gray-100 hover:bg-gray-700 px-2 py-2 rounded-lg border-2 text-lg"></i>
-                            </button>
-                          </form>
-                          --}}
-                        </div>
-                      </td>
-                    </tr>
-                  @empty
+            <form id="goals-form" action="{{ route('dashboard.kegiatan.update-goals') }}" method="POST">
+              @csrf
+              <input type="hidden" name="year" value="{{ $selectedYear }}" />
+              <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                  <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                      <td colspan="4" class="text-center px-6 py-4">Data belum tersedia</td>
+                      <th class="px-6 py-3 text-center">No</th>
+                      <th class="px-6 py-3">Nama Kegiatan</th>
+                      <th class="px-6 py-3 text-center">PJ Program</th>
+                      <th class="px-6 py-3 text-center">Tahun</th>
+                      <th class="px-6 py-3 text-center">Target</th>
+                      <th class="px-6 py-3 text-center">Realisasi</th>
+                      <th class="px-6 py-3 text-center">Persentase</th>
                     </tr>
-                  @endforelse
-                </tbody>
-              </table>
-            </div>
-
+                  </thead>
+                  <tbody>
+                    @forelse ($data as $item)
+                      @php
+                        // Get the RealisasiKegiatan record for the selected year
+                        $realisasi = $item->realisasi->first();
+                        
+                        // Calculate the sum of goals (realisasi)
+                        $goals = $realisasi ? ($realisasi->goals ?? []) : [];
+                        $totalRealisasi = array_sum(array_map('intval', $goals));
+                        
+                        // Calculate the sum of target_bulanan
+                        $target_bulanan = $realisasi ? ($realisasi->target_bulanan ?? []) : [];
+                        $totalTarget = array_sum(array_map('intval', $target_bulanan));
+                        
+                        // Calculate persentase (realisasi / target * 100)
+                        $persentase = $totalTarget > 0 ? round(($totalRealisasi / $totalTarget) * 100, 2) : 0;
+                      @endphp
+                      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 kegiatan-row" data-item-id="{{ $item->id }}">
+                        <td class="px-6 py-4 text-center">{{ $loop->iteration }}</td>
+                        <td class="px-6 py-4">
+                          <button type="button" class="text-left hover:underline" onclick="selectKegiatan('{{ $item->id }}')">
+                            {{ $item->nama_kegiatan ?? '-' }}
+                          </button>
+                        </td>
+                        <td class="px-6 py-4 text-center">{{ $item->pj_kegiatan ?? '-' }}</td>
+                        <td class="px-6 py-4 text-center">
+                          {{ $realisasi ? $realisasi->tahun : '-' }}
+                        </td>
+                        <td class="px-6 py-4 text-center">
+                          {{ $totalTarget }}
+                        </td>
+                        <td class="px-6 py-4 text-center">
+                          {{ $totalRealisasi }}
+                        </td>
+                        <td class="px-6 py-4 text-center">
+                          {{ $persentase }}%
+                        </td>
+                      </tr>
+                      <!-- Target Bulanan Heading -->
+                      <tr class="bg-gray-100 dark:bg-gray-600 kegiatan-details hidden" data-item-id="{{ $item->id }}">
+                        <td colspan="7" class="px-6 py-2">
+                          <p class="text-sm text-center font-semibold text-gray-800 dark:text-gray-200">Target Bulanan</p>
+                          <hr>
+                        </td>
+                      </tr>
+                      <!-- Target Bulanan Row -->
+                      <tr class="bg-gray-100 dark:bg-gray-600 kegiatan-details hidden" data-item-id="{{ $item->id }}">
+                        <td colspan="7" class="px-6 py-4">
+                          <div class="grid grid-cols-12 gap-2">
+                            @foreach (['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'] as $month)
+                              <div class="flex flex-col items-center">
+                                <span class="text-sm font-medium text-gray-700 mb-1">{{ $month }}</span>
+                                <input type="number" name="target_bulanan[{{ $item->id }}][{{ strtolower($month) }}]"
+                                  value="{{ $realisasi ? ($realisasi->target_bulanan[strtolower($month)] ?? '') : '' }}"
+                                  class="target-input w-24 text-center border border-gray-300 rounded-lg p-1 focus:ring-blue-500 focus:border-blue-500"
+                                  disabled />
+                              </div>
+                            @endforeach
+                          </div>
+                        </td>
+                      </tr>
+                      <!-- Realisasi Bulanan Heading -->
+                      <tr class="bg-gray-50 dark:bg-gray-700 kegiatan-details hidden" data-item-id="{{ $item->id }}">
+                        <td colspan="7" class="px-6 py-2">
+                          <p class="text-sm text-center font-semibold text-gray-800 dark:text-gray-200">Realisasi Bulanan</p>
+                          <hr>
+                        </td>
+                      </tr>
+                      <!-- Goals Row -->
+                      <tr class="bg-gray-50 dark:bg-gray-700 kegiatan-details hidden" data-item-id="{{ $item->id }}">
+                        <td colspan="7" class="px-6 py-4">
+                          <div class="grid grid-cols-12 gap-2">
+                            @foreach (['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'] as $month)
+                              <div class="flex flex-col items-center">
+                                <span class="text-sm font-medium text-gray-700 mb-1">{{ $month }}</span>
+                                <input type="number" name="goals[{{ $item->id }}][{{ strtolower($month) }}]"
+                                  value="{{ $realisasi ? ($realisasi->goals[strtolower($month)] ?? '') : '' }}"
+                                  class="goal-input w-24 text-center border border-gray-300 rounded-lg p-1 focus:ring-blue-500 focus:border-blue-500"
+                                  data-item-id="{{ $item->id }}"
+                                  data-month="{{ strtolower($month) }}"
+                                  disabled />
+                              </div>
+                            @endforeach
+                          </div>
+                        </td>
+                      </tr>
+                      <!-- Realisasi Kumulatif Per Triwulan Heading -->
+                      <tr class="bg-gray-50 dark:bg-gray-700 kegiatan-details hidden" data-item-id="{{ $item->id }}">
+                        <td colspan="7" class="px-6 py-2">
+                          <p class="text-sm text-center font-semibold text-gray-800 dark:text-gray-200">Realisasi Kumulatif Per Triwulan</p>
+                          <hr>
+                        </td>
+                      </tr>
+                      <!-- Triwulan Cumulative Row -->
+                      <tr class="bg-gray-50 dark:bg-gray-700 kegiatan-details hidden" data-item-id="{{ $item->id }}">
+                        <td colspan="7" class="px-6 py-4">
+                          <div class="grid grid-cols-12 gap-2">
+                            @foreach (['Triwulan 1', 'Triwulan 2', 'Triwulan 3', 'Triwulan 4'] as $triwulan)
+                              <div class="flex flex-col items-center text-center">
+                                <span class="text-sm font-medium text-gray-700 mb-1">{{ $triwulan }}</span>
+                                <input type="number"
+                                  class="triwulan-input w-24 text-center border border-gray-300 rounded-lg p-1 bg-gray-200"
+                                  data-item-id="{{ $item->id }}"
+                                  data-triwulan="{{ strtolower(str_replace(' ', '', $triwulan)) }}"
+                                  readonly />
+                              </div>
+                            @endforeach
+                          </div>
+                        </td>
+                      </tr>
+                    @empty
+                      <tr>
+                        <td colspan="7" class="text-center px-6 py-4">Data belum tersedia</td>
+                      </tr>
+                    @endforelse
+                  </tbody>
+                </table>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<style>
+  /* Hide the up and down arrows (spinners) for input[type="number"] */
+  input.goal-input[type="number"],
+  input.target-input[type="number"],
+  input.triwulan-input[type="number"] {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    appearance: none;
+  }
+
+  input.goal-input[type="number"]::-webkit-inner-spin-button,
+  input.goal-input[type="number"]::-webkit-outer-spin-button,
+  input.target-input[type="number"]::-webkit-inner-spin-button,
+  input.target-input[type="number"]::-webkit-outer-spin-button,
+  input.triwulan-input[type="number"]::-webkit-inner-spin-button,
+  input.triwulan-input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Highlight selected kegiatan row */
+  .kegiatan-row.selected {
+    background-color: #e0f2fe; /* Light blue for light mode */
+  }
+
+  .dark .kegiatan-row.selected {
+    background-color: #1e40af; /* Darker blue for dark mode */
+  }
+</style>
+
+<script>
+  let isEditMode = false;
+  let selectedKegiatanId = null;
+
+  function toggleEditMode(enable) {
+    isEditMode = enable;
+    const editBtn = document.getElementById('edit-btn');
+    const saveBtn = document.getElementById('save-btn');
+    const goalInputs = document.querySelectorAll('.goal-input');
+    const targetInputs = document.querySelectorAll('.target-input');
+    const triwulanInputs = document.querySelectorAll('.triwulan-input');
+
+    if (isEditMode) {
+      editBtn.classList.add('hidden');
+      saveBtn.classList.remove('hidden');
+      goalInputs.forEach(input => input.removeAttribute('disabled'));
+      targetInputs.forEach(input => input.removeAttribute('disabled'));
+      triwulanInputs.forEach(input => input.setAttribute('readonly', 'true')); // Ensure triwulan inputs remain readonly
+    } else {
+      editBtn.classList.remove('hidden');
+      saveBtn.classList.add('hidden');
+      goalInputs.forEach(input => input.setAttribute('disabled', 'true'));
+      targetInputs.forEach(input => input.setAttribute('disabled', 'true'));
+      triwulanInputs.forEach(input => input.setAttribute('readonly', 'true'));
+    }
+  }
+
+  function selectKegiatan(itemId) {
+    // If the same kegiatan is clicked, hide its details
+    if (selectedKegiatanId === itemId) {
+      document.querySelectorAll(`.kegiatan-details[data-item-id="${itemId}"]`).forEach(row => {
+        row.classList.add('hidden');
+      });
+      const selectedRow = document.querySelector(`.kegiatan-row[data-item-id="${itemId}"]`);
+      if (selectedRow) {
+        selectedRow.classList.remove('selected');
+      }
+      selectedKegiatanId = null;
+      return;
+    }
+
+    // Hide all kegiatan details
+    document.querySelectorAll('.kegiatan-details').forEach(row => {
+      row.classList.add('hidden');
+    });
+
+    // Remove selected class from all rows
+    document.querySelectorAll('.kegiatan-row').forEach(row => {
+      row.classList.remove('selected');
+    });
+
+    // Show details for the selected kegiatan
+    document.querySelectorAll(`.kegiatan-details[data-item-id="${itemId}"]`).forEach(row => {
+      row.classList.remove('hidden');
+    });
+
+    // Highlight the selected row
+    const selectedRow = document.querySelector(`.kegiatan-row[data-item-id="${itemId}"]`);
+    if (selectedRow) {
+      selectedRow.classList.add('selected');
+    }
+
+    selectedKegiatanId = itemId;
+    updateTriwulanTotals(itemId);
+  }
+
+  function updateTriwulanTotals(itemId) {
+    const months = ['jan', 'feb', 'mar', 'apr', 'mei', 'jun', 'jul', 'agu', 'sep', 'okt', 'nov', 'des'];
+    const triwulan = {
+      triwulan1: ['jan', 'feb', 'mar'],
+      triwulan2: ['apr', 'mei', 'jun'],
+      triwulan3: ['jul', 'agu', 'sep'],
+      triwulan4: ['okt', 'nov', 'des']
+    };
+
+    // Calculate cumulative totals for each triwulan
+    let cumulative = 0;
+    Object.keys(triwulan).forEach(tri => {
+      let triwulanTotal = 0;
+      triwulan[tri].forEach(month => {
+        const input = document.querySelector(`.goal-input[data-item-id="${itemId}"][data-month="${month}"]`);
+        const value = input ? parseInt(input.value) || 0 : 0;
+        triwulanTotal += value;
+      });
+      cumulative += triwulanTotal;
+      const triwulanInput = document.querySelector(`.triwulan-input[data-item-id="${itemId}"][data-triwulan="${tri}"]`);
+      if (triwulanInput) {
+        triwulanInput.value = cumulative;
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    isEditMode = false;
+    const goalInputs = document.querySelectorAll('.goal-input');
+    const targetInputs = document.querySelectorAll('.target-input');
+    const triwulanInputs = document.querySelectorAll('.triwulan-input');
+
+    // Disable all inputs by default
+    goalInputs.forEach(input => input.setAttribute('disabled', 'true'));
+    targetInputs.forEach(input => input.setAttribute('disabled', 'true'));
+    triwulanInputs.forEach(input => input.setAttribute('readonly', 'true'));
+
+    // Add event listeners to goal inputs to update triwulan totals on change
+    goalInputs.forEach(input => {
+      input.addEventListener('input', () => {
+        if (selectedKegiatanId === input.dataset.itemId) {
+          updateTriwulanTotals(input.dataset.itemId);
+        }
+      });
+    });
+  });
+</script>

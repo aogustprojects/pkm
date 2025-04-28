@@ -13,18 +13,29 @@ class DashboardKegiatanController extends Controller
      */
     public function index(Request $request)
     {
-        $query = RealisasiKegiatan::with('kegiatan');
+        // Get distinct years from realisasi_kegiatans for the filter dropdown
+        $years = RealisasiKegiatan::select('tahun')
+            ->distinct()
+            ->orderBy('tahun', 'desc')
+            ->pluck('tahun')
+            ->toArray();
 
-        // Search functionality
-        if ($request->has('search') && $request->search) {
-            $query->whereHas('kegiatan', function ($q) use ($request) {
-                $q->where('nama_kegiatan', 'like', '%' . $request->search . '%');
-            });
-        }
+        // Default to the current year if no year is selected
+        $selectedYear = $request->input('year', now()->year);
 
-        $data = $query->get();
+        // Fetch Kegiatan records that have a RealisasiKegiatan for the selected year
+        $data = Kegiatan::with(['realisasi' => function ($query) use ($selectedYear) {
+                $query->where('tahun', $selectedYear);
+            }])
+            ->whereHas('realisasi', function ($query) use ($selectedYear) {
+                $query->where('tahun', $selectedYear);
+            })
+            ->when($request->search, function ($query, $search) {
+                return $query->where('nama_kegiatan', 'like', "%{$search}%");
+            })
+            ->get();
 
-        return view('dashboard.kegiatan.index', compact('data'));
+        return view('dashboard.kegiatan.index', compact('data', 'years', 'selectedYear'));
     }
 
     /**
@@ -32,8 +43,7 @@ class DashboardKegiatanController extends Controller
      */
     public function create()
     {
-        $kegiatans = Kegiatan::all();
-        return view('dashboard.kegiatan.create', compact('kegiatans'));
+        return view('dashboard.kegiatan.create');
     }
 
     /**
@@ -46,20 +56,20 @@ class DashboardKegiatanController extends Controller
             'pj_kegiatan' => 'required|string|max:255',
         ]);
 
-        // Create the Kegiatan record
         $kegiatan = Kegiatan::create($validated);
 
-        // Automatically create a RealisasiKegiatan record with default values
         RealisasiKegiatan::create([
             'kegiatan_id' => $kegiatan->id,
-            'bulan' => 1, // Default: January
-            'tahun' => now()->year, // Default: Current year (2025)
-            'target' => 0, // Default: 0
-            'realisasi' => 0, // Default: 0
-            'persentase' => 0.00, // Default: 0%
+            'tahun' => now()->year,
+            'target' => 0,
+            'realisasi' => 0,
+            'persentase' => 0.00,
+            'goals' => [],
+            'target_bulanan' => [],
         ]);
 
-        return redirect('/dashboard/kegiatan')->with('success', 'Kegiatan dan Realisasi awal berhasil ditambahkan!');
+        return redirect()->route('dashboard.kegiatan.index')
+            ->with('success', 'Kegiatan dan Realisasi awal berhasil ditambahkan!');
     }
 
     /**
@@ -92,5 +102,57 @@ class DashboardKegiatanController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    /**
+     * Update goals and monthly targets for kegiatan.
+     */
+    public function updateGoalsAndTargets(Request $request)
+    {
+        $request->validate([
+            'goals' => 'required|array',
+            'goals.*.*' => 'nullable|numeric|min:0',
+            'target_bulanan' => 'required|array',
+            'target_bulanan.*.*' => 'nullable|numeric|min:0',
+        ]);
+
+        $goals = $request->input('goals', []);
+        $target_bulanan = $request->input('target_bulanan', []);
+        $selectedYear = $request->input('year', now()->year);
+
+        foreach ($goals as $kegiatanId => $monthlyGoals) {
+            $realisasi = RealisasiKegiatan::firstOrCreate(
+                ['kegiatan_id' => $kegiatanId, 'tahun' => $selectedYear],
+                ['tahun' => $selectedYear]
+            );
+
+            // Update goals
+            $realisasi->goals = $monthlyGoals;
+
+            // Update target_bulanan if provided
+            if (isset($target_bulanan[$kegiatanId])) {
+                $realisasi->target_bulanan = $target_bulanan[$kegiatanId];
+            }
+
+            // Calculate realisasi (sum of goals)
+            $totalRealisasi = array_sum(array_map('intval', $monthlyGoals));
+
+            // Calculate target (sum of target_bulanan)
+            $totalTarget = isset($target_bulanan[$kegiatanId])
+                ? array_sum(array_map('intval', $target_bulanan[$kegiatanId]))
+                : 0;
+
+            // Calculate persentase
+            $persentase = $totalTarget > 0 ? round(($totalRealisasi / $totalTarget) * 100, 2) : 0.00;
+
+            // Update realisasi fields
+            $realisasi->realisasi = $totalRealisasi;
+            $realisasi->target = $totalTarget;
+            $realisasi->persentase = $persentase;
+
+            $realisasi->save();
+        }
+
+        return redirect()->back()->with('success', 'Goals dan Target Bulanan berhasil diperbarui!');
     }
 }

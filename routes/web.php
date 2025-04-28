@@ -113,8 +113,8 @@ Route::resource('/poli-gigi-rujukan', PoliGigiRujukanController::class)->middlew
 
 Route::resource('/dashboard/poli-gigi-rujukan', DashboardPoliGigiRujukanController::class)->middleware('auth');
 
-Route::resource('dashboard/kegiatan', DashboardKegiatanController::class)->names('dashboard.kegiatan');
-
-Route::get('/dashboard/realisasi-kegiatan/kegiatan/{id}', [DashboardRealisasiKegiatanController::class, 'showByKegiatan'])->name('dashboard.realisasi-kegiatan.byKegiatan');
-
-Route::resource('dashboard/realisasi-kegiatan', DashboardRealisasiKegiatanController::class)->names('dashboard.realisasi-kegiatan');
+// Assuming this is part of your routes/web.php
+Route::get('/dashboard/kegiatan', [DashboardKegiatanController::class, 'index'])->name('dashboard.kegiatan.index');
+Route::get('/dashboard/kegiatan/create', [DashboardKegiatanController::class, 'create'])->name('dashboard.kegiatan.create');
+Route::post('/dashboard/kegiatan', [DashboardKegiatanController::class, 'store'])->name('dashboard.kegiatan.store');
+Route::post('/dashboard/kegiatan/update-goals', [DashboardKegiatanController::class, 'updateGoalsAndTargets'])->name('dashboard.kegiatan.update-goals');
