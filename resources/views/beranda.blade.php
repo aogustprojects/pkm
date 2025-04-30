@@ -78,95 +78,109 @@
   </a>
 </div>
 
-  
 <section class="bg-white rounded-2xl dark:bg-gray-900">
   <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
       <div class="mb-8 lg:mb-16">
           <h2 class="mb-4 text-4xl text-center tracking-tight font-extrabold text-gray-900 dark:text-white">Jenis Layanan Puskesmas Pasir Jati</h2>
       </div>
       <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0 place-items-center">
-          <div class="w-full h-full p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center">
+          <div class="w-full h-full p-6 bg-white hover:bg-gray-300 dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center cursor-pointer" onclick="openModal('Pemeriksaan Umum', 'Pemeriksaan umum adalah proses evaluasi kesehatan dasar yang dilakukan oleh tenaga medis (seperti dokter atau perawat) untuk menilai kondisi kesehatan seseorang secara menyeluruh.')">
             <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
               <i class="fa-solid fa-stethoscope"></i>
             </div>
             <h3 class="mb-2 text-xl font-bold dark:text-white">Pemeriksaan Umum</h3>
-            <p class="text-gray-500 dark:text-gray-400 text-center">Pemeriksaan umum adalah proses evaluasi kesehatan dasar yang dilakukan oleh tenaga medis (seperti dokter atau perawat) untuk menilai kondisi kesehatan seseorang secara menyeluruh.</p>
           </div>
-          <div class="w-full h-full p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center">
+          <div class="w-full h-full p-6 bg-white  hover:bg-gray-300 dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center cursor-pointer" onclick="openModal('Pemeriksaan Lansia', 'Pemeriksaan lansia di Puskesmas adalah layanan kesehatan yang ditujukan khusus untuk orang lanjut usia (lansia) dengan tujuan memantau dan menjaga kesehatan mereka.')">
             <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
                 <i class="fa-solid fa-blind"></i>
               </div>
               <h3 class="mb-2 text-xl font-bold dark:text-white">Pemeriksaan Lansia</h3>
-              <p class="text-gray-500 dark:text-gray-400 text-center">Pemeriksaan lansia di Puskesmas adalah layanan kesehatan yang ditujukan khusus untuk orang lanjut usia (lansia) dengan tujuan memantau dan menjaga kesehatan mereka.</p>
           </div>
-          <div class="w-full h-full p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center">
+          <div class="w-full h-full p-6 bg-white hover:bg-gray-300 dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center cursor-pointer" onclick="openModal('Pemeriksaan Gigi & Mulut', 'Pemeriksaan gigi dan mulut di Puskesmas adalah layanan kesehatan yang disediakan untuk memeriksa, mendiagnosis, dan memberikan perawatan dasar terkait kesehatan gigi dan mulut.')">
             <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
                 <i class="fa-solid fa-tooth"></i>                
               </div>
               <h3 class="mb-2 text-xl font-bold dark:text-white">Pemeriksaan Gigi & Mulut</h3>
-              <p class="text-gray-500 dark:text-gray-400 text-center">Pemeriksaan gigi dan mulut di Puskesmas (Pusat Kesehatan Masyarakat) adalah layanan kesehatan yang disediakan untuk memeriksa, mendiagnosis, dan memberikan perawatan dasar terkait kesehatan gigi dan mulut.</p>
               <a href="/poli-gigi" class="hover:text-blue-700 hover:underline mt-3 bg-primary-100 py-2 px-2 rounded-md text-black text-sm hover:">Link Daftar Poli Gigi</a>
           </div>
-          <div class="w-full h-full p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center">
+          <div class="w-full h-full p-6 bg-white hover:bg-gray-300 dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center cursor-pointer" onclick="openModal('Pemeriksaan KIA & KB', 'Pemeriksaan KIA (Kesehatan Ibu dan Anak) dan KB (Keluarga Berencana) adalah layanan kesehatan yang ditujukan untuk menjaga dan meningkatkan kesehatan ibu, anak, serta merencanakan kehamilan.')">
             <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
                 <i class="fa-solid fa-baby"></i>
               </div>
               <h3 class="mb-2 text-xl font-bold dark:text-white">Pemeriksaan KIA & KB</h3>
-              <p class="text-gray-500 dark:text-gray-400 text-center">Pemeriksaan KIA (Kesehatan Ibu dan Anak) dan KB (Keluarga Berencana) adalah layanan kesehatan yang ditujukan untuk menjaga dan meningkatkan kesehatan ibu, anak, serta merencanakan kehamilan dan pengaturan jarak kelahiran.</p>
           </div>
-          <div class="w-full h-full p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center">
+          <div class="w-full h-full p-6 bg-white hover:bg-gray-300 dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center cursor-pointer" onclick="openModal('Pemeriksaan MTBS & MTBM', 'Pemeriksaan MTBS (Manajemen Terpadu Balita Sakit) dan MTBM (Manajemen Terpadu Bayi Muda) adalah pendekatan terintegrasi untuk menangani masalah kesehatan pada balita dan bayi muda.')">
             <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
                 <i class="fa-solid fa-child"></i>
               </div>
               <h3 class="mb-2 text-xl font-bold dark:text-white">Pemeriksaan MTBS & MTBM</h3>
-              <p class="text-gray-500 dark:text-gray-400 text-center">Pemeriksaan MTBS (Manajemen Terpadu Balita Sakit) dan MTBM (Manajemen Terpadu Bayi Muda) adalah pendekatan terintegrasi yang dirancang oleh Organisasi Kesehatan Dunia (WHO) untuk menangani masalah kesehatan pada balita (anak di bawah 5 tahun) dan bayi muda (bayi di bawah 2 bulan).</p>
           </div>
-          <div class="w-full h-full p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center">
+          <div class="w-full h-full p-6 bg-white hover:bg-gray-300 dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center cursor-pointer" onclick="openModal('Pemeriksaan TB', 'Pemeriksaan TB (Tuberkulosis) adalah serangkaian prosedur diagnostik untuk mendeteksi infeksi bakteri Mycobacterium tuberculosis.')">
             <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
                 <i class="fa-solid fa-lungs-virus"></i>
               </div>
               <h3 class="mb-2 text-xl font-bold dark:text-white">Pemeriksaan TB</h3>
-              <p class="text-gray-500 dark:text-gray-400 text-center">Pemeriksaan TB (Tuberkulosis) adalah serangkaian prosedur diagnostik yang dilakukan untuk mendeteksi dan memastikan adanya infeksi bakteri Mycobacterium tuberculosis, penyebab penyakit tuberkulosis.</p>
           </div>
-          <div class="w-full h-full p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center">
+          <div class="w-full h-full p-6 bg-white hover:bg-gray-300 dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center cursor-pointer" onclick="openModal('Konseling Gizi', 'Konseling Gizi adalah proses interaktif untuk memberikan panduan, edukasi, dan dukungan terkait pola makan dan gizi.')">
             <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
               <i class="fa-brands fa-nutritionix"></i>
             </div>
             <h3 class="mb-2 text-xl font-bold dark:text-white">Konseling Gizi</h3>
-            <p class="text-gray-500 dark:text-gray-400 text-center">Konseling Gizi adalah proses interaktif antara seorang ahli gizi (nutritionist atau dietisien) dengan individu atau kelompok untuk memberikan panduan, edukasi, dan dukungan terkait pola makan dan gizi.</p>
           </div>
-          <div class="w-full h-full p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center">
+          <div class="w-full h-full p-6 bg-white hover:bg-gray-300 dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center cursor-pointer" onclick="openModal('Konseling Sanitasi', 'Konseling Sanitasi adalah edukasi tentang menjaga kebersihan dan sanitasi lingkungan untuk mencegah penyakit.')">
             <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
               <i class="fa-solid fa-hand-holding-droplet"></i>
             </div>
             <h3 class="mb-2 text-xl font-bold dark:text-white">Konseling Sanitasi</h3>
-            <p class="text-gray-500 dark:text-gray-400 text-center">Konseling Sanitasi adalah proses edukasi dan bimbingan yang diberikan kepada individu, keluarga, atau masyarakat tentang pentingnya menjaga kebersihan dan sanitasi lingkungan untuk mencegah penyakit dan meningkatkan kualitas hidup.</p>
           </div>
-          <div class="w-full h-full p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center">
+          <div class="w-full h-full p-6 bg-white hover:bg-gray-300 dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center cursor-pointer" onclick="openModal('Promosi Kesehatan', 'Promosi Kesehatan adalah upaya untuk meningkatkan kesadaran dan kemampuan masyarakat dalam mengendalikan faktor-faktor yang memengaruhi kesehatan.')">
             <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
               <i class="fa-solid fa-hands-holding"></i>
             </div>
             <h3 class="mb-2 text-xl font-bold dark:text-white">Promosi Kesehatan</h3>
-            <p class="text-gray-500 dark:text-gray-400 text-center">Promosi Kesehatan adalah upaya yang dilakukan untuk meningkatkan kesadaran, pengetahuan, dan kemampuan masyarakat dalam mengendalikan faktor-faktor yang memengaruhi kesehatan, sehingga mereka dapat hidup lebih sehat.</p>
           </div>
-          <div class="w-full h-full p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center">
+          <div class="w-full h-full p-6 bg-white hover:bg-gray-300 dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center cursor-pointer" onclick="openModal('Laboratorium', 'Laboratorium adalah fasilitas yang menyediakan layanan pemeriksaan medis untuk mendukung diagnosis, pengobatan, dan pencegahan penyakit.')">
             <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
               <i class="fa-solid fa-microscope"></i>
             </div>
             <h3 class="mb-2 text-xl font-bold dark:text-white">Laboratorium</h3>
-            <p class="text-gray-500 dark:text-gray-400 text-center">Laboratorium adalah unit atau fasilitas yang menyediakan layanan pemeriksaan medis untuk mendukung diagnosis, pengobatan, dan pencegahan penyakit. Laboratorium ini dilengkapi dengan peralatan dan tenaga ahli (seperti analis kesehatan atau teknisi laboratorium) yang bertugas melakukan berbagai tes dan analisis terhadap sampel biologis, seperti darah, urine, feses, atau jaringan tubuh.</p>
           </div>
-          <div class="w-full h-full p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center">
+          <div class="w-full h-full p-6 bg-white hover:bg-gray-300 dark:bg-gray-800 rounded-lg shadow-md flex flex-col items-center text-center cursor-pointer" onclick="openModal('Farmasi', 'Farmasi adalah unit yang mengelola obat-obatan dan memberikan pelayanan kefarmasian untuk memastikan pasien mendapatkan obat yang tepat.')">
             <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
               <i class="fa-solid fa-prescription-bottle-medical"></i>
             </div>
             <h3 class="mb-2 text-xl font-bold dark:text-white">Farmasi</h3>
-            <p class="text-gray-500 dark:text-gray-400 text-center">Farmasi adalah unit atau bagian yang bertanggung jawab untuk mengelola obat-obatan dan memberikan pelayanan kefarmasian kepada masyarakat. Unit ini dikelola oleh apoteker dan tenaga teknis kefarmasian yang memastikan bahwa pasien mendapatkan obat yang tepat, aman, dan efektif sesuai dengan resep dokter.</p>
           </div>
       </div>
   </div>
+
+  <!-- Modal -->
+  <div id="serviceModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-lg w-full p-6 relative">
+      <button onclick="closeModal()" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-100">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+      <h3 id="modalTitle" class="text-xl font-bold text-gray-900 dark:text-white mb-4"></h3>
+      <p id="modalDescription" class="text-gray-500 dark:text-gray-400"></p>
+    </div>
+  </div>
 </section>
 
+<script>
+function openModal(title, description) {
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalDescription').textContent = description;
+  const modal = document.getElementById('serviceModal');
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+}
 
-
+function closeModal() {
+  const modal = document.getElementById('serviceModal');
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+}
+</script>
 </x-layout>

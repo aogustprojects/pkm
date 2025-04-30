@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PoliGigi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class PoliGigiController extends Controller
 {
@@ -30,50 +31,64 @@ class PoliGigiController extends Controller
      */
     public function store(Request $request)
     {
-    // Set the maximum number of patients per day
-    $maxRegistrationsPerDay = 8;  
-    $today = Carbon::now('Asia/Jakarta')->format('Y-m-d'); 
+        // Validate form input
+        $validated = $request->validate([
+            'nama' => 'required|string|max:255',
+            'nik' => 'required|string|max:16',
+            'status_pasien' => 'required|in:baru,lama',
+            'jenis_kelamin' => 'required|in:Laki-Laki,Perempuan',
+            'jenis_pasien' => 'required|in:BPJS,Umum',
+            'no_bpjs' => 'nullable|required_if:jenis_pasien,BPJS|string|max:13',
+            'alamat' => 'required|string|max:500',
+        ]);
 
-    // Check if NIK already registered today
-    $existingEntry = PoliGigi::where('nik', $request->nik)
-                            ->whereDate('created_at', $today)
-                            ->exists();
+        $today = Carbon::now('Asia/Jakarta')->format('Y-m-d');
 
-    if ($existingEntry) {
-        return redirect()->back()->with('error', 'NIK ini sudah terdaftar hari ini. Silakan daftar ulang jam 08.00 di Puskesmas Pasir Jati.');
-    }
+        // Start a database transaction
+        return DB::transaction(function () use ($request, $validated, $today) {
+            // Lock the settings table to prevent concurrent modifications
+            $settings = DB::table('setting_poli_gigi')
+                ->lockForUpdate()
+                ->first();
 
-    // Count how many registrations have been made today
-    $currentRegistrations = PoliGigi::whereDate('created_at', $today)->count();
+            $maxRegistrationsPerDay = $settings ? $settings->max_registrations : 8;
+            $isFormOpen = $settings ? (bool) $settings->is_form_open : true;
 
-    // Check if the quota has been reached
-    if ($currentRegistrations >= $maxRegistrationsPerDay) {
-        return redirect()->back()->with('error', 'Pendaftaran untuk hari ini sudah penuh. Silakan daftar besok.');
-    }
+            // Check if form is closed
+            if (!$isFormOpen) {
+                return redirect()->back()->with('error', 'Pendaftaran ditutup!');
+            }
 
-    // Validate form input
-    $validated = $request->validate([
-        'nama' => 'required|string|max:255',
-        'nik' => 'required|string|max:16',
-        'status_pasien' => 'required|in:baru,lama',
-        'jenis_kelamin' => 'required|in:Laki-Laki,Perempuan',
-        'jenis_pasien' => 'required|in:BPJS,Umum',
-        'no_bpjs' => 'nullable|required_if:jenis_pasien,BPJS|string|max:13',
-        'alamat' => 'required|string|max:500',
-    ]);
+            // Check if NIK already registered today
+            $existingEntry = PoliGigi::where('nik', $validated['nik'])
+                ->whereDate('created_at', $today)
+                ->exists();
 
-    // Save new registration if quota is available
-    $poliGigi = new PoliGigi();
-    $poliGigi->nama = $validated['nama'];
-    $poliGigi->nik = $validated['nik'];
-    $poliGigi->status_pasien = $validated['status_pasien'];
-    $poliGigi->jenis_kelamin = $validated['jenis_kelamin'];
-    $poliGigi->jenis_pasien = $validated['jenis_pasien'];
-    $poliGigi->no_bpjs = $validated['jenis_pasien'] === 'BPJS' ? $validated['no_bpjs'] : null;
-    $poliGigi->alamat = $validated['alamat'];
-    $poliGigi->save();
+            if ($existingEntry) {
+                return redirect()->back()->with('error', 'NIK ini sudah terdaftar hari ini. Silakan daftar ulang jam 08.00 di Puskesmas Pasir Jati.');
+            }
 
-    return redirect('poli-gigi')->with('success', 'Pendaftaran berhasil!');
+            // Count how many registrations have been made today
+            $currentRegistrations = PoliGigi::whereDate('created_at', $today)->count();
+
+            // Check if the quota has been reached
+            if ($currentRegistrations >= $maxRegistrationsPerDay) {
+                return redirect()->back()->with('error', 'Pendaftaran untuk hari ini sudah penuh. Silakan daftar besok.');
+            }
+
+            // Save new registration
+            $poliGigi = new PoliGigi();
+            $poliGigi->nama = $validated['nama'];
+            $poliGigi->nik = $validated['nik'];
+            $poliGigi->status_pasien = $validated['status_pasien'];
+            $poliGigi->jenis_kelamin = $validated['jenis_kelamin'];
+            $poliGigi->jenis_pasien = $validated['jenis_pasien'];
+            $poliGigi->no_bpjs = $validated['jenis_pasien'] === 'BPJS' ? $validated['no_bpjs'] : null;
+            $poliGigi->alamat = $validated['alamat'];
+            $poliGigi->save();
+
+            return redirect('poli-gigi')->with('success', 'Pendaftaran berhasil!');
+        });
     }
 
 
