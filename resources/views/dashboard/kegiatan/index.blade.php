@@ -45,7 +45,6 @@
               </form>
 
               <div class="flex items-center space-x-2">
-                <!-- Save and Edit Buttons -->
                 <button type="button" id="edit-btn" onclick="toggleEditMode(true)"
                   class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 text-sm">
                   Edit
@@ -80,18 +79,11 @@
                   <tbody>
                     @forelse ($data as $item)
                       @php
-                        // Get the RealisasiKegiatan record for the selected year
                         $realisasi = $item->realisasi->first();
-                        
-                        // Calculate the sum of goals (realisasi)
                         $goals = $realisasi ? ($realisasi->goals ?? []) : [];
                         $totalRealisasi = array_sum(array_map('intval', $goals));
-                        
-                        // Calculate the sum of target_bulanan
                         $target_bulanan = $realisasi ? ($realisasi->target_bulanan ?? []) : [];
                         $totalTarget = array_sum(array_map('intval', $target_bulanan));
-                        
-                        // Calculate persentase (realisasi / target * 100)
                         $persentase = $totalTarget > 0 ? round(($totalRealisasi / $totalTarget) * 100, 2) : 0;
                       @endphp
                       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 kegiatan-row" data-item-id="{{ $item->id }}">
@@ -111,18 +103,16 @@
                         <td class="px-6 py-4 text-center">
                           {{ $totalRealisasi }}
                         </td>
-                        <td class="px-6 py-4 text-center">
+                        <td class="px-6 py-4 text-center {{ $persentase == 100 ? 'text-green-500 bg-green-100 dark:bg-green-900 dark:text-green-300' : 'text-red-500 bg-red-100 dark:bg-red-900 dark:text-red-300' }}">
                           {{ $persentase }}%
                         </td>
                       </tr>
-                      <!-- Target Bulanan Heading -->
                       <tr class="bg-gray-100 dark:bg-gray-600 kegiatan-details hidden" data-item-id="{{ $item->id }}">
                         <td colspan="7" class="px-6 py-2">
                           <p class="text-sm text-center font-semibold text-gray-800 dark:text-gray-200">Target Bulanan</p>
                           <hr>
                         </td>
                       </tr>
-                      <!-- Target Bulanan Row -->
                       <tr class="bg-gray-100 dark:bg-gray-600 kegiatan-details hidden" data-item-id="{{ $item->id }}">
                         <td colspan="7" class="px-6 py-4">
                           <div class="grid grid-cols-12 gap-2">
@@ -132,20 +122,20 @@
                                 <input type="number" name="target_bulanan[{{ $item->id }}][{{ strtolower($month) }}]"
                                   value="{{ $realisasi ? ($realisasi->target_bulanan[strtolower($month)] ?? '') : '' }}"
                                   class="target-input w-24 text-center border border-gray-300 rounded-lg p-1 focus:ring-blue-500 focus:border-blue-500"
+                                  data-item-id="{{ $item->id }}"
+                                  data-month="{{ strtolower($month) }}"
                                   disabled />
                               </div>
                             @endforeach
                           </div>
                         </td>
                       </tr>
-                      <!-- Realisasi Bulanan Heading -->
                       <tr class="bg-gray-50 dark:bg-gray-700 kegiatan-details hidden" data-item-id="{{ $item->id }}">
                         <td colspan="7" class="px-6 py-2">
                           <p class="text-sm text-center font-semibold text-gray-800 dark:text-gray-200">Realisasi Bulanan</p>
                           <hr>
                         </td>
                       </tr>
-                      <!-- Goals Row -->
                       <tr class="bg-gray-50 dark:bg-gray-700 kegiatan-details hidden" data-item-id="{{ $item->id }}">
                         <td colspan="7" class="px-6 py-4">
                           <div class="grid grid-cols-12 gap-2">
@@ -163,14 +153,12 @@
                           </div>
                         </td>
                       </tr>
-                      <!-- Realisasi Kumulatif Per Triwulan Heading -->
                       <tr class="bg-gray-50 dark:bg-gray-700 kegiatan-details hidden" data-item-id="{{ $item->id }}">
                         <td colspan="7" class="px-6 py-2">
                           <p class="text-sm text-center font-semibold text-gray-800 dark:text-gray-200">Realisasi Kumulatif Per Triwulan</p>
                           <hr>
                         </td>
                       </tr>
-                      <!-- Triwulan Cumulative Row -->
                       <tr class="bg-gray-50 dark:bg-gray-700 kegiatan-details hidden" data-item-id="{{ $item->id }}">
                         <td colspan="7" class="px-6 py-4">
                           <div class="grid grid-cols-12 gap-2">
@@ -182,6 +170,11 @@
                                   data-item-id="{{ $item->id }}"
                                   data-triwulan="{{ strtolower(str_replace(' ', '', $triwulan)) }}"
                                   readonly />
+                                <span class="triwulan-percentage text-sm mt-1"
+                                  data-item-id="{{ $item->id }}"
+                                  data-triwulan="{{ strtolower(str_replace(' ', '', $triwulan)) }}">
+                                  0%
+                                </span>
                               </div>
                             @endforeach
                           </div>
@@ -204,7 +197,6 @@
 </div>
 
 <style>
-  /* Hide the up and down arrows (spinners) for input[type="number"] */
   input.goal-input[type="number"],
   input.target-input[type="number"],
   input.triwulan-input[type="number"] {
@@ -223,13 +215,32 @@
     margin: 0;
   }
 
-  /* Highlight selected kegiatan row */
   .kegiatan-row.selected {
-    background-color: #e0f2fe; /* Light blue for light mode */
+    background-color: #e0f2fe;
   }
 
   .dark .kegiatan-row.selected {
-    background-color: #1e40af; /* Darker blue for dark mode */
+    background-color: #1e40af;
+  }
+
+  .triwulan-percentage.percentage-100 {
+    color: #22c55e; /* Green-500 */
+    background-color: #dcfce7; /* Green-100 */
+  }
+
+  .dark .triwulan-percentage.percentage-100 {
+    color: #86efac; /* Green-300 */
+    background-color: #14532d; /* Green-900 */
+  }
+
+  .triwulan-percentage.percentage-below-100 {
+    color: #ef4444; /* Red-500 */
+    background-color: #fee2e2; /* Red-100 */
+  }
+
+  .dark .triwulan-percentage.percentage-below-100 {
+    color: #f87171; /* Red-300 */
+    background-color: #7f1d1d; /* Red-900 */
   }
 </style>
 
@@ -250,7 +261,7 @@
       saveBtn.classList.remove('hidden');
       goalInputs.forEach(input => input.removeAttribute('disabled'));
       targetInputs.forEach(input => input.removeAttribute('disabled'));
-      triwulanInputs.forEach(input => input.setAttribute('readonly', 'true')); // Ensure triwulan inputs remain readonly
+      triwulanInputs.forEach(input => input.setAttribute('readonly', 'true'));
     } else {
       editBtn.classList.remove('hidden');
       saveBtn.classList.add('hidden');
@@ -261,7 +272,6 @@
   }
 
   function selectKegiatan(itemId) {
-    // If the same kegiatan is clicked, hide its details
     if (selectedKegiatanId === itemId) {
       document.querySelectorAll(`.kegiatan-details[data-item-id="${itemId}"]`).forEach(row => {
         row.classList.add('hidden');
@@ -274,22 +284,18 @@
       return;
     }
 
-    // Hide all kegiatan details
     document.querySelectorAll('.kegiatan-details').forEach(row => {
       row.classList.add('hidden');
     });
 
-    // Remove selected class from all rows
     document.querySelectorAll('.kegiatan-row').forEach(row => {
       row.classList.remove('selected');
     });
 
-    // Show details for the selected kegiatan
     document.querySelectorAll(`.kegiatan-details[data-item-id="${itemId}"]`).forEach(row => {
       row.classList.remove('hidden');
     });
 
-    // Highlight the selected row
     const selectedRow = document.querySelector(`.kegiatan-row[data-item-id="${itemId}"]`);
     if (selectedRow) {
       selectedRow.classList.add('selected');
@@ -308,19 +314,55 @@
       triwulan4: ['okt', 'nov', 'des']
     };
 
-    // Calculate cumulative totals for each triwulan
-    let cumulative = 0;
+    let cumulativeGoals = 0;
+    let cumulativeTarget = 0;
+
     Object.keys(triwulan).forEach(tri => {
-      let triwulanTotal = 0;
+      let triwulanGoalsTotal = 0;
+      let triwulanTargetTotal = 0;
+      let hasInput = false;
+
       triwulan[tri].forEach(month => {
-        const input = document.querySelector(`.goal-input[data-item-id="${itemId}"][data-month="${month}"]`);
-        const value = input ? parseInt(input.value) || 0 : 0;
-        triwulanTotal += value;
+        const goalInput = document.querySelector(`.goal-input[data-item-id="${itemId}"][data-month="${month}"]`);
+        const targetInput = document.querySelector(`.target-input[data-item-id="${itemId}"][data-month="${month}"]`);
+        const goalValue = goalInput ? parseInt(goalInput.value) || 0 : 0;
+        const targetValue = targetInput ? parseInt(targetInput.value) || 0 : 0;
+        triwulanGoalsTotal += goalValue;
+        triwulanTargetTotal += targetValue;
+        if (goalValue > 0 || targetValue > 0) {
+          hasInput = true;
+        }
       });
-      cumulative += triwulanTotal;
+
       const triwulanInput = document.querySelector(`.triwulan-input[data-item-id="${itemId}"][data-triwulan="${tri}"]`);
-      if (triwulanInput) {
-        triwulanInput.value = cumulative;
+      const percentageSpan = document.querySelector(`.triwulan-percentage[data-item-id="${itemId}"][data-triwulan="${tri}"]`);
+
+      if (hasInput) {
+        cumulativeGoals += triwulanGoalsTotal;
+        cumulativeTarget += triwulanTargetTotal;
+
+        if (triwulanInput) {
+          triwulanInput.value = cumulativeGoals;
+        }
+
+        if (percentageSpan) {
+          const percentage = cumulativeTarget > 0 ? Math.round((cumulativeGoals / cumulativeTarget) * 100) : 0;
+          percentageSpan.textContent = `${percentage}%`;
+          percentageSpan.classList.remove('percentage-100', 'percentage-below-100');
+          if (percentage === 100) {
+            percentageSpan.classList.add('percentage-100');
+          } else {
+            percentageSpan.classList.add('percentage-below-100');
+          }
+        }
+      } else {
+        if (triwulanInput) {
+          triwulanInput.value = '';
+        }
+        if (percentageSpan) {
+          percentageSpan.textContent = '';
+          percentageSpan.classList.remove('percentage-100', 'percentage-below-100');
+        }
       }
     });
   }
@@ -331,13 +373,19 @@
     const targetInputs = document.querySelectorAll('.target-input');
     const triwulanInputs = document.querySelectorAll('.triwulan-input');
 
-    // Disable all inputs by default
     goalInputs.forEach(input => input.setAttribute('disabled', 'true'));
     targetInputs.forEach(input => input.setAttribute('disabled', 'true'));
     triwulanInputs.forEach(input => input.setAttribute('readonly', 'true'));
 
-    // Add event listeners to goal inputs to update triwulan totals on change
     goalInputs.forEach(input => {
+      input.addEventListener('input', () => {
+        if (selectedKegiatanId === input.dataset.itemId) {
+          updateTriwulanTotals(input.dataset.itemId);
+        }
+      });
+    });
+
+    targetInputs.forEach(input => {
       input.addEventListener('input', () => {
         if (selectedKegiatanId === input.dataset.itemId) {
           updateTriwulanTotals(input.dataset.itemId);
