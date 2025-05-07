@@ -5,20 +5,20 @@
       <article class="mx-auto w-full max-w-4xl bg-white/90 backdrop-blur-lg rounded-xl shadow-lg border border-gray-200/20 p-6">
         <header class="mb-4 lg:mb-6">
           <a href="/postingan" class="font-medium text-sm text-teal-600 hover:text-teal-500 transition-colors duration-300">« Kembali ke Postingan</a>
-          <address class="flex items-center my-6">
+          <div class="flex items-center my-6 font-normal">
             <div class="inline-flex items-center mr-3 text-sm text-gray-800">
               <img class="mr-4 w-16 h-16 rounded-full border border-teal-500/50" src="{{ asset('img/logo pkm.png') }}" alt="{{ $post->author->name }}">
               <div>
                 <a href="/postingan?author={{ $post->author->username }}" rel="author" class="text-xl font-bold text-gray-800 hover:text-teal-600 transition-colors duration-300">{{ $post->author->name }}</a>
                 <p class="text-sm text-gray-600 mb-1">{{ $post->created_at->diffForHumans() }}</p>
                 <a href="/postingan?category={{ $post->category->slug }}">
-                  <span class="bg-teal-500/20 text-teal-600 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded hover:bg-teal-500/30 transition-all duration-300">
+                  <span class="bg-{{ $post->category->color }}-100 text-{{ $post->category->color }}-800 text-xs font-medium px-3 py-1 rounded-full dark:bg-{{ $post->category->color }}-200 dark:text-{{ $post->category->color }}-800 hover:bg-{{ $post->category->color }}-200 transition-colors duration-200">
                     {{ $post->category->name }}
-                  </span>
+                </span>
                 </a>
               </div>
             </div>
-          </address>
+          </div>
           <a href="#">
             <img class="mb-5 w-full object-cover rounded-lg border border-gray-200/20" src="{{ asset('storage/' . $post->image) }}" alt="" />
           </a>

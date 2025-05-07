@@ -45,9 +45,9 @@
           @endif
           <div class="flex justify-between items-center py-5 text-gray-700">
             <a href="/postingan?category={{ $post->category->slug }}">
-              <span class="bg-teal-500/20 text-teal-600 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded">
+              <span class="bg-{{ $post->category->color }}-100 text-{{ $post->category->color }}-800 text-xs font-medium px-3 py-1 rounded-full dark:bg-{{ $post->category->color }}-200 dark:text-{{ $post->category->color }}-800 hover:bg-{{ $post->category->color }}-200 transition-colors duration-200">
                 {{ $post->category->name }}
-              </span>
+            </span>
             </a>
             <span class="text-xs items-center">{{ $post->created_at->diffForHumans() }}</span>
           </div>
