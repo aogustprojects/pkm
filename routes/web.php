@@ -3,27 +3,18 @@
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
-use App\Models\PoliGigi;
 use Illuminate\Http\Request;
-use App\Models\PoliGigiRujukan;
-use App\Models\RealisasiKegiatan;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PoliGigiController;
-use App\Http\Controllers\PelayananController;
 use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\ArsipSuratMasukController;
 use App\Http\Controllers\PoliGigiRujukanController;
 use App\Http\Controllers\ArsipSuratKeluarController;
-use App\Http\Controllers\PelayananBulananController;
 use App\Http\Controllers\DashboardKegiatanController;
 use App\Http\Controllers\DashboardPoliGigiController;
-use App\Http\Controllers\RealisasiKegiatanController;
 use App\Http\Controllers\DashboardPoliGigiRujukanController;
-use App\Http\Controllers\DashboardRealisasiKegiatanController;
 
 Route::get('/', function () {
     return view('beranda', [
@@ -118,3 +109,4 @@ Route::get('/dashboard/kegiatan', [DashboardKegiatanController::class, 'index'])
 Route::get('/dashboard/kegiatan/create', [DashboardKegiatanController::class, 'create'])->name('dashboard.kegiatan.create');
 Route::post('/dashboard/kegiatan', [DashboardKegiatanController::class, 'store'])->name('dashboard.kegiatan.store');
 Route::post('/dashboard/kegiatan/update-goals', [DashboardKegiatanController::class, 'updateGoalsAndTargets'])->name('dashboard.kegiatan.update-goals');
+
