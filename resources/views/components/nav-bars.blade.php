@@ -1,10 +1,10 @@
-<nav class="w-full bg-slate-800 border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+<nav class="w-full bg-gradient-to-r from-indigo-900 via-gray-900 to-indigo-800 border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
     <div class="px-3 py-3 lg:px-5 lg:pl-3">
         <div class="flex items-center justify-between">
             <div class="flex items-center justify-start rtl:justify-end">
                 <!-- drawer init and show -->
                 <div class="text-center">
-                    <button class="text-white bg-slate-800 hover:bg-slate-700 focus:ring-2 focus:ring-slate-300 font-medium rounded-lg text-sm px-3 py-2 dark:bg-slate-600 dark:hover:bg-slate-700 focus:outline-none dark:focus:ring-slate-800" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
+                    <button class="text-white bg-indigo-900 hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-300 font-medium rounded-lg text-sm px-3 py-2 dark:bg-indigo-600 dark:hover:bg-indigo-700 focus:outline-none dark:focus:ring-indigo-800" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
                         <i class="fa-solid fa-bars"></i>
                     </button>
                 </div>
@@ -18,7 +18,7 @@
           <div class="flex items-center">
               <div class="flex items-center ms-3">
                   <div>
-                      <button type="button" class="flex text-sm bg-gray-800 p-3 rounded-lg focus:ring-2 focus:ring-gray-300" aria-expanded="false" data-dropdown-toggle="dropdown-user">
+                      <button type="button" class="flex text-sm bg-indigo-900 hover:bg-indigo-700 p-3 rounded-lg focus:ring-2 focus:ring-gray-300" aria-expanded="false" data-dropdown-toggle="dropdown-user">
                           <i class="fa-solid fa-user text-white"></i>
                       </button>
                   </div>

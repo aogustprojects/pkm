@@ -21,7 +21,7 @@
             background-color: #f3f4f6;
         }
         #drawer-navigation {
-            background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+            background: linear-gradient(180deg, #3730a3 0%, #1f2937 100%);
             box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease-in-out;
             overflow-x: hidden;
@@ -42,11 +42,11 @@
             gap: 0.75rem; /* Consistent spacing between icon and text */
         }
         .drawer-item:hover {
-            background-color: #374151;
+            background-color: #312e81;
             padding-left: 1.25rem;
         }
         .drawer-item.active {
-            background-color: #4b5563;
+            background-color: #1e1b4b;
             color: #ffffff;
             font-weight: 600;
         }
@@ -62,7 +62,7 @@
             align-items: center; /* Ensure text and icon containers align */
         }
         .dropdown-menu {
-            background-color: #374151;
+            background-color: #1e1b4b;
             border: none;
             border-radius: 0.5rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -75,16 +75,16 @@
             transition: all 0.2s ease;
         }
         .dropdown-menu li a:hover {
-            background-color: #4b5563;
+            background-color: #312e81;
             color: #ffffff;
             padding-left: 1.5rem;
         }
         .close-button {
-            background-color: #374151;
+            background-color: #1e1b4b;
             transition: all 0.2s ease;
         }
         .close-button:hover {
-            background-color: #4b5563;
+            background-color: #1e1b4b;
             transform: rotate(90deg);
         }
     </style>
@@ -94,7 +94,7 @@
 
 <div id="drawer-navigation" class="fixed top-0 left-0 z-40 w-64 h-screen p-4 overflow-y-auto transition-transform -translate-x-full" tabindex="-1" aria-labelledby="drawer-navigation-label">
     <h5 id="drawer-navigation-label" class="text-base font-semibold uppercase">Menu</h5>
-    <button type="button" data-drawer-hide="drawer-navigation" aria-controls="drawer-navigation" class="close-button text-white hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 end-2.5 inline-flex items-center">
+    <button type="button" data-drawer-hide="drawer-navigation" aria-controls="drawer-navigation" class="close-button text-white hover:bg-gray-200 hover:text-gray-200 rounded-lg text-sm p-1.5 absolute top-2.5 end-2.5 inline-flex items-center">
         <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 0 010-1.414z" clip-rule="evenodd"></path></svg>
         <span class="sr-only">Close menu</span>
     </button>

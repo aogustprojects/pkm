@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PoliGigiController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\ArsipSuratMasukController;
@@ -66,11 +67,9 @@ Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::post('/send-email', [SendEmailController::class, 'sendWelcomeEmail'])->name('send.email');
 
-Route::get('/dashboard', function() {
-    return view('dashboard.index', [
-        'title' => 'Dashboard'
-    ]);
-})->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->name('dashboard')
+    ->middleware('auth');
 
 Route::get('/dashboard/postingan/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
 
