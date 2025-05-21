@@ -90,7 +90,10 @@
     </style>
 </head>
 <body>
-<x-nav-bars></x-nav-bars>
+@auth
+    <x-nav-bars></x-nav-bars>
+@endauth
+
 
 <div id="drawer-navigation" class="fixed top-0 left-0 z-40 w-64 h-screen p-4 overflow-y-auto transition-transform -translate-x-full" tabindex="-1" aria-labelledby="drawer-navigation-label">
     <h5 id="drawer-navigation-label" class="text-base font-semibold uppercase">Menu</h5>
@@ -165,6 +168,14 @@
                         </li>
                     </ul>
                 </div>
+            </li>
+            <li>
+                <a href="/dashboard/pegawai" class="drawer-item text-gray-900 dark:text-white {{ request()->is('dashboard/pegawai*') ? 'active' : '' }}">
+                    <span class="flex h-5 w-5 items-center">
+                        <i class="fa-solid fa-user text-white"></i>
+                    </span>
+                    <span class="text-sm leading-none text-white">Data Pegawai</span>
+                </a>
             </li>
             <li>
                 <a href="/logout" class="drawer-item text-gray-900 dark:text-white">

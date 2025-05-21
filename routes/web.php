@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PoliGigiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SendEmailController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\ArsipSuratMasukController;
 use App\Http\Controllers\PoliGigiRujukanController;
 use App\Http\Controllers\ArsipSuratKeluarController;
+use App\Http\Controllers\DashboardPegawaiController;
 use App\Http\Controllers\DashboardKegiatanController;
 use App\Http\Controllers\DashboardPoliGigiController;
 use App\Http\Controllers\DashboardPoliGigiRujukanController;
@@ -109,3 +111,6 @@ Route::get('/dashboard/kegiatan/create', [DashboardKegiatanController::class, 'c
 Route::post('/dashboard/kegiatan', [DashboardKegiatanController::class, 'store'])->name('dashboard.kegiatan.store');
 Route::post('/dashboard/kegiatan/update-goals', [DashboardKegiatanController::class, 'updateGoalsAndTargets'])->name('dashboard.kegiatan.update-goals');
 
+Route::resource('/dashboard/pegawai', DashboardPegawaiController::class)->middleware('auth');
+
+Route::resource('/pegawai', PegawaiController::class);
