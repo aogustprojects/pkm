@@ -1,17 +1,26 @@
-<header class="bg-header">
-  <div class="mx-auto w-full ml-3 py-2 lg:ml-11 lg:px-8 flex justify-between items-center">
-      <h1 class="font-medium text-sm tracking-tight text-white flex items-center">
-          <i class="fa-solid fa-house-medical mr-1 text-xs"></i>{{ $slot }} <!-- Ensure text is block on mobile, inline on larger screens -->
-      </h1>
-      <!-- Contact Links -->
-      <div class="mr-4 lg:mr-16 font-medium text-xs tracking-tight text-white flex sm:flex-row gap-2 sm:gap-6">
-          <a href="https://wa.me/+62811222753" target="_blank" class="bg-header hover:bg-blue-500 rounded-md px-2 py-1 flex items-center justify-center sm:justify-start">
-              <i class="fa-brands fa-whatsapp mr-1"></i> 0811-222-753
-          </a>
-          <a href="/kontak" class="bg-header hover:bg-blue-500 rounded-md px-2 py-1 flex items-center justify-center sm:justify-start">
-              <i class="fa-regular fa-envelope mr-1"></i>Kontak
-          </a>
-          
+<header class="bg-gradient-to-r from-teal-600 to-teal-500 shadow-lg">
+  <div class="mx-auto max-w-7xl py-3 px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center space-x-2">
+        <i class="fa-solid fa-house-medical text-white/90"></i>
+        <h1 class="text-sm font-medium text-white/90">{{ $slot }}</h1>
       </div>
+      
+      <div class="flex items-center space-x-4">
+        <a href="https://wa.me/+62811222753" target="_blank" 
+          class="inline-flex items-center px-3 py-1.5 text-sm text-white/90 hover:text-white rounded-xl 
+          hover:bg-white/10 transition-all duration-300 group">
+          <i class="fa-brands fa-whatsapp mr-2 group-hover:scale-110 transition-transform duration-300"></i>
+          <span class="hidden sm:inline">0811-222-753</span>
+        </a>
+        
+        <a href="/kontak" 
+          class="inline-flex items-center px-3 py-1.5 text-sm text-white/90 hover:text-white rounded-xl 
+          hover:bg-white/10 transition-all duration-300 group">
+          <i class="fa-regular fa-envelope mr-2 group-hover:scale-110 transition-transform duration-300"></i>
+          <span class="hidden sm:inline">Kontak</span>
+        </a>
+      </div>
+    </div>
   </div>
 </header>

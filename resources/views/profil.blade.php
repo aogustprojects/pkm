@@ -2,90 +2,167 @@
     <x-slot:title>{{ $title }}</x-slot:title>
   
     <!-- Main Container -->
-    <div class="min-h-screen">
+    <div class="min-h-screen pt-8">
       <!-- Visi & Misi Section -->
-      <section class="bg-gray-100 py-16 rounded-3xl shadow-2xl max-w-7xl mx-auto mt-12">
-        <div class="px-6 text-center">
-          <h3 class="mb-6 text-4xl font-extrabold tracking-tight text-gray-800">Visi & Misi</h3>
-          <hr class="border-gray-200/20 mb-6 max-w-md mx-auto">
-          <div class="max-w-screen-md mx-auto text-gray-700 space-y-4">
-            <p><strong class="text-gray-800">Visi:</strong></p>
-            <p class="leading-relaxed text-sm">Terwujudnya Kota Bandung yang Unggul, Nyaman, Sejahtera dan Agamis</p>
-            <p><strong class="text-gray-800">Misi:</strong></p>
-            <p class="leading-relaxed text-sm">Membangun Masyarakat yang Humanis, Agamis dan Berdaya Saing</p>
+      <section class="bg-gradient-to-br from-gray-50 to-gray-100 py-20 rounded-[2rem] shadow-2xl max-w-7xl mx-auto mb-12">
+        <div class="px-6">
+          <div class="text-center mb-12">
+            <h2 class="text-4xl font-extrabold text-gray-800 mb-4">Visi & Misi</h2>
+            <div class="w-24 h-1 bg-teal-500 mx-auto rounded-full"></div>
+          </div>
+          <div class="max-w-4xl mx-auto">
+            <div class="bg-white/80 backdrop-blur-lg rounded-2xl p-8 shadow-xl border border-gray-200/20 hover:shadow-2xl transition-all duration-300 mb-8">
+              <div class="flex items-center mb-6">
+                <div class="w-12 h-12 rounded-full bg-teal-500 flex items-center justify-center mr-4">
+                  <i class="fas fa-eye text-xl text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800">Visi</h3>
+              </div>
+              <p class="text-gray-700 leading-relaxed">Terwujudnya Kota Bandung yang Unggul, Nyaman, Sejahtera dan Agamis</p>
+            </div>
+            
+            <div class="bg-white/80 backdrop-blur-lg rounded-2xl p-8 shadow-xl border border-gray-200/20 hover:shadow-2xl transition-all duration-300">
+              <div class="flex items-center mb-6">
+                <div class="w-12 h-12 rounded-full bg-teal-500 flex items-center justify-center mr-4">
+                  <i class="fas fa-bullseye text-xl text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800">Misi</h3>
+              </div>
+              <p class="text-gray-700 leading-relaxed">Membangun Masyarakat yang Humanis, Agamis dan Berdaya Saing</p>
+            </div>
           </div>
         </div>
       </section>
   
       <!-- Tata Nilai Section -->
-      <section class="bg-gray-100 py-16 rounded-3xl shadow-2xl max-w-7xl mx-auto mt-12">
-        <div class="px-6 text-center">
-          <h3 class="mb-6 text-4xl font-extrabold tracking-tight text-gray-800">Tata Nilai</h3>
-          <hr class="border-gray-200/20 mb-6 max-w-md mx-auto">
-          <p class="text-2xl font-semibold text-gray-800 mb-6">C.E.R.D.I.K</p>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">
-            <div class="w-full h-36 p-6 bg-white/90 backdrop-blur-lg rounded-xl shadow-lg border border-gray-200/20 hover:scale-105 transition-all duration-300 flex flex-col items-center text-center">
-              <p class="font-bold text-teal-600 mb-2">Cekatan</p>
-              <p class="text-sm leading-relaxed text-gray-700">Melaksanakan pelayanan dengan cepat, tanggap dan profesional</p>
+      <section class="bg-gradient-to-br from-gray-50 to-gray-100 py-20 rounded-[2rem] shadow-2xl max-w-7xl mx-auto mb-12">
+        <div class="px-6">
+          <div class="text-center mb-12">
+            <h2 class="text-4xl font-extrabold text-gray-800 mb-4">Tata Nilai</h2>
+            <div class="w-24 h-1 bg-teal-500 mx-auto rounded-full mb-6"></div>
+            <p class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-teal-400 mb-12">C.E.R.D.I.K</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div class="group bg-white rounded-2xl p-8 shadow-lg border border-gray-200/20 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 rounded-full bg-teal-500 flex items-center justify-center mr-4 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+                  <i class="fas fa-bolt text-xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-teal-600">Cekatan</h3>
+              </div>
+              <p class="text-gray-700 leading-relaxed">Melaksanakan pelayanan dengan cepat, tanggap dan profesional</p>
             </div>
-            <div class="w-full h-36 p-6 bg-white/90 backdrop-blur-lg rounded-xl shadow-lg border border-gray-200/20 hover:scale-105 transition-all duration-300 flex flex-col items-center text-center">
-              <p class="font-bold text-teal-600 mb-2">Edukatif</p>
-              <p class="text-sm leading-relaxed text-gray-700">Memberikan edukasi kepada masyarakat</p>
+            <div class="group bg-white rounded-2xl p-8 shadow-lg border border-gray-200/20 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 rounded-full bg-teal-500 flex items-center justify-center mr-4 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+                  <i class="fas fa-graduation-cap text-xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-teal-600">Edukatif</h3>
+              </div>
+              <p class="text-gray-700 leading-relaxed">Memberikan edukasi kepada masyarakat</p>
             </div>
-            <div class="w-full h-36 p-6 bg-white/90 backdrop-blur-lg rounded-xl shadow-lg border border-gray-200/20 hover:scale-105 transition-all duration-300 flex flex-col items-center text-center">
-              <p class="font-bold text-teal-600 mb-2">Ramah</p>
-              <p class="text-sm leading-relaxed text-gray-700">Bertutur kata dan bersikap baik dalam memberikan pelayanan kepada masyarakat</p>
+            <div class="group bg-white rounded-2xl p-8 shadow-lg border border-gray-200/20 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 rounded-full bg-teal-500 flex items-center justify-center mr-4 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+                  <i class="fas fa-smile text-xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-teal-600">Ramah</h3>
+              </div>
+              <p class="text-gray-700 leading-relaxed">Bertutur kata dan bersikap baik dalam memberikan pelayanan kepada masyarakat</p>
             </div>
-            <div class="w-full h-36 p-6 bg-white/90 backdrop-blur-lg rounded-xl shadow-lg border border-gray-200/20 hover:scale-105 transition-all duration-300 flex flex-col items-center text-center">
-              <p class="font-bold text-teal-600 mb-2">Disiplin</p>
-              <p class="text-sm leading-relaxed text-gray-700">Patuh kepada peraturan dan tata tertib</p>
+            <div class="group bg-white rounded-2xl p-8 shadow-lg border border-gray-200/20 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 rounded-full bg-teal-500 flex items-center justify-center mr-4 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+                  <i class="fas fa-clock text-xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-teal-600">Disiplin</h3>
+              </div>
+              <p class="text-gray-700 leading-relaxed">Patuh kepada peraturan dan tata tertib</p>
             </div>
-            <div class="w-full h-36 p-6 bg-white/90 backdrop-blur-lg rounded-xl shadow-lg border border-gray-200/20 hover:scale-105 transition-all duration-300 flex flex-col items-center text-center">
-              <p class="font-bold text-teal-600 mb-2">Inovatif</p>
-              <p class="text-sm leading-relaxed text-gray-700">Bekerja dengan giat serta mampu menciptakan ide baru dalam meningkatkan mutu pelayanan masyarakat</p>
+            <div class="group bg-white rounded-2xl p-8 shadow-lg border border-gray-200/20 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 rounded-full bg-teal-500 flex items-center justify-center mr-4 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+                  <i class="fas fa-lightbulb text-xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-teal-600">Inovatif</h3>
+              </div>
+              <p class="text-gray-700 leading-relaxed">Bekerja dengan giat serta mampu menciptakan ide baru dalam meningkatkan mutu pelayanan masyarakat</p>
             </div>
-            <div class="w-full h-36 p-6 bg-white/90 backdrop-blur-lg rounded-xl shadow-lg border border-gray-200/20 hover:scale-105 transition-all duration-300 flex flex-col items-center text-center">
-              <p class="font-bold text-teal-600 mb-2">Konsisten</p>
-              <p class="text-sm leading-relaxed text-gray-700">Memberikan pelayanan terbaik kepada masyarakat secara terus menerus</p>
+            <div class="group bg-white rounded-2xl p-8 shadow-lg border border-gray-200/20 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 rounded-full bg-teal-500 flex items-center justify-center mr-4 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+                  <i class="fas fa-check-circle text-xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-teal-600">Konsisten</h3>
+              </div>
+              <p class="text-gray-700 leading-relaxed">Memberikan pelayanan terbaik kepada masyarakat secara terus menerus</p>
             </div>
           </div>
         </div>
       </section>
   
       <!-- Struktur Organisasi Section -->
-      <section class="bg-gray-100 py-16 rounded-3xl shadow-2xl max-w-7xl mx-auto mt-12">
-        <div class="px-6 text-center">
-          <h3 class="mb-6 text-4xl font-extrabold tracking-tight text-gray-800">Struktur Organisasi</h3>
-          <hr class="border-gray-200/20 mb-6 max-w-md mx-auto">
+      <section class="bg-gradient-to-br from-gray-50 to-gray-100 py-20 rounded-[2rem] shadow-2xl max-w-7xl mx-auto mb-12">
+        <div class="px-6">
+          <div class="text-center mb-12">
+            <h2 class="text-4xl font-extrabold text-gray-800 mb-4">Struktur Organisasi</h2>
+            <div class="w-24 h-1 bg-teal-500 mx-auto rounded-full"></div>
+          </div>
           <div class="flex justify-center items-center">
-            <a href="{{ asset('img/struktur1.png') }}" target="_blank" data-lightbox="image-1" data-title="Struktur Organisasi" class="block overflow-hidden rounded-2xl hover:scale-105 transition-transform duration-300 border border-gray-200/20 shadow-lg">
-              <img src="{{ asset('img/struktur1.png') }}" alt="Struktur Organisasi" class="w-full max-w-md rounded-2xl object-cover">
-            </a>
+            <div class="group relative overflow-hidden rounded-2xl border border-gray-200/20 shadow-xl hover:shadow-2xl transition-all duration-300">
+              <a href="{{ asset('img/struktur1.png') }}" target="_blank" data-lightbox="image-1" data-title="Struktur Organisasi" class="block">
+                <img src="{{ asset('img/struktur1.png') }}" alt="Struktur Organisasi" class="w-full max-w-4xl rounded-2xl object-cover transform transition-transform duration-500 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <p class="text-sm font-medium">Klik untuk memperbesar</p>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </section>
     </div>
   
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-      html, body {
-        height: 100%;
-        margin: 0;
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+      
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      body {
         font-family: 'Poppins', sans-serif;
         background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
       }
+      
+      /* Custom Scrollbar */
       ::-webkit-scrollbar {
-        width: 8px;
+        width: 10px;
       }
+      
       ::-webkit-scrollbar-track {
-        background: #e2e8f0;
+        background: #f1f1f1;
+        border-radius: 5px;
       }
+      
       ::-webkit-scrollbar-thumb {
         background: #38b2ac;
-        border-radius: 4px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
       }
+      
       ::-webkit-scrollbar-thumb:hover {
         background: #2c8c89;
+      }
+
+      /* Animations */
+      @keyframes fade-in {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .animate-fade-in {
+        animation: fade-in 0.6s ease-out forwards;
       }
     </style>
 </x-layout>
