@@ -2,11 +2,11 @@
     <x-slot:title>{{ $title }}</x-slot:title>
   
     <!-- Main Container -->
-    <div class="min-h-screen pt-8">
+    <div class="min-h-screen pt-6">
                 <!-- Carousel -->
-        <div id="default-carousel" class="relative w-full max-w-7xl mx-auto px-4 mb-16" data-carousel="slide">
+        <div id="default-carousel" class="relative w-full max-w-7xl mx-auto px-4" data-carousel="slide">
             <!-- Carousel wrapper -->
-            <div class="relative h-72 md:h-[42rem] overflow-hidden rounded-[2rem] shadow-2xl group">
+            <div class="relative h-72 md:h-96 overflow-hidden rounded-[2rem] shadow-2xl group">
                 <!-- Item 1 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <img src="img/akre3.png" class="absolute block w-full h-full object-cover top-0 left-0 transition-all duration-700 group-hover:scale-105 filter brightness-95" alt="Puskesmas Pasir Jati Image 1" loading="lazy">
@@ -141,7 +141,7 @@
       </div>
   
       <!-- Jenis Layanan Section -->
-      <section class="bg-gradient-to-br from-gray-50 to-gray-100 py-20 rounded-[3rem] shadow-2xl max-w-7xl mx-auto mt-12 mb-12">
+      <section class="bg-gradient-to-br from-gray-50 to-gray-100 py-20 rounded-[3rem] shadow-2xl max-w-7xl mx-auto mb-6">
           <div class="px-6">
               <div class="text-center mb-16">
                   <h2 class="text-4xl font-extrabold text-gray-800 mb-4 tracking-tight">Jenis Layanan</h2>

@@ -2,7 +2,7 @@
     <x-slot:title>{{ $title }}</x-slot:title>
   
     <!-- Main Container -->
-    <div class="min-h-screen pt-8">
+    <div class="min-h-screen pt-6">
       <!-- Visi & Misi Section -->
       <section class="bg-gradient-to-br from-gray-50 to-gray-100 py-20 rounded-[2rem] shadow-2xl max-w-7xl mx-auto mb-12">
         <div class="px-6">
