@@ -2,7 +2,7 @@
   <x-slot:title>{{ $title }}</x-slot:title>
 
   <!-- Main Container -->
-  <div class="min-h-screen pt-8 px-4 lg:px-0">
+  <div class="min-h-screen">
     <!-- Search Form -->
     <div class="py-8 mx-auto max-w-screen-xl">
       <div class="mx-auto max-w-screen-md text-center">

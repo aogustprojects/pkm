@@ -2,7 +2,7 @@
   <x-slot:title>{{ $title }}</x-slot:title>
 
   <!-- Main Container -->
-  <div class="min-h-screen flex items-center justify-center w-full">
+  <div class="flex items-center justify-center w-full p-6">
     <div class="w-full max-w-md bg-white/90 backdrop-blur-lg rounded-xl shadow-lg border border-gray-200/20 p-6 sm:p-8 space-y-4 md:space-y-6 hover:scale-105 transition-all duration-300">
       <h1 class="text-xl text-center font-bold tracking-tight text-gray-800 md:text-2xl">Login</h1>
 

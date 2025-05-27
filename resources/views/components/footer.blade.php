@@ -95,14 +95,14 @@
                 </div>
                 
                 <div class="flex items-center space-x-4">
-                    <a href="#" class="group p-2 rounded-full bg-gray-100 hover:bg-teal-50 transition-colors duration-300">
+                    {{-- <a href="#" class="group p-2 rounded-full bg-gray-100 hover:bg-teal-50 transition-colors duration-300">
                         <i class="fa-brands fa-facebook text-gray-600 group-hover:text-teal-600 transition-colors duration-300"></i>
-                    </a>
-                    <a href="#" class="group p-2 rounded-full bg-gray-100 hover:bg-teal-50 transition-colors duration-300">
+                    </a> --}}
+                    <a href="https://www.instagram.com/puskesmas_pasirjati/" target="_blank" class="group p-2 rounded-full bg-gray-100 hover:bg-teal-50 transition-colors duration-300">
                         <i class="fa-brands fa-instagram text-gray-600 group-hover:text-teal-600 transition-colors duration-300"></i>
                     </a>
-                    <a href="#" class="group p-2 rounded-full bg-gray-100 hover:bg-teal-50 transition-colors duration-300">
-                        <i class="fa-brands fa-youtube text-gray-600 group-hover:text-teal-600 transition-colors duration-300"></i>
+                    {{-- <a href="#" class="group p-2 rounded-full bg-gray-100 hover:bg-teal-50 transition-colors duration-300"> --}}
+                        {{-- <i class="fa-brands fa-youtube text-gray-600 group-hover:text-teal-600 transition-colors duration-300"></i> --}}
                     </a>
                 </div>
             </div>
