@@ -6,14 +6,14 @@
                 <!-- Carousel -->
         <div id="default-carousel" class="relative w-full max-w-7xl mx-auto px-4" data-carousel="slide">
             <!-- Carousel wrapper -->
-            <div class="relative h-72 md:h-96 overflow-hidden rounded-[2rem] shadow-2xl group">
+            <div class="relative h-96 md:h-96 overflow-hidden rounded-[2rem] shadow-2xl group">
                 <!-- Item 1 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <img src="img/akre3.png" class="absolute block w-full h-full object-cover top-0 left-0 transition-all duration-700 group-hover:scale-105 filter brightness-95" alt="Puskesmas Pasir Jati Image 1" loading="lazy">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
                     <div class="absolute bottom-12 left-12 text-white transform transition-transform duration-500 translate-y-0 group-hover:-translate-y-2">
-                        <h1 class="text-5xl md:text-6xl font-bold tracking-wide mb-4">Puskesmas Pasir Jati</h1>
-                        <p class="text-2xl opacity-90">Pelayanan Kesehatan Terpercaya</p>
+                        <h1 class="text-4xl md:text-4xl font-bold tracking-wide mb-4">Puskesmas Pasir Jati</h1>
+                        <p class="text-xl opacity-90">Pelayanan Kesehatan Terpercaya</p>
                     </div>
                 </div>
                 <!-- Item 2 -->
@@ -21,8 +21,8 @@
                     <img src="img/akre1.jpg" class="absolute block w-full h-full object-cover top-0 left-0 transition-all duration-700 group-hover:scale-105 filter brightness-95" alt="Puskesmas Pasir Jati Image 2" loading="lazy">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
                     <div class="absolute bottom-12 left-12 text-white transform transition-transform duration-500 translate-y-0 group-hover:-translate-y-2">
-                        <h1 class="text-5xl md:text-6xl font-bold tracking-wide mb-4">Layanan Lengkap</h1>
-                        <p class="text-2xl opacity-90">Untuk Kesehatan Anda</p>
+                        <h1 class="text-4xl md:text-4xl font-bold tracking-wide mb-4">Layanan Lengkap</h1>
+                        <p class="text-xl opacity-90">Untuk Kesehatan Anda</p>
                     </div>
                 </div>
                 <!-- Item 3 -->
@@ -30,8 +30,8 @@
                     <img src="img/akre2.jpeg" class="absolute block w-full h-full object-cover top-0 left-0 transition-all duration-700 group-hover:scale-105 filter brightness-95" alt="Puskesmas Pasir Jati Image 3" loading="lazy">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
                     <div class="absolute bottom-12 left-12 text-white transform transition-transform duration-500 translate-y-0 group-hover:-translate-y-2">
-                        <h1 class="text-5xl md:text-6xl font-bold tracking-wide mb-4">Kesehatan Masyarakat</h1>
-                        <p class="text-2xl opacity-90">Membangun Kesejahteraan</p>
+                        <h1 class="text-4xl md:text-4xl font-bold tracking-wide mb-4">Kesehatan Masyarakat</h1>
+                        <p class="text-xl opacity-90">Membangun Kesejahteraan</p>
                     </div>
                 </div>
             </div>

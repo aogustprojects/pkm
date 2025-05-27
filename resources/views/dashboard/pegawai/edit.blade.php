@@ -2,14 +2,14 @@
 <div class="px-6 py-8 lg:px-20 bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen">
     <div class="mb-6 mt-6 flex justify-between items-center">
         <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight">Edit Pegawai</h1>
-        <a href="{{ route('pegawai.index') }}" class="bg-indigo-600 rounded-full px-4 py-2 text-white hover:bg-indigo-800 transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl">
+        <a href="{{ route('dashboard.pegawai.index') }}" class="bg-indigo-600 rounded-full px-4 py-2 text-white hover:bg-indigo-800 transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl">
             <i class="fa-solid fa-arrow-left text-sm"></i>
             <span class="text-base font-medium">Kembali</span>
         </a>
     </div>
     <hr class="border-gray-300 mb-8 opacity-50">
     <div class="bg-white p-8 rounded-xl shadow-2xl border border-gray-200">
-        <form action="{{ route('pegawai.update', $pegawai->id) }}" method="POST" enctype="multipart/form-data" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <form action="{{ route('dashboard.pegawai.update', $pegawai->id) }}" method="POST" enctype="multipart/form-data" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             @csrf
             @method('PUT')
             <!-- Photo Input -->

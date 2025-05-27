@@ -36,7 +36,7 @@
                                 </thead>
                                 <tbody class="divide-y divide-gray-100">
                                     @forelse ($pegawais as $pegawai)
-                                        <tr class="{{ $pegawai->updated_at && \Carbon\Carbon::parse($pegawai->updated_at)->isCurrentMonth() ? 'bg-green-100' : '' }}">
+                                        <tr class="{{ ($pegawai->updated_at && \Carbon\Carbon::parse($pegawai->updated_at)->isCurrentMonth()) || ($pegawai->touched_at && \Carbon\Carbon::parse($pegawai->touched_at)->isCurrentMonth()) ? 'bg-green-100' : '' }}">
                                             <td class="px-6 py-5">
                                                 <img src="{{ $pegawai->photo_url ? Storage::url($pegawai->photo_url) : 'https://placehold.co/40x40?text=Profile' }}" alt="Profile Picture" class="w-10 h-10 rounded-full object-cover">
                                             </td>
