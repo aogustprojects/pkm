@@ -35,13 +35,9 @@
                   <i class="fa-solid fa-gauge mr-2"></i>Dashboard
                 </x-nav-link>
                 
-                <form action="/logout" method="POST" class="inline">
-                  @csrf
-                  <x-nav-link href="/logout" :active="request()->is('login')" 
-                    onclick="event.preventDefault(); this.closest('form').submit();">
-                    <i class="fa-solid fa-right-from-bracket mr-2"></i>Logout
-                  </x-nav-link>
-                </form>
+                <x-nav-link href="/logout" :active="request()->is('login')">
+                  <i class="fa-solid fa-right-from-bracket mr-2"></i>Logout
+                </x-nav-link>
               @else
                 <x-nav-link href="/login" :active="request()->is('login')">
                   <i class="fa-solid fa-right-to-bracket mr-2"></i>Login
@@ -107,14 +103,9 @@
             <i class="fa-solid fa-gauge mr-2"></i>Dashboard
           </x-nav-link>
           
-          <form action="/logout" method="POST">
-            @csrf
-            <x-nav-link href="/logout" :active="request()->is('login')" 
-              onclick="event.preventDefault(); this.closest('form').submit();" 
-              class="flex items-center w-full">
-              <i class="fa-solid fa-right-from-bracket mr-2"></i>Logout
-            </x-nav-link>
-          </form>
+          <x-nav-link href="/logout" :active="request()->is('login')" class="flex items-center">
+            <i class="fa-solid fa-right-from-bracket mr-2"></i>Logout
+          </x-nav-link>
         @else
           <x-nav-link href="/login" :active="request()->is('login')" class="flex items-center">
             <i class="fa-solid fa-right-to-bracket mr-2"></i>Login
