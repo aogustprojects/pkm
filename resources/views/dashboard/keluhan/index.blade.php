@@ -24,6 +24,7 @@
                             <table class="w-full border-collapse">
                                 <thead>
                                     <tr class="bg-gray-50">
+                                        <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900">No</th>
                                         <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900">Asal Keluhan</th>
                                         <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900">Nama Pengirim</th>
                                         <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900">Email</th>
@@ -35,6 +36,7 @@
                                 <tbody class="divide-y divide-gray-100">
                                     @forelse ($keluhans as $keluhan)
                                         <tr>
+                                            <th scope="row" class="px-3 py-4 font-medium text-center text-gray-900 whitespace-nowrap dark:text-white">{{ $loop->iteration }}</th>
                                             <td class="px-6 py-5 text-sm text-gray-900">{{ ucfirst($keluhan->asal_keluhan) }}</td>
                                             <td class="px-6 py-5 text-sm text-gray-900">{{ $keluhan->nama_pengirim }}</td>
                                             <td class="px-6 py-5 text-sm text-gray-500">{{ $keluhan->email_pengirim ?? '-' }}</td>

@@ -31,7 +31,7 @@
                                 <div class="sm:col-span-1">
                                     <label for="nama_pengirim" class="block text-sm font-medium leading-6 text-gray-900">Nama Pengirim</label>
                                     <div class="mt-2">
-                                        <input type="text" name="nama_pengirim" id="nama_pengirim" value="{{ old('nama_pengirim') }}" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 @error('nama_pengirim') ring-red-500 @enderror">
+                                        <input type="text" name="nama_pengirim" id="nama_pengirim" value="{{ old('nama_pengirim') }}" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 @error('nama_pengirim')  @enderror">
                                         @error('nama_pengirim')
                                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                         @enderror
@@ -41,7 +41,7 @@
                                 <div class="sm:col-span-1">
                                     <label for="email_pengirim" class="block text-sm font-medium leading-6 text-gray-900">Email Pengirim (Opsional)</label>
                                     <div class="mt-2">
-                                        <input type="email" name="email_pengirim" id="email_pengirim" value="{{ old('email_pengirim') }}" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 @error('email_pengirim') ring-red-500 @enderror">
+                                        <input type="email" name="email_pengirim" id="email_pengirim" value="{{ old('email_pengirim') }}" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 @error('email_pengirim')  @enderror">
                                         @error('email_pengirim')
                                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                         @enderror
@@ -51,7 +51,7 @@
                                 <div class="sm:col-span-1">
                                     <label for="perihal" class="block text-sm font-medium leading-6 text-gray-900">Perihal</label>
                                     <div class="mt-2">
-                                        <input type="text" name="perihal" id="perihal" value="{{ old('perihal') }}" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 @error('perihal') ring-red-500 @enderror">
+                                        <input type="text" name="perihal" id="perihal" value="{{ old('perihal') }}" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 @error('perihal')  @enderror">
                                         @error('perihal')
                                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                         @enderror
@@ -61,7 +61,7 @@
                                 <div class="sm:col-span-2">
                                     <label for="isi_pesan" class="block text-sm font-medium leading-6 text-gray-900">Isi Pesan</label>
                                     <div class="mt-2">
-                                        <textarea name="isi_pesan" id="isi_pesan" rows="4" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 @error('isi_pesan') ring-red-500 @enderror">{{ old('isi_pesan') }}</textarea>
+                                        <textarea name="isi_pesan" id="isi_pesan" rows="4" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 @error('isi_pesan')  @enderror">{{ old('isi_pesan') }}</textarea>
                                         @error('isi_pesan')
                                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                         @enderror
