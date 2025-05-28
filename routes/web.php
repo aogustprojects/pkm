@@ -18,6 +18,7 @@ use App\Http\Controllers\DashboardPegawaiController;
 use App\Http\Controllers\DashboardKegiatanController;
 use App\Http\Controllers\DashboardPoliGigiController;
 use App\Http\Controllers\DashboardPoliGigiRujukanController;
+use App\Http\Controllers\KeluhanController;
 
 Route::get('/', function () {
     return view('beranda', [
@@ -114,3 +115,5 @@ Route::post('/dashboard/kegiatan/update-goals', [DashboardKegiatanController::cl
 Route::resource('/dashboard/pegawai', DashboardPegawaiController::class)->middleware('auth');
 
 Route::resource('/pegawai', PegawaiController::class);
+
+Route::resource('/dashboard/keluhan', KeluhanController::class)->middleware('auth');

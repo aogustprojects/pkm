@@ -178,6 +178,14 @@
                 </a>
             </li>
             <li>
+                <a href="/dashboard/keluhan" class="drawer-item text-gray-900 dark:text-white {{ request()->is('dashboard/keluhan*') ? 'active' : '' }}">
+                    <span class="flex h-5 w-5 items-center">
+                        <i class="fa-solid fa-flag text-white"></i>
+                    </span>
+                    <span class="text-sm leading-none text-white">Report Keluhan</span>
+                </a>
+            </li>
+            <li>
                 <a href="/logout" class="drawer-item text-gray-900 dark:text-white">
                     <span class="flex h-5 w-5 items-center">
                         <i class="fa-solid fa-right-from-bracket text-white"></i>
