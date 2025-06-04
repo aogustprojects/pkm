@@ -27,7 +27,7 @@
                                     <tr class="bg-gray-50">
                                         <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900">Foto</th>
                                         <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900">Nama</th>
-                                        <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900">NIP</th>
+                                        <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 hidden sm:table-cell">NIP</th>
                                         <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 hidden sm:table-cell">Golongan</th>
                                         <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 hidden sm:table-cell">Jabatan</th>
                                         <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 hidden sm:table-cell">Tanggal Update</th>
@@ -41,7 +41,7 @@
                                                 <img src="{{ $pegawai->photo_url ? Storage::url($pegawai->photo_url) : 'https://placehold.co/40x40?text=Profile' }}" alt="Profile Picture" class="w-10 h-10 rounded-full object-cover">
                                             </td>
                                             <td class="px-6 py-5 text-sm text-gray-900">{{ $pegawai->nama }}</td>
-                                            <td class="px-6 py-5 text-sm text-gray-500">{{ $pegawai->nip }}</td>
+                                            <td class="px-6 py-5 text-sm text-gray-500 hidden sm:table-cell">{{ $pegawai->nip }}</td>
                                             <td class="px-6 py-5 text-sm text-gray-900 hidden sm:table-cell">{{ $pegawai->golongan ?? '-' }}</td>
                                             <td class="px-6 py-5 text-sm text-gray-500 hidden sm:table-cell">{{ $pegawai->jabatan ?? '-' }}</td>
                                             <td class="px-6 py-5 text-sm text-gray-500 hidden sm:table-cell">
