@@ -30,14 +30,21 @@
         <div class="mb-6">
             <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Upload Gambar</label>
             <input type="hidden" name="oldImage" value="{{ $post->image }}">
-            <div class="flex items-center space-x-4">
-                <button type="button" onclick="document.getElementById('image').click()" class="px-4 py-2 bg-indigo-600 text-white text-sm rounded-lg hover:bg-indigo-700 transition-all duration-200 shadow-sm hover:shadow-md">
-                    Pilih Gambar
-                </button>
-                <span id="file_name" class="text-gray-500 text-sm">No file chosen</span>
+            <div class="flex flex-col space-y-4">
+                <div id="dropzone-upload" class="flex flex-col items-center justify-center w-full h-40 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-white hover:bg-gray-50 transition-all duration-200">
+                    <div class="flex flex-col items-center justify-center pt-4 pb-4">
+                        <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                        </svg>
+                        <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Klik untuk upload</span> atau drag and drop</p>
+                        <p class="text-xs text-gray-500">PNG, JPG atau JPEG</p>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <img src="{{ $post->image ? asset('storage/' . $post->image) : '' }}" class="img-preview img-fluid my-4 max-h-64 max-w-md object-contain rounded-lg shadow-sm {{ $post->image ? '' : 'hidden' }}" alt="Image preview">
+                </div>
+                <input type="file" id="image" name="image" class="hidden" accept="image/*" onchange="previewImage()">
             </div>
-            <img src="{{ $post->image ? asset('storage/' . $post->image) : '' }}" class="img-preview img-fluid my-4 max-h-64 rounded-lg shadow-sm {{ $post->image ? '' : 'hidden' }}" alt="Image preview">
-            <input type="file" id="image" name="image" class="hidden" accept="image/*" onchange="updateFileName(); previewImage();">
         </div>
         <div class="mb-6">
             <label for="body" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Body</label>
@@ -71,14 +78,12 @@
             transform: scale(1);
         }
     }
+    #dropzone-upload.drag-active {
+        border-color: #4f46e5;
+        background-color: #eef2ff;
+    }
 </style>
 <script>
-    function updateFileName() {
-        const input = document.getElementById('image');
-        const fileName = input.files.length > 0 ? input.files[0].name : 'No file chosen';
-        document.getElementById('file_name').textContent = fileName;
-    }
-
     function previewImage() {
         const image = document.querySelector('#image');
         const imgPreview = document.querySelector('.img-preview');
@@ -90,6 +95,49 @@
         oFReader.onload = function(oFREvent) {
             imgPreview.src = oFREvent.target.result;
         };
+    }
+
+    // Dropzone functionality
+    const dropzone = document.getElementById('dropzone-upload');
+    const imageInput = document.getElementById('image');
+
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropzone.addEventListener(eventName, preventDefaults, false);
+        document.body.addEventListener(eventName, preventDefaults, false);
+    });
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropzone.addEventListener(eventName, highlight, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropzone.addEventListener(eventName, unhighlight, false);
+    });
+
+    function preventDefaults (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    function highlight(e) {
+        dropzone.classList.add('drag-active');
+    }
+
+    function unhighlight(e) {
+        dropzone.classList.remove('drag-active');
+    }
+
+    dropzone.addEventListener('drop', handleDrop, false);
+    dropzone.addEventListener('click', () => imageInput.click());
+
+    function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+
+        if (files.length > 0) {
+            imageInput.files = files;
+            previewImage();
+        }
     }
 
     const title = document.querySelector('#title');
