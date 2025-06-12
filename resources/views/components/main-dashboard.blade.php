@@ -128,7 +128,7 @@
                 </a>
             </li>
             <li>
-                <a id="dropdownPoliGigiButton" data-dropdown-toggle="dropdownPoliGigi" class="drawer-item text-gray-900 dark:text-white {{ request()->is('dashboard/poli-gigi*') ? 'active' : '' }}">
+                <a id="dropdownPoliGigiButton" data-dropdown-toggle="dropdownPoliGigi" class="cursor-pointer drawer-item text-gray-900 dark:text-white {{ request()->is('dashboard/poli-gigi*') ? 'active' : '' }}">
                     <span class="flex h-5 w-5 items-center">
                         <i class="fa-solid fa-tooth text-white"></i>
                     </span>
@@ -149,7 +149,7 @@
                 </div>
             </li>
             <li>
-                <a id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="drawer-item text-gray-900 dark:text-white {{ request()->is('dashboard/arsip_surat_masuk*', 'dashboard/arsip_surat_keluar*') ? 'active' : '' }}">
+                <a id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="cursor-pointer drawer-item text-gray-900 dark:text-white {{ request()->is('dashboard/arsip_surat_masuk*', 'dashboard/arsip_surat_keluar*') ? 'active' : '' }}">
                     <span class="flex h-5 w-5 items-center">
                         <i class="fa-solid fa-envelope-open-text text-white"></i>
                     </span>
