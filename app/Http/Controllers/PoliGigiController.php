@@ -123,4 +123,16 @@ class PoliGigiController extends Controller
     {
         //
     }
+
+    public function toggleCheck($id)
+    {
+        $poligigi = Poligigi::findOrFail($id);
+        $poligigi->is_checked = !$poligigi->is_checked;
+        $poligigi->save();
+
+        return response()->json([
+            'success' => true,
+            'is_checked' => $poligigi->is_checked
+        ]);
+    }
 }

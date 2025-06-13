@@ -33,6 +33,7 @@
                                         <th scope="col" class="px-3 py-4">Nomor BPJS</th>
                                         <th scope="col" class="px-3 py-4">Alamat</th>
                                         <th scope="col" class="px-3 py-4">Tanggal</th>
+                                        <th scope="col" class="px-3 py-4">Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,10 +48,19 @@
                                             <td class="px-3 py-4 text-center">{{ $gigi->no_bpjs ?? '-' }}</td>
                                             <td class="px-3 py-4">{{ $gigi->alamat }}</td>
                                             <td class="px-3 py-4 text-center">{{ $gigi->created_at->timezone('Asia/Jakarta')->format('d M Y H:i') }}</td>
+                                            <td class="px-3 py-4 text-center">
+                                                <button 
+                                                    onclick="toggleCheck({{ $gigi->id }})"
+                                                    id="checkBtn-{{ $gigi->id }}"
+                                                    class="px-4 py-2 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 {{ $gigi->is_checked ? 'bg-green-500 hover:bg-green-600 text-white' : 'bg-yellow-500 hover:bg-yellow-600 text-white' }}">
+                                                    <i class="fas {{ $gigi->is_checked ? 'fa-check-circle' : 'fa-clock' }}"></i>
+                                                    {{ $gigi->is_checked ? 'Checked' : 'Pending' }}
+                                                </button>
+                                            </td>
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="9" class="text-center py-6 text-gray-500">Tidak ada pasien yang terdaftar.</td>
+                                            <td colspan="10" class="text-center py-6 text-gray-500">Tidak ada pasien yang terdaftar.</td>
                                         </tr>
                                     @endforelse
                                 </tbody>
@@ -96,4 +106,31 @@
             });
         }
     });
+
+    function toggleCheck(id) {
+        fetch(`/poligigi/toggle-check/${id}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            const button = document.getElementById(`checkBtn-${id}`);
+            if (data.is_checked) {
+                button.classList.remove('bg-yellow-500', 'hover:bg-yellow-600');
+                button.classList.add('bg-green-500', 'hover:bg-green-600');
+                button.innerHTML = '<i class="fas fa-check-circle"></i> Checked';
+            } else {
+                button.classList.remove('bg-green-500', 'hover:bg-green-600');
+                button.classList.add('bg-yellow-500', 'hover:bg-yellow-600');
+                button.innerHTML = '<i class="fas fa-clock"></i> Pending';
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Failed to update status. Please try again.');
+        });
+    }
 </script>
