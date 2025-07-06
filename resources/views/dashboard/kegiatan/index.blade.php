@@ -82,7 +82,7 @@
                                                 <td class="px-6 py-4 text-center">{{ $realisasi ? $realisasi->tahun : '-' }}</td>
                                                 <td class="px-6 py-4 text-center">{{ $totalTarget }}</td>
                                                 <td class="px-6 py-4 text-center">{{ $totalRealisasi }}</td>
-                                                <td class="px-6 py-4 text-center font-medium {{ $persentase == 100 ? 'text-green-500 bg-green-100' : 'text-red-500 bg-red-100' }} rounded-lg">
+                                                <td class="px-6 py-4 text-center font-medium {{ $persentase >= 100 ? 'text-green-500 bg-green-100' : 'text-red-500 bg-red-100' }} rounded-lg">
                                                     {{ $persentase }}%
                                                 </td>
                                             </tr>
@@ -314,7 +314,7 @@
                     const percentage = cumulativeTarget > 0 ? Math.round((cumulativeGoals / cumulativeTarget) * 100) : 0;
                     percentageSpan.textContent = `${percentage}%`;
                     percentageSpan.classList.remove('percentage-100', 'percentage-below-100');
-                    if (percentage === 100) {
+                    if (percentage >= 100) {
                         percentageSpan.classList.add('percentage-100');
                     } else {
                         percentageSpan.classList.add('percentage-below-100');
