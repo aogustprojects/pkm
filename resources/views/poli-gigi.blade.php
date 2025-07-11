@@ -27,8 +27,21 @@
   
       $now = Carbon::now('Asia/Jakarta');
       $allowedDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-      $startTime = $now->copy()->setTime(6, 15);
-      $endTime = $now->copy()->setTime(16, 0);
+      
+      // Different time settings based on login status
+      if (auth()->check()) {
+        // For logged-in users: 5:00 AM to 10:00 AM
+        $startTime = $now->copy()->setTime(5, 0);
+        $endTime = $now->copy()->setTime(10, 0);
+        $displayStartTime = '05.00';
+        $displayEndTime = '10.00';
+      } else {
+        // For public users: 6:15 AM to 10:00 AM
+        $startTime = $now->copy()->setTime(6, 15);
+        $endTime = $now->copy()->setTime(10, 0);
+        $displayStartTime = '06.15';
+        $displayEndTime = '10.00';
+      }
       
       $today = $now->format('Y-m-d');
       $settings = getSetting();
@@ -45,6 +58,9 @@
           <p class="text-center text-sm p-2 rounded-lg text-gray-800 bg-red-500/20 backdrop-blur-lg border border-red-500/50">
             Field Ini Hanya Bisa Terlihat Jika User Login
           </p>
+          <div class="mb-4 p-4 bg-green-500/20 backdrop-blur-lg text-gray-800 rounded-lg border border-green-500/50">
+            <strong>🕐 Extended Hours Active!</strong> As a logged-in user, you have access to extended registration hours: {{ $displayStartTime }} - {{ $displayEndTime }} (instead of 06:15 - 10:00 for public users).
+          </div>
   
           <!-- Toggle Form -->
           <form action="{{ route('toggle-form-status') }}" method="POST" class="mb-4">
@@ -85,7 +101,7 @@
           </div>
           @elseif (!in_array($now->format('l'), $allowedDays) || !$now->between($startTime, $endTime))
           <div class="mt-4 p-4 bg-red-500/20 backdrop-blur-lg text-gray-800 rounded-lg border border-red-500/50">
-            <strong>Pendaftaran ditutup!</strong> Formulir pendaftaran hanya tersedia Senin - Sabtu dari pukul 06:15 - 16:00.
+            <strong>Pendaftaran ditutup!</strong> Formulir pendaftaran hanya tersedia Senin - Sabtu dari pukul {{ $displayStartTime }} - {{ $displayEndTime }}.
           </div>
           @elseif ($currentRegistrations >= $maxRegistrationsPerDay)
           <div class="mt-4 p-4 bg-red-500/20 backdrop-blur-lg text-gray-800 rounded-lg border border-red-500/50">
@@ -103,7 +119,7 @@
             @csrf
             <div class="space-y-12">
               <div class="border-b border-gray-200/20 pb-12">
-                <h2 class="text-base/7 font-semibold text-gray-800">Formulir pendaftaran dibuka <span class="text-teal-600">Senin-Sabtu</span> pukul <span class="text-teal-600">06.15</span></h2>
+                <h2 class="text-base/7 font-semibold text-gray-800">Formulir pendaftaran dibuka <span class="text-teal-600">Senin-Sabtu</span> pukul <span class="text-teal-600">{{ $displayStartTime }}</span></h2>
                 <p class="mt-1 text-sm/6 text-gray-600">Jika berhasil terdaftar, silahkan melakukan daftar ulang di Puskesmas Pasir Jati pada pukul 08.00.</p>
                 <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                   <div class="sm:col-span-3">
