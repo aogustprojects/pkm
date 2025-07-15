@@ -119,3 +119,6 @@ Route::resource('/pegawai', PegawaiController::class);
 Route::resource('/dashboard/keluhan', KeluhanController::class)->middleware('auth');
 
 Route::post('/poligigi/toggle-check/{id}', [PoliGigiController::class, 'toggleCheck'])->name('poligigi.toggle-check');
+
+
+////adwada
